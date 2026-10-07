@@ -1,22 +1,35 @@
-# PQC Kyber com hashing caótico
+# PQC Kyber com hashing caótico e ROS2
 
-Implementação em C com cabeçalhos compatíveis com C++ via `extern "C"` condicionado a `__cplusplus`. O núcleo `hash_options/chaotic_hash.c` permanece original.
+Kyber em C, com hashing caótico e cabeçalhos compatíveis com C++ por `extern "C"`. Os PDFs orientam a criptografia; ROS2 e a comunicação sistema/drone são requisitos do projeto.
 
-## Compilar e testar
+- [Simulação](docs/SIMULACAO.md): instalação, execução em dois terminais e exemplos de falha.
+- [Criptografia](docs/CRIPTOGRAFIA.md): critérios dos PDFs, falhas conhecidas e resultados dos testes.
 
-Requer compilador C, make e Python 3. Para os alvos NIST KAT, também são necessários os cabeçalhos OpenSSL.
+## Estrutura e estado atual
+
+| Pasta | Conteúdo |
+| --- | --- |
+| `ref/` | Kyber, adaptadores, Makefile e testes C |
+| `hash_options/` | Núcleo do hashing caótico |
+| `ros2/pqc_kyber/` | Pacote ROS2, nós C++ e testes da simulação |
+| `docs/` | Tutorial e análise criptográfica |
+
+A simulação validada usa Ubuntu 24.04/WSL2, ROS2 Jazzy e Kyber768. A envia dados cifrados a B; B autentica, recupera a mensagem e compara o hash. O retorno atual é um status textual. Dados cifrados nos dois sentidos e conexão com drone real são etapas futuras.
+
+As falhas de rejeição do KEM permanecem abertas. O funcionamento da simulação não comprova a segurança criptográfica da construção.
+
+## Uso rápido
+
+Com as dependências instaladas:
 
 ```bash
-make -C ref test
-make -C ref check
+cd ~/ProjetoIC/pqc-kyber-marcos/pqc-kyber/ros2
+source /opt/ros/jazzy/setup.bash
+colcon build --packages-select pqc_kyber
+source install/setup.bash
+ros2 run pqc_kyber kem_check
 ```
 
-`test_hashing` verifica vetores originais e a continuidade de extrações XOF fracionadas. Os bytes residuais ficam no adaptador, fora do núcleo matemático.
+Continue no [tutorial de envio e recebimento](docs/SIMULACAO.md#execucao). Para a bateria C, execute `make -C ref check` na raiz; o comando retorna falha enquanto as regressões de rejeição falharem.
 
-`test_rejection` gera um ciphertext com sementes fixas, inverte um bit por caso e exige o segredo de rejeição correto. `run_checks.py` executa todos os dez testes e retorna falha se qualquer um reprovar.
-
-## Falhas conhecidas
-
-As regressões de rejeição permanecem reprovadas: 65/6.144 alterações em Kyber512, 65/8.704 em Kyber768 e 65/12.544 em Kyber1024, para as sementes fixas do teste. Foram identificadas perdas de informação na normalização Q24 e nos truncamentos do mapa caótico. Nenhum caso foi excluído ou convertido em sucesso esperado.
-
-Passar nos testes de encapsulação legítima não elimina essas falhas nem comprova a segurança da substituição das primitivas por hashing caótico. Esta atualização não inclui ROS2 e não altera a precisão numérica do núcleo.
+Antes de distribuir, preencha mantenedor e licença em `ros2/pqc_kyber/package.xml`.
