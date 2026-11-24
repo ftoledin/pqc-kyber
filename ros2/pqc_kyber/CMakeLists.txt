@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
 project(pqc_kyber LANGUAGES C CXX)
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
+endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -38,6 +41,7 @@ target_include_directories(kyber_chaotic PUBLIC
   $<BUILD_INTERFACE:${KYBER_ROOT}/hash_options>
   $<INSTALL_INTERFACE:include/pqc_kyber/ref>
   $<INSTALL_INTERFACE:include/pqc_kyber/hash_options>
+  $<INSTALL_INTERFACE:include>
 )
 
 add_executable(kem_check src/kem_check.cpp)
@@ -58,6 +62,11 @@ if(BUILD_TESTING)
   target_include_directories(demo_crypto_test PRIVATE src)
   target_link_libraries(demo_crypto_test PRIVATE kyber_chaotic OpenSSL::Crypto)
   add_test(NAME demo_encryption_authentication COMMAND demo_crypto_test)
+  add_executable(protocol_extended ${KYBER_ROOT}/ref/test/test_protocol_extended.cpp)
+  target_compile_features(protocol_extended PRIVATE cxx_std_17)
+  target_include_directories(protocol_extended PRIVATE src)
+  target_link_libraries(protocol_extended PRIVATE kyber_chaotic OpenSSL::Crypto)
+  add_test(NAME demo_protocol_extended COMMAND protocol_extended)
   add_test(NAME cpp_kem_chaotic_check COMMAND kem_check)
   add_executable(hash_regression ${KYBER_ROOT}/ref/test/test_hashing.c)
   target_link_libraries(hash_regression PRIVATE kyber_chaotic)
@@ -78,5 +87,6 @@ install(DIRECTORY ${KYBER_ROOT}/ref/ DESTINATION include/pqc_kyber/ref
 install(DIRECTORY ${KYBER_ROOT}/hash_options/
   DESTINATION include/pqc_kyber/hash_options FILES_MATCHING PATTERN "*.h"
 )
+install(FILES src/demo_crypto.hpp DESTINATION include/pqc_kyber/demo)
 ament_export_targets(kyber_chaotic_targets HAS_LIBRARY_TARGET)
 ament_package()

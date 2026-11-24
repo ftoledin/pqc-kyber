@@ -31,7 +31,9 @@ class Sender : public rclcpp::Node {
         RCLCPP_ERROR(get_logger(), "Tempo esgotado aguardando receptor/confirmacao.");
         finished = true; return;
       }
-      if (sent_ || pk_.empty() || data_->get_subscription_count() == 0) return;
+      // Wait for both directions of discovery before publishing a single packet.
+      if (sent_ || pk_.empty() || data_->get_subscription_count() == 0 ||
+          ack_->get_publisher_count() == 0) return;
       try {
         std_msgs::msg::UInt8MultiArray packet;
         packet.data = demo::seal(message_, pk_);

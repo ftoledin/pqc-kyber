@@ -17,6 +17,8 @@
 namespace demo {
 using Bytes = std::vector<uint8_t>;
 constexpr size_t max_message = 65536;
+// Q32.32 upstream mixing changes all KEM/hash outputs; reject older builds.
+constexpr uint8_t frame_version = 3;
 constexpr size_t prefix_size = 5 + CRYPTO_CIPHERTEXTBYTES + 12 + 32;
 constexpr size_t tag_size = 16;
 using Context = std::unique_ptr<EVP_CIPHER_CTX, decltype(&EVP_CIPHER_CTX_free)>;
@@ -38,7 +40,7 @@ inline Bytes seal(const std::string &message, const Bytes &pk) {
   require(pk.size() == CRYPTO_PUBLICKEYBYTES, "Chave publica de tamanho incorreto");
   const auto digest = hash(message);
   Bytes frame(prefix_size + message.size() + tag_size);
-  frame[0] = 'K'; frame[1] = 'Y'; frame[2] = 'C'; frame[3] = 1; frame[4] = KYBER_K;
+  frame[0] = 'K'; frame[1] = 'Y'; frame[2] = 'C'; frame[3] = frame_version; frame[4] = KYBER_K;
   std::array<uint8_t, CRYPTO_BYTES> secret{};
   require(crypto_kem_enc(frame.data() + 5, secret.data(), pk.data()) == 0, "Falha no KEM");
   auto *nonce = frame.data() + 5 + CRYPTO_CIPHERTEXTBYTES;
@@ -64,7 +66,7 @@ inline Received open(const Bytes &frame, const Bytes &sk) {
   require(sk.size() == CRYPTO_SECRETKEYBYTES, "Chave privada de tamanho incorreto");
   require(frame.size() >= prefix_size + tag_size && frame.size() <= prefix_size + max_message + tag_size,
           "Pacote de tamanho invalido");
-  require(frame[0] == 'K' && frame[1] == 'Y' && frame[2] == 'C' && frame[3] == 1 && frame[4] == KYBER_K,
+  require(frame[0] == 'K' && frame[1] == 'Y' && frame[2] == 'C' && frame[3] == frame_version && frame[4] == KYBER_K,
           "Versao ou variante Kyber incompativel");
   std::array<uint8_t, CRYPTO_BYTES> secret{};
   require(crypto_kem_dec(secret.data(), frame.data() + 5, sk.data()) == 0, "Falha no KEM");

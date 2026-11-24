@@ -1,0 +1,1544 @@
+{
+  "date": "2026-11-03",
+  "precision": 32,
+  "framing": {
+    "name": "CHF1",
+    "header": "43 48 46 01 + domain UINT32 little-endian",
+    "input": "message followed by zero padding to an 8-byte boundary",
+    "trailer": "original byte length UINT64 little-endian",
+    "domains": {
+      "generic": 0,
+      "hash256": 1,
+      "hash512": 2,
+      "xof128": 3,
+      "prf256": 4,
+      "reject_key": 5,
+      "reject_ciphertext": 6
+    },
+    "empty": "explicit framed absorption; no-absorb extraction calls remain separate",
+    "wire_version": 2
+  },
+  "previous_core_sha256": "416eb049b8ec10eb243a7b2036b79fd5ada67792d7a625528e8330573feb9826",
+  "core_sha256": "8383c6030a6bfd8a353f908b3aaf358e206b8bfb0ceb188e026badad64053a32",
+  "existing": [
+    {
+      "test": "test_hashing",
+      "exit_code": 1,
+      "output": "CHF1 lengths, trailing bytes, empty input and domains: OK\nERROR Q32 low input bit produced an unchanged hash: byte 24 bit 0\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_rejection512",
+      "exit_code": 0,
+      "output": "Kyber512: 0 of 6144 single-bit mutations failed rejection\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_rejection768",
+      "exit_code": 0,
+      "output": "Kyber768: 0 of 8704 single-bit mutations failed rejection\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_rejection1024",
+      "exit_code": 0,
+      "output": "Kyber1024: 0 of 12544 single-bit mutations failed rejection\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_kyber512",
+      "exit_code": 0,
+      "output": "CRYPTO_SECRETKEYBYTES:  1632\nCRYPTO_PUBLICKEYBYTES:  800\nCRYPTO_CIPHERTEXTBYTES: 768\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_kyber768",
+      "exit_code": 0,
+      "output": "CRYPTO_SECRETKEYBYTES:  2400\nCRYPTO_PUBLICKEYBYTES:  1184\nCRYPTO_CIPHERTEXTBYTES: 1088\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_kyber1024",
+      "exit_code": 0,
+      "output": "CRYPTO_SECRETKEYBYTES:  3168\nCRYPTO_PUBLICKEYBYTES:  1568\nCRYPTO_CIPHERTEXTBYTES: 1568\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_vectors512",
+      "exit_code": 0,
+      "output": "f54b1e7d6fe2eb5d7318d8e41a9d43edf9a8b4fc131ee8585dea63869d3bfa3c08679c18c4247f7d06071c22b3b11ca7bdd33f9035c961e55684c845d25204302d10ab2b9e4385da4d114a16e9a6c33ebcc698617dda773ed48d000d002646fc10343eb8fce37ad9e19f0820632b0785b2f8a3df606506f5\nShared Secret B: 34db9adb59468be8793b08b29a8d8c590c0dffad3eff5ee586721e40e071b031\nShared Secret A: 34db9adb59468be8793b08b29a8d8c590c0dffad3eff5ee586721e40e071b031\nPseudorandom shared Secret A: c6e984ddb139817c8495da08d570cfba06c37bc66c7dcdd2c5f8c81398c0a6ae\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_vectors768",
+      "exit_code": 0,
+      "output": "e2b073c08206ae2dd2748487fcfe5165c2999a71db90b044d3bbadde15bdfe9c9e9243d9df5a53095991df017435e59748bc364e7407b326cfdad87e6d07f098fbd280e626007a19c30679a30dcf14dfbd63413f1aee8bcbc95a1cffb3023447de7eb47d755bd8d443d727638fb75432600106f47088e8ad\nShared Secret B: 7d09a6909fa31666099d090e047b4b00917921a8b4217a6165252ff058d35186\nShared Secret A: 7d09a6909fa31666099d090e047b4b00917921a8b4217a6165252ff058d35186\nPseudorandom shared Secret A: c941574b1019d5f9c4848992f99a8a5f42cfaac1a64b3479b1d9394778351d87\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_vectors1024",
+      "exit_code": 0,
+      "output": "cfdeb886a1180c115c6fa2e036b93f0dad9f9aa156204553ee37bb2ad2b5721f851a02566f1b84c9273bbe276b808e64ce62204f12374d8196c16eada801bc1924864d71fb94dd1475e3e6464fa5f198532eaad7cc14f4342def3e75d10d8fc23bec250b0ee9d65f3099053df31cb4a15bd655a9056e0720\nShared Secret B: 251d74e3540599b61f5876cbe80b881c6e464a29351b85f48d79f0d41586a986\nShared Secret A: 251d74e3540599b61f5876cbe80b881c6e464a29351b85f48d79f0d41586a986\nPseudorandom shared Secret A: ce2883c517dcfa381d60fe6216b10732c6908c00336019ba4fc66d43aa453106\n",
+      "stderr": ""
+    }
+  ],
+  "hash": {
+    "date": "2026-11-03",
+    "precision": 32,
+    "framing": "CHF1",
+    "results": [
+      {
+        "hash_bits": 256,
+        "zero_append_cases": 64,
+        "zero_append_collisions": [],
+        "sentinel_append_cases": 8,
+        "sentinel_append_collisions": [],
+        "single_bit_cases": 3584,
+        "single_bit_collisions": [
+          {
+            "input_index": 0,
+            "byte": 4,
+            "bit": 0,
+            "original_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+            "changed_hex": "000102030505060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+            "digest": "7016d33457ed48752764561331415aed37d9ff93d8e0cdc8da4b76884413a7e2"
+          },
+          {
+            "input_index": 0,
+            "byte": 20,
+            "bit": 0,
+            "original_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+            "changed_hex": "000102030405060708090a0b0c0d0e0f101112131515161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+            "digest": "7016d33457ed48752764561331415aed37d9ff93d8e0cdc8da4b76884413a7e2"
+          },
+          {
+            "input_index": 0,
+            "byte": 40,
+            "bit": 0,
+            "original_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+            "changed_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262729292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+            "digest": "7016d33457ed48752764561331415aed37d9ff93d8e0cdc8da4b76884413a7e2"
+          },
+          {
+            "input_index": 0,
+            "byte": 60,
+            "bit": 0,
+            "original_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+            "changed_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3d3d3e3f",
+            "digest": "7016d33457ed48752764561331415aed37d9ff93d8e0cdc8da4b76884413a7e2"
+          },
+          {
+            "input_index": 1,
+            "byte": 24,
+            "bit": 0,
+            "original_hex": "66bbfb187bf44124fcf3cec6bc9345836d791b5ec482f9a2090018868ab5009e",
+            "changed_hex": "66bbfb187bf44124fcf3cec6bc9345836d791b5ec482f9a2080018868ab5009e",
+            "digest": "225f4d84ea97ec6e8c4bbfac70bc0ddaf5d83aee63e08536fd0e8eb221d6ee0c"
+          },
+          {
+            "input_index": 2,
+            "byte": 12,
+            "bit": 0,
+            "original_hex": "72fe32f25229c7353214d3cfb3640ab667e4c5595111084882bcfbfd0678e9e6",
+            "changed_hex": "72fe32f25229c7353214d3cfb2640ab667e4c5595111084882bcfbfd0678e9e6",
+            "digest": "0272189aff0c33a774f71ec252f00c6e42637414d17ccef3c490307ac311e955"
+          },
+          {
+            "input_index": 2,
+            "byte": 12,
+            "bit": 1,
+            "original_hex": "72fe32f25229c7353214d3cfb3640ab667e4c5595111084882bcfbfd0678e9e6",
+            "changed_hex": "72fe32f25229c7353214d3cfb1640ab667e4c5595111084882bcfbfd0678e9e6",
+            "digest": "0272189aff0c33a774f71ec252f00c6e42637414d17ccef3c490307ac311e955"
+          },
+          {
+            "input_index": 3,
+            "byte": 4,
+            "bit": 0,
+            "original_hex": "a25b1ae07b43fe36044d3dd011b3cecce882061483124ba33c8234e22cb2c05c",
+            "changed_hex": "a25b1ae07a43fe36044d3dd011b3cecce882061483124ba33c8234e22cb2c05c",
+            "digest": "11f6561820d62dcd4ae7098e3de9659a2206111972e9f2d1619e71915bf020d0"
+          },
+          {
+            "input_index": 5,
+            "byte": 44,
+            "bit": 0,
+            "original_hex": "56c8751c880f89d8266a16b509a951fe9fccb7455ba135c97ae9a874f6832ef92047bbe43aebeac711b0fb96e62cda9a87b453d617546e8df3ab30ba788cb1ee",
+            "changed_hex": "56c8751c880f89d8266a16b509a951fe9fccb7455ba135c97ae9a874f6832ef92047bbe43aebeac711b0fb96e72cda9a87b453d617546e8df3ab30ba788cb1ee",
+            "digest": "f983704b220bd545c7825117a39b2e28412d4a34e4b03262529996c05ed0b3a7"
+          },
+          {
+            "input_index": 7,
+            "byte": 0,
+            "bit": 0,
+            "original_hex": "11b8b7a927ac6b385e67a326a17990171961fcfc31f117ad0bbf31c0649059f243031e6a63c39bfc618a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "changed_hex": "10b8b7a927ac6b385e67a326a17990171961fcfc31f117ad0bbf31c0649059f243031e6a63c39bfc618a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "digest": "076bd02c86ea2c25370ef27a9f59b58b54c1e1beb1f0134a64dc7ef909a0e405"
+          },
+          {
+            "input_index": 7,
+            "byte": 0,
+            "bit": 1,
+            "original_hex": "11b8b7a927ac6b385e67a326a17990171961fcfc31f117ad0bbf31c0649059f243031e6a63c39bfc618a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "changed_hex": "13b8b7a927ac6b385e67a326a17990171961fcfc31f117ad0bbf31c0649059f243031e6a63c39bfc618a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "digest": "076bd02c86ea2c25370ef27a9f59b58b54c1e1beb1f0134a64dc7ef909a0e405"
+          },
+          {
+            "input_index": 7,
+            "byte": 12,
+            "bit": 0,
+            "original_hex": "11b8b7a927ac6b385e67a326a17990171961fcfc31f117ad0bbf31c0649059f243031e6a63c39bfc618a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "changed_hex": "11b8b7a927ac6b385e67a326a07990171961fcfc31f117ad0bbf31c0649059f243031e6a63c39bfc618a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "digest": "076bd02c86ea2c25370ef27a9f59b58b54c1e1beb1f0134a64dc7ef909a0e405"
+          },
+          {
+            "input_index": 7,
+            "byte": 24,
+            "bit": 0,
+            "original_hex": "11b8b7a927ac6b385e67a326a17990171961fcfc31f117ad0bbf31c0649059f243031e6a63c39bfc618a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "changed_hex": "11b8b7a927ac6b385e67a326a17990171961fcfc31f117ad0abf31c0649059f243031e6a63c39bfc618a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "digest": "076bd02c86ea2c25370ef27a9f59b58b54c1e1beb1f0134a64dc7ef909a0e405"
+          },
+          {
+            "input_index": 7,
+            "byte": 40,
+            "bit": 0,
+            "original_hex": "11b8b7a927ac6b385e67a326a17990171961fcfc31f117ad0bbf31c0649059f243031e6a63c39bfc618a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "changed_hex": "11b8b7a927ac6b385e67a326a17990171961fcfc31f117ad0bbf31c0649059f243031e6a63c39bfc608a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "digest": "076bd02c86ea2c25370ef27a9f59b58b54c1e1beb1f0134a64dc7ef909a0e405"
+          },
+          {
+            "input_index": 7,
+            "byte": 40,
+            "bit": 1,
+            "original_hex": "11b8b7a927ac6b385e67a326a17990171961fcfc31f117ad0bbf31c0649059f243031e6a63c39bfc618a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "changed_hex": "11b8b7a927ac6b385e67a326a17990171961fcfc31f117ad0bbf31c0649059f243031e6a63c39bfc638a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "digest": "076bd02c86ea2c25370ef27a9f59b58b54c1e1beb1f0134a64dc7ef909a0e405"
+          },
+          {
+            "input_index": 7,
+            "byte": 44,
+            "bit": 1,
+            "original_hex": "11b8b7a927ac6b385e67a326a17990171961fcfc31f117ad0bbf31c0649059f243031e6a63c39bfc618a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "changed_hex": "11b8b7a927ac6b385e67a326a17990171961fcfc31f117ad0bbf31c0649059f243031e6a63c39bfc618a7f06334d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "digest": "076bd02c86ea2c25370ef27a9f59b58b54c1e1beb1f0134a64dc7ef909a0e405"
+          },
+          {
+            "input_index": 8,
+            "byte": 28,
+            "bit": 0,
+            "original_hex": "61a19e7d4dd1671240ecaac9668ec92cc14a301ccdab8cc169bca9e192f08b78c81d0cc63c0c8cb84ae271042985f672ab4a257f98bd882d2d7dd8faf2d74724",
+            "changed_hex": "61a19e7d4dd1671240ecaac9668ec92cc14a301ccdab8cc169bca9e193f08b78c81d0cc63c0c8cb84ae271042985f672ab4a257f98bd882d2d7dd8faf2d74724",
+            "digest": "695dcf44a7cb233411e6c86d456803e10a9ee709cf593758dd0d6e6c6788bf19"
+          },
+          {
+            "input_index": 8,
+            "byte": 28,
+            "bit": 1,
+            "original_hex": "61a19e7d4dd1671240ecaac9668ec92cc14a301ccdab8cc169bca9e192f08b78c81d0cc63c0c8cb84ae271042985f672ab4a257f98bd882d2d7dd8faf2d74724",
+            "changed_hex": "61a19e7d4dd1671240ecaac9668ec92cc14a301ccdab8cc169bca9e190f08b78c81d0cc63c0c8cb84ae271042985f672ab4a257f98bd882d2d7dd8faf2d74724",
+            "digest": "695dcf44a7cb233411e6c86d456803e10a9ee709cf593758dd0d6e6c6788bf19"
+          },
+          {
+            "input_index": 8,
+            "byte": 52,
+            "bit": 0,
+            "original_hex": "61a19e7d4dd1671240ecaac9668ec92cc14a301ccdab8cc169bca9e192f08b78c81d0cc63c0c8cb84ae271042985f672ab4a257f98bd882d2d7dd8faf2d74724",
+            "changed_hex": "61a19e7d4dd1671240ecaac9668ec92cc14a301ccdab8cc169bca9e192f08b78c81d0cc63c0c8cb84ae271042985f672ab4a257f99bd882d2d7dd8faf2d74724",
+            "digest": "695dcf44a7cb233411e6c86d456803e10a9ee709cf593758dd0d6e6c6788bf19"
+          },
+          {
+            "input_index": 8,
+            "byte": 52,
+            "bit": 1,
+            "original_hex": "61a19e7d4dd1671240ecaac9668ec92cc14a301ccdab8cc169bca9e192f08b78c81d0cc63c0c8cb84ae271042985f672ab4a257f98bd882d2d7dd8faf2d74724",
+            "changed_hex": "61a19e7d4dd1671240ecaac9668ec92cc14a301ccdab8cc169bca9e192f08b78c81d0cc63c0c8cb84ae271042985f672ab4a257f9abd882d2d7dd8faf2d74724",
+            "digest": "695dcf44a7cb233411e6c86d456803e10a9ee709cf593758dd0d6e6c6788bf19"
+          },
+          {
+            "input_index": 8,
+            "byte": 60,
+            "bit": 0,
+            "original_hex": "61a19e7d4dd1671240ecaac9668ec92cc14a301ccdab8cc169bca9e192f08b78c81d0cc63c0c8cb84ae271042985f672ab4a257f98bd882d2d7dd8faf2d74724",
+            "changed_hex": "61a19e7d4dd1671240ecaac9668ec92cc14a301ccdab8cc169bca9e192f08b78c81d0cc63c0c8cb84ae271042985f672ab4a257f98bd882d2d7dd8faf3d74724",
+            "digest": "695dcf44a7cb233411e6c86d456803e10a9ee709cf593758dd0d6e6c6788bf19"
+          }
+        ],
+        "mean_changed_bits": 127.33816964285714,
+        "mean_changed_fraction": 0.4974147251674107,
+        "examples": [
+          {
+            "original_hex": "41",
+            "changed_hex": "4100",
+            "same": false,
+            "digest": "349889fbc02a4df0a9bb285a8389f061376de3d33b184aa28524c54485a6f5ef"
+          },
+          {
+            "original_hex": "41424344",
+            "changed_hex": "4142434401",
+            "same": false,
+            "digest": "f7b352d340a1b5071ea92eede2f8d1b1a21f63b35dc321e8cbcfa5e17aeb38cf"
+          },
+          {
+            "original_hex": "6162636465",
+            "changed_hex": "616263646500",
+            "same": false,
+            "digest": "89e64a01abce2d89f3f63380382313c99f0db85e70f434f9aa5a0a266be4ca32"
+          }
+        ]
+      },
+      {
+        "hash_bits": 512,
+        "zero_append_cases": 64,
+        "zero_append_collisions": [],
+        "sentinel_append_cases": 8,
+        "sentinel_append_collisions": [],
+        "single_bit_cases": 3584,
+        "single_bit_collisions": [
+          {
+            "input_index": 0,
+            "byte": 24,
+            "bit": 0,
+            "original_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+            "changed_hex": "000102030405060708090a0b0c0d0e0f101112131415161719191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+            "digest": "03cbe104d323e00a8d7e313b9c0671744d60929ae8f52cbbf35e11b8220b83bac0891793713a470416200fc767992cd1ae02a029c947ca1077b8df5a2d0dfcfb"
+          },
+          {
+            "input_index": 0,
+            "byte": 28,
+            "bit": 0,
+            "original_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+            "changed_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1d1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+            "digest": "03cbe104d323e00a8d7e313b9c0671744d60929ae8f52cbbf35e11b8220b83bac0891793713a470416200fc767992cd1ae02a029c947ca1077b8df5a2d0dfcfb"
+          },
+          {
+            "input_index": 0,
+            "byte": 40,
+            "bit": 0,
+            "original_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+            "changed_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262729292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+            "digest": "03cbe104d323e00a8d7e313b9c0671744d60929ae8f52cbbf35e11b8220b83bac0891793713a470416200fc767992cd1ae02a029c947ca1077b8df5a2d0dfcfb"
+          },
+          {
+            "input_index": 0,
+            "byte": 60,
+            "bit": 0,
+            "original_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+            "changed_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3d3d3e3f",
+            "digest": "03cbe104d323e00a8d7e313b9c0671744d60929ae8f52cbbf35e11b8220b83bac0891793713a470416200fc767992cd1ae02a029c947ca1077b8df5a2d0dfcfb"
+          },
+          {
+            "input_index": 1,
+            "byte": 0,
+            "bit": 0,
+            "original_hex": "66bbfb187bf44124fcf3cec6bc9345836d791b5ec482f9a2090018868ab5009e",
+            "changed_hex": "67bbfb187bf44124fcf3cec6bc9345836d791b5ec482f9a2090018868ab5009e",
+            "digest": "448033d95f5df3fa242f4d43289b689d5bf64baa99066ada30c0070bea7d27d3da1a6dc9c26c954d18cbb068ab47b820512921cf28fb3c22bdba4b5704ea1b35"
+          },
+          {
+            "input_index": 3,
+            "byte": 20,
+            "bit": 0,
+            "original_hex": "a25b1ae07b43fe36044d3dd011b3cecce882061483124ba33c8234e22cb2c05c",
+            "changed_hex": "a25b1ae07b43fe36044d3dd011b3cecce882061482124ba33c8234e22cb2c05c",
+            "digest": "0d4ffcd5bbbb538f8deecb306d9f0d93e91d02556ec3d475b08f31fa407ab201ae03a044bb2adb172ceafff626d3b113c65923331da37f3e3c00b14d295acd8d"
+          },
+          {
+            "input_index": 5,
+            "byte": 0,
+            "bit": 0,
+            "original_hex": "56c8751c880f89d8266a16b509a951fe9fccb7455ba135c97ae9a874f6832ef92047bbe43aebeac711b0fb96e62cda9a87b453d617546e8df3ab30ba788cb1ee",
+            "changed_hex": "57c8751c880f89d8266a16b509a951fe9fccb7455ba135c97ae9a874f6832ef92047bbe43aebeac711b0fb96e62cda9a87b453d617546e8df3ab30ba788cb1ee",
+            "digest": "4cb4900ffaad2fc2e6194a97ba04c2ca6066f0ebf8142895c913e18b6f119f5f050592420c4278deabb3fcbd1ef90a426ff911c4910ab22cfb32f810a1bbb506"
+          },
+          {
+            "input_index": 5,
+            "byte": 0,
+            "bit": 1,
+            "original_hex": "56c8751c880f89d8266a16b509a951fe9fccb7455ba135c97ae9a874f6832ef92047bbe43aebeac711b0fb96e62cda9a87b453d617546e8df3ab30ba788cb1ee",
+            "changed_hex": "54c8751c880f89d8266a16b509a951fe9fccb7455ba135c97ae9a874f6832ef92047bbe43aebeac711b0fb96e62cda9a87b453d617546e8df3ab30ba788cb1ee",
+            "digest": "4cb4900ffaad2fc2e6194a97ba04c2ca6066f0ebf8142895c913e18b6f119f5f050592420c4278deabb3fcbd1ef90a426ff911c4910ab22cfb32f810a1bbb506"
+          },
+          {
+            "input_index": 5,
+            "byte": 4,
+            "bit": 0,
+            "original_hex": "56c8751c880f89d8266a16b509a951fe9fccb7455ba135c97ae9a874f6832ef92047bbe43aebeac711b0fb96e62cda9a87b453d617546e8df3ab30ba788cb1ee",
+            "changed_hex": "56c8751c890f89d8266a16b509a951fe9fccb7455ba135c97ae9a874f6832ef92047bbe43aebeac711b0fb96e62cda9a87b453d617546e8df3ab30ba788cb1ee",
+            "digest": "4cb4900ffaad2fc2e6194a97ba04c2ca6066f0ebf8142895c913e18b6f119f5f050592420c4278deabb3fcbd1ef90a426ff911c4910ab22cfb32f810a1bbb506"
+          },
+          {
+            "input_index": 6,
+            "byte": 44,
+            "bit": 0,
+            "original_hex": "a9b028890277102e88c75b290940493d9a67850bf0a1b6355473fbbc0e5545e4bc56232b80ddbcaac830fa9c72b89b50cbda8792ef75d5624fb0827a5aeb4c31",
+            "changed_hex": "a9b028890277102e88c75b290940493d9a67850bf0a1b6355473fbbc0e5545e4bc56232b80ddbcaac830fa9c73b89b50cbda8792ef75d5624fb0827a5aeb4c31",
+            "digest": "e53e2704de521a60ffb2bc70443a271043c4f84cfd1ba0df3fc607dfbd4bb093d4947cf6c3b66614eb0f3bb2f9c8393c790c1d1b3b03db74d28095b2daa80c41"
+          },
+          {
+            "input_index": 6,
+            "byte": 48,
+            "bit": 0,
+            "original_hex": "a9b028890277102e88c75b290940493d9a67850bf0a1b6355473fbbc0e5545e4bc56232b80ddbcaac830fa9c72b89b50cbda8792ef75d5624fb0827a5aeb4c31",
+            "changed_hex": "a9b028890277102e88c75b290940493d9a67850bf0a1b6355473fbbc0e5545e4bc56232b80ddbcaac830fa9c72b89b50cada8792ef75d5624fb0827a5aeb4c31",
+            "digest": "e53e2704de521a60ffb2bc70443a271043c4f84cfd1ba0df3fc607dfbd4bb093d4947cf6c3b66614eb0f3bb2f9c8393c790c1d1b3b03db74d28095b2daa80c41"
+          },
+          {
+            "input_index": 7,
+            "byte": 20,
+            "bit": 0,
+            "original_hex": "11b8b7a927ac6b385e67a326a17990171961fcfc31f117ad0bbf31c0649059f243031e6a63c39bfc618a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "changed_hex": "11b8b7a927ac6b385e67a326a17990171961fcfc30f117ad0bbf31c0649059f243031e6a63c39bfc618a7f06314d7b87d87c7005fd90a93a70e248a8f17e083b",
+            "digest": "c0566d253394a61a0d01d58c8c7958d5ecaaff0ccae222ba3ba3b5e94d1382dc2e5af1966829afb34fc0976a1fa6a3d1872d7312777459728c7df555eec4fe47"
+          },
+          {
+            "input_index": 8,
+            "byte": 12,
+            "bit": 0,
+            "original_hex": "61a19e7d4dd1671240ecaac9668ec92cc14a301ccdab8cc169bca9e192f08b78c81d0cc63c0c8cb84ae271042985f672ab4a257f98bd882d2d7dd8faf2d74724",
+            "changed_hex": "61a19e7d4dd1671240ecaac9678ec92cc14a301ccdab8cc169bca9e192f08b78c81d0cc63c0c8cb84ae271042985f672ab4a257f98bd882d2d7dd8faf2d74724",
+            "digest": "440150a8d5eb75b8ae95bf4cb5b364b67c7895926ce4a70efe463858735137a02b6d96830ddcff28c5bbe75eb72ef61d89d9b8ef6cfbcae0bab1680770165c0d"
+          }
+        ],
+        "mean_changed_bits": 255.20647321428572,
+        "mean_changed_fraction": 0.4984501429966518,
+        "examples": [
+          {
+            "original_hex": "41",
+            "changed_hex": "4100",
+            "same": false,
+            "digest": "c4b3843baf1b885153bd54d5b07ae8479e9ef365a692ed8bbcb728ea1c4afc3b4b7b03859116e50728acd3fd29f504a9ed03a87ac37e61ff260978cce12d768d"
+          },
+          {
+            "original_hex": "41424344",
+            "changed_hex": "4142434401",
+            "same": false,
+            "digest": "1fedcd7aac14142a244ead9b808e361ae21d6836c2494d12852164a1c88515abde1a9f5f44701f8535c942816ce109f3c837a5805ce184102b5947828ea16ec3"
+          },
+          {
+            "original_hex": "6162636465",
+            "changed_hex": "616263646500",
+            "same": false,
+            "digest": "52a09f71b611562e4814ce6d0a5f1322909eaaf70229356c34956377013899f91bdea1bb4b012b1757a0e0940d6d3a269d03a0c4fe52f3324fbe25db49da28d1"
+          }
+        ]
+      }
+    ],
+    "library_sha256": "70b10ade2ecbf9baf8cb3ba1be20db1d3ad4ba9d44f26a78a8be1a0811766f72"
+  },
+  "sampling": [
+    {
+      "variant": 512,
+      "precision": 32,
+      "sessions": 50000,
+      "seed": "audit-20261103-v1-512",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 8,
+        "bit_nonreject": 7,
+        "byte_same": 2,
+        "byte_nonreject": 1,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "bit_same": [
+          8.107813281404951e-05,
+          0.0003157205578832246
+        ],
+        "bit_nonreject": [
+          6.781887437968768e-05,
+          0.00028898288924855225
+        ],
+        "byte_same": [
+          1.0969511301390302e-05,
+          0.0001458476169816786
+        ],
+        "byte_nonreject": [
+          3.530499822832098e-06,
+          0.00011328970139120264
+        ],
+        "twobit_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "twobit_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "random_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "random_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 41737,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 8263,
+          "nonreject": 7
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 3648,
+          "kind": "bit",
+          "edits": [
+            [
+              656,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 7576,
+          "kind": "bit",
+          "edits": [
+            [
+              720,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 12871,
+          "kind": "byte",
+          "edits": [
+            [
+              720,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 16733,
+          "kind": "bit",
+          "edits": [
+            [
+              704,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 17335,
+          "kind": "bit",
+          "edits": [
+            [
+              656,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 23916,
+          "kind": "bit",
+          "edits": [
+            [
+              656,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 44464,
+          "kind": "bit",
+          "edits": [
+            [
+              704,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 45278,
+          "kind": "bit",
+          "edits": [
+            [
+              689,
+              8
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "fd927c33201d518f4e515d038846ff2046b08f26533f9526eddb086859eef71f"
+    },
+    {
+      "variant": 768,
+      "precision": 32,
+      "sessions": 50000,
+      "seed": "audit-20261103-v1-768",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 10,
+        "bit_nonreject": 9,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "bit_same": [
+          0.00010864321606212209,
+          0.00036814932877322047
+        ],
+        "bit_nonreject": [
+          9.470426823108522e-05,
+          0.00034209134953522313
+        ],
+        "byte_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "byte_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "twobit_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "twobit_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "random_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "random_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 44180,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 5820,
+          "nonreject": 9
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 3708,
+          "kind": "bit",
+          "edits": [
+            [
+              1072,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 8392,
+          "kind": "bit",
+          "edits": [
+            [
+              1008,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 19463,
+          "kind": "bit",
+          "edits": [
+            [
+              976,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 21434,
+          "kind": "bit",
+          "edits": [
+            [
+              992,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 29402,
+          "kind": "bit",
+          "edits": [
+            [
+              1072,
+              128
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 35773,
+          "kind": "bit",
+          "edits": [
+            [
+              992,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 36023,
+          "kind": "bit",
+          "edits": [
+            [
+              1008,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 41594,
+          "kind": "bit",
+          "edits": [
+            [
+              1072,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 42606,
+          "kind": "bit",
+          "edits": [
+            [
+              1040,
+              8
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "70b10ade2ecbf9baf8cb3ba1be20db1d3ad4ba9d44f26a78a8be1a0811766f72"
+    },
+    {
+      "variant": 1024,
+      "precision": 32,
+      "sessions": 50000,
+      "seed": "audit-20261103-v1-1024",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 6,
+        "bit_nonreject": 5,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "bit_same": [
+          5.4998199932506644e-05,
+          0.00026180663662669906
+        ],
+        "bit_nonreject": [
+          4.2714755136032695e-05,
+          0.0002340931543541388
+        ],
+        "byte_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "byte_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "twobit_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "twobit_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "random_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "random_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 44834,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 5166,
+          "nonreject": 5
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 7926,
+          "kind": "bit",
+          "edits": [
+            [
+              1468,
+              16
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 29328,
+          "kind": "bit",
+          "edits": [
+            [
+              1508,
+              16
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 39189,
+          "kind": "bit",
+          "edits": [
+            [
+              1448,
+              16
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 49502,
+          "kind": "bit",
+          "edits": [
+            [
+              1408,
+              16
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 49535,
+          "kind": "bit",
+          "edits": [
+            [
+              1428,
+              16
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "e324aef0da047412ff15aa85044152606898f74351dc0e735bba3303bb20990b"
+    }
+  ],
+  "protocol": [
+    {
+      "variant": "Kyber512",
+      "checks": {
+        "fresh_encryption_packet_uniqueness": {
+          "cases": 256,
+          "failures": 0
+        },
+        "fresh_encryption_roundtrip": {
+          "cases": 256,
+          "failures": 0
+        },
+        "reject_appended_bytes": {
+          "cases": 128,
+          "failures": 0
+        },
+        "reject_every_truncation": {
+          "cases": 864,
+          "failures": 0
+        },
+        "reject_legacy_frame_version": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_one_bit_hash": {
+          "cases": 256,
+          "failures": 0
+        },
+        "reject_one_bit_header": {
+          "cases": 40,
+          "failures": 0
+        },
+        "reject_one_bit_kem": {
+          "cases": 6144,
+          "failures": 0
+        },
+        "reject_one_bit_nonce": {
+          "cases": 96,
+          "failures": 0
+        },
+        "reject_one_bit_payload": {
+          "cases": 248,
+          "failures": 0
+        },
+        "reject_one_bit_tag": {
+          "cases": 128,
+          "failures": 0
+        },
+        "reject_oversize_frame": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_oversize_plaintext": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_private_key_size": {
+          "cases": 3,
+          "failures": 0
+        },
+        "reject_public_key_size": {
+          "cases": 3,
+          "failures": 0
+        },
+        "reject_random_frames": {
+          "cases": 1000,
+          "failures": 0
+        },
+        "reject_unrelated_private_key": {
+          "cases": 64,
+          "failures": 0
+        },
+        "roundtrip_binary_and_boundaries": {
+          "cases": 110,
+          "failures": 0
+        }
+      },
+      "protocol_observations": {
+        "public_key_only_sender_accepted": 10,
+        "replay_accepted_by_open": 10
+      }
+    },
+    {
+      "variant": "Kyber768",
+      "checks": {
+        "fresh_encryption_packet_uniqueness": {
+          "cases": 256,
+          "failures": 0
+        },
+        "fresh_encryption_roundtrip": {
+          "cases": 256,
+          "failures": 0
+        },
+        "reject_appended_bytes": {
+          "cases": 128,
+          "failures": 0
+        },
+        "reject_every_truncation": {
+          "cases": 1184,
+          "failures": 0
+        },
+        "reject_legacy_frame_version": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_one_bit_hash": {
+          "cases": 256,
+          "failures": 0
+        },
+        "reject_one_bit_header": {
+          "cases": 40,
+          "failures": 0
+        },
+        "reject_one_bit_kem": {
+          "cases": 8704,
+          "failures": 0
+        },
+        "reject_one_bit_nonce": {
+          "cases": 96,
+          "failures": 0
+        },
+        "reject_one_bit_payload": {
+          "cases": 248,
+          "failures": 0
+        },
+        "reject_one_bit_tag": {
+          "cases": 128,
+          "failures": 0
+        },
+        "reject_oversize_frame": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_oversize_plaintext": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_private_key_size": {
+          "cases": 3,
+          "failures": 0
+        },
+        "reject_public_key_size": {
+          "cases": 3,
+          "failures": 0
+        },
+        "reject_random_frames": {
+          "cases": 1000,
+          "failures": 0
+        },
+        "reject_unrelated_private_key": {
+          "cases": 64,
+          "failures": 0
+        },
+        "roundtrip_binary_and_boundaries": {
+          "cases": 110,
+          "failures": 0
+        }
+      },
+      "protocol_observations": {
+        "public_key_only_sender_accepted": 10,
+        "replay_accepted_by_open": 10
+      }
+    },
+    {
+      "variant": "Kyber1024",
+      "checks": {
+        "fresh_encryption_packet_uniqueness": {
+          "cases": 256,
+          "failures": 0
+        },
+        "fresh_encryption_roundtrip": {
+          "cases": 256,
+          "failures": 0
+        },
+        "reject_appended_bytes": {
+          "cases": 128,
+          "failures": 0
+        },
+        "reject_every_truncation": {
+          "cases": 1664,
+          "failures": 0
+        },
+        "reject_legacy_frame_version": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_one_bit_hash": {
+          "cases": 256,
+          "failures": 0
+        },
+        "reject_one_bit_header": {
+          "cases": 40,
+          "failures": 0
+        },
+        "reject_one_bit_kem": {
+          "cases": 12544,
+          "failures": 0
+        },
+        "reject_one_bit_nonce": {
+          "cases": 96,
+          "failures": 0
+        },
+        "reject_one_bit_payload": {
+          "cases": 248,
+          "failures": 0
+        },
+        "reject_one_bit_tag": {
+          "cases": 128,
+          "failures": 0
+        },
+        "reject_oversize_frame": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_oversize_plaintext": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_private_key_size": {
+          "cases": 3,
+          "failures": 0
+        },
+        "reject_public_key_size": {
+          "cases": 3,
+          "failures": 0
+        },
+        "reject_random_frames": {
+          "cases": 1000,
+          "failures": 0
+        },
+        "reject_unrelated_private_key": {
+          "cases": 64,
+          "failures": 0
+        },
+        "roundtrip_binary_and_boundaries": {
+          "cases": 110,
+          "failures": 0
+        }
+      },
+      "protocol_observations": {
+        "public_key_only_sender_accepted": 10,
+        "replay_accepted_by_open": 10
+      }
+    }
+  ],
+  "interoperability": [
+    {
+      "fixtures": 6,
+      "checks": 24,
+      "failures": 0,
+      "message_lengths": [
+        0,
+        1,
+        15,
+        16,
+        17,
+        65536
+      ],
+      "implementation": "Python cryptography AESGCM API vs C++ OpenSSL EVP demo frame"
+    },
+    {
+      "fixtures": 6,
+      "checks": 24,
+      "failures": 0,
+      "message_lengths": [
+        0,
+        1,
+        15,
+        16,
+        17,
+        65536
+      ],
+      "implementation": "Python cryptography AESGCM API vs C++ OpenSSL EVP demo frame"
+    },
+    {
+      "fixtures": 6,
+      "checks": 24,
+      "failures": 0,
+      "message_lengths": [
+        0,
+        1,
+        15,
+        16,
+        17,
+        65536
+      ],
+      "implementation": "Python cryptography AESGCM API vs C++ OpenSSL EVP demo frame"
+    }
+  ],
+  "sanitizers": {
+    "instruments": [
+      "address",
+      "undefined",
+      "float-cast-overflow"
+    ],
+    "leak_detection": false,
+    "variants": {
+      "512": {
+        "results": {
+          "variant": "Kyber512",
+          "checks": {
+            "fresh_encryption_packet_uniqueness": {
+              "cases": 256,
+              "failures": 0
+            },
+            "fresh_encryption_roundtrip": {
+              "cases": 256,
+              "failures": 0
+            },
+            "reject_appended_bytes": {
+              "cases": 128,
+              "failures": 0
+            },
+            "reject_every_truncation": {
+              "cases": 864,
+              "failures": 0
+            },
+            "reject_legacy_frame_version": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_one_bit_hash": {
+              "cases": 256,
+              "failures": 0
+            },
+            "reject_one_bit_header": {
+              "cases": 40,
+              "failures": 0
+            },
+            "reject_one_bit_kem": {
+              "cases": 6144,
+              "failures": 0
+            },
+            "reject_one_bit_nonce": {
+              "cases": 96,
+              "failures": 0
+            },
+            "reject_one_bit_payload": {
+              "cases": 248,
+              "failures": 0
+            },
+            "reject_one_bit_tag": {
+              "cases": 128,
+              "failures": 0
+            },
+            "reject_oversize_frame": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_oversize_plaintext": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_private_key_size": {
+              "cases": 3,
+              "failures": 0
+            },
+            "reject_public_key_size": {
+              "cases": 3,
+              "failures": 0
+            },
+            "reject_random_frames": {
+              "cases": 1000,
+              "failures": 0
+            },
+            "reject_unrelated_private_key": {
+              "cases": 64,
+              "failures": 0
+            },
+            "roundtrip_binary_and_boundaries": {
+              "cases": 110,
+              "failures": 0
+            }
+          },
+          "protocol_observations": {
+            "public_key_only_sender_accepted": 10,
+            "replay_accepted_by_open": 10
+          }
+        },
+        "stderr": ""
+      },
+      "768": {
+        "results": {
+          "variant": "Kyber768",
+          "checks": {
+            "fresh_encryption_packet_uniqueness": {
+              "cases": 256,
+              "failures": 0
+            },
+            "fresh_encryption_roundtrip": {
+              "cases": 256,
+              "failures": 0
+            },
+            "reject_appended_bytes": {
+              "cases": 128,
+              "failures": 0
+            },
+            "reject_every_truncation": {
+              "cases": 1184,
+              "failures": 0
+            },
+            "reject_legacy_frame_version": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_one_bit_hash": {
+              "cases": 256,
+              "failures": 0
+            },
+            "reject_one_bit_header": {
+              "cases": 40,
+              "failures": 0
+            },
+            "reject_one_bit_kem": {
+              "cases": 8704,
+              "failures": 0
+            },
+            "reject_one_bit_nonce": {
+              "cases": 96,
+              "failures": 0
+            },
+            "reject_one_bit_payload": {
+              "cases": 248,
+              "failures": 0
+            },
+            "reject_one_bit_tag": {
+              "cases": 128,
+              "failures": 0
+            },
+            "reject_oversize_frame": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_oversize_plaintext": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_private_key_size": {
+              "cases": 3,
+              "failures": 0
+            },
+            "reject_public_key_size": {
+              "cases": 3,
+              "failures": 0
+            },
+            "reject_random_frames": {
+              "cases": 1000,
+              "failures": 0
+            },
+            "reject_unrelated_private_key": {
+              "cases": 64,
+              "failures": 0
+            },
+            "roundtrip_binary_and_boundaries": {
+              "cases": 110,
+              "failures": 0
+            }
+          },
+          "protocol_observations": {
+            "public_key_only_sender_accepted": 10,
+            "replay_accepted_by_open": 10
+          }
+        },
+        "stderr": ""
+      },
+      "1024": {
+        "results": {
+          "variant": "Kyber1024",
+          "checks": {
+            "fresh_encryption_packet_uniqueness": {
+              "cases": 256,
+              "failures": 0
+            },
+            "fresh_encryption_roundtrip": {
+              "cases": 256,
+              "failures": 0
+            },
+            "reject_appended_bytes": {
+              "cases": 128,
+              "failures": 0
+            },
+            "reject_every_truncation": {
+              "cases": 1664,
+              "failures": 0
+            },
+            "reject_legacy_frame_version": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_one_bit_hash": {
+              "cases": 256,
+              "failures": 0
+            },
+            "reject_one_bit_header": {
+              "cases": 40,
+              "failures": 0
+            },
+            "reject_one_bit_kem": {
+              "cases": 12544,
+              "failures": 0
+            },
+            "reject_one_bit_nonce": {
+              "cases": 96,
+              "failures": 0
+            },
+            "reject_one_bit_payload": {
+              "cases": 248,
+              "failures": 0
+            },
+            "reject_one_bit_tag": {
+              "cases": 128,
+              "failures": 0
+            },
+            "reject_oversize_frame": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_oversize_plaintext": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_private_key_size": {
+              "cases": 3,
+              "failures": 0
+            },
+            "reject_public_key_size": {
+              "cases": 3,
+              "failures": 0
+            },
+            "reject_random_frames": {
+              "cases": 1000,
+              "failures": 0
+            },
+            "reject_unrelated_private_key": {
+              "cases": 64,
+              "failures": 0
+            },
+            "roundtrip_binary_and_boundaries": {
+              "cases": 110,
+              "failures": 0
+            }
+          },
+          "protocol_observations": {
+            "public_key_only_sender_accepted": 10,
+            "replay_accepted_by_open": 10
+          }
+        },
+        "stderr": ""
+      }
+    }
+  },
+  "reference_comparisons": {
+    "Q24": 136,
+    "Q32": 136
+  },
+  "cpp_header_checks": {
+    "headers": 16,
+    "variants": [
+      2,
+      3,
+      4
+    ],
+    "fractional_bits": [
+      24,
+      32
+    ]
+  },
+  "nistkat": [
+    {
+      "variant": 512,
+      "exit_code": 0,
+      "response_records": 100
+    },
+    {
+      "variant": 768,
+      "exit_code": 0,
+      "response_records": 100
+    },
+    {
+      "variant": 1024,
+      "exit_code": 0,
+      "response_records": 100
+    }
+  ],
+  "ctest_log": "Internal ctest changing into directory: /tmp/kyber-framing-20261103/ros-build\nTest project /tmp/kyber-framing-20261103/ros-build\n    Start 1: demo_encryption_authentication\n1/5 Test #1: demo_encryption_authentication ....   Passed    0.02 sec\n    Start 2: demo_protocol_extended\n2/5 Test #2: demo_protocol_extended ............   Passed    3.72 sec\n    Start 3: cpp_kem_chaotic_check\n3/5 Test #3: cpp_kem_chaotic_check .............   Passed    0.00 sec\n    Start 4: chaotic_hash_regression\n4/5 Test #4: chaotic_hash_regression ...........***Failed    0.00 sec\nCHF1 lengths, trailing bytes, empty input and domains: OK\nERROR Q32 low input bit produced an unchanged hash: byte 24 bit 0\n\n    Start 5: ciphertext_rejection_regression\n5/5 Test #5: ciphertext_rejection_regression ...   Passed    2.93 sec\n\n80% tests passed, 1 tests failed out of 5\n\nTotal Test time (real) =   6.68 sec\n\nThe following tests FAILED:\n\t  4 - chaotic_hash_regression (Failed)\nErrors while running CTest\n",
+  "changes_exclude": [
+    "xorshift",
+    "map equations",
+    "intermediate product rounding",
+    "identity authentication",
+    "anti-replay"
+  ],
+  "ros_demo": {
+    "normal_deliveries": 2,
+    "tampered_tag_rejections": 1,
+    "log": "\n=== Computador A: envio normal ===\n[INFO] [1793729270.812637453] [pqc_demo_9bea5cfc349b.computador_a]: Computador A: aguardando chave publica do computador B...\n[INFO] [1793729271.014559494] [pqc_demo_9bea5cfc349b.computador_a]: Mensagem enviada: Ola, computador B!\n[INFO] [1793729271.014624594] [pqc_demo_9bea5cfc349b.computador_a]: Hash caotico da mensagem: f8d937ee74a49c67d20218ded09b7d738432a498e633de6de3cc79fcf9ab102b\n[INFO] [1793729271.014633094] [pqc_demo_9bea5cfc349b.computador_a]: Mensagem cifrada (AES-256-GCM, hex): cf6acdb81fc74f86a81654335dbca5a57f57\n[INFO] [1793729271.014724094] [pqc_demo_9bea5cfc349b.computador_a]: Pacote publicado: 1171 bytes (KEM, nonce, hash, mensagem cifrada e tag).\n[INFO] [1793729271.016602494] [pqc_demo_9bea5cfc349b.computador_a]: Resposta do computador B: OK: mensagem recuperada; AES-GCM autenticado; hashes iguais\n\n=== Computador A: envio normal ===\n[INFO] [1793729271.373193555] [pqc_demo_9bea5cfc349b.computador_a]: Computador A: aguardando chave publica do computador B...\n[INFO] [1793729274.375053774] [pqc_demo_9bea5cfc349b.computador_a]: Mensagem enviada: Comunica\u00e7\u00e3o ROS2 com acentos\n[INFO] [1793729274.375129274] [pqc_demo_9bea5cfc349b.computador_a]: Hash caotico da mensagem: 9da05bee741987a9c0bfbee530aa39337c9d5291961a7560a87600b185026436\n[INFO] [1793729274.375138175] [pqc_demo_9bea5cfc349b.computador_a]: Mensagem cifrada (AES-256-GCM, hex): c138e5884fb1b8a6442392c074956dc99c2e7b892f23b7703e9b3696ac80\n[INFO] [1793729274.375235275] [pqc_demo_9bea5cfc349b.computador_a]: Pacote publicado: 1183 bytes (KEM, nonce, hash, mensagem cifrada e tag).\n[INFO] [1793729274.375909676] [pqc_demo_9bea5cfc349b.computador_a]: Resposta do computador B: OK: mensagem recuperada; AES-GCM autenticado; hashes iguais\n\n=== Computador A: envio adulterado ===\n[INFO] [1793729274.769107993] [pqc_demo_9bea5cfc349b.computador_a]: Computador A: aguardando chave publica do computador B...\n[INFO] [1793729277.370858336] [pqc_demo_9bea5cfc349b.computador_a]: Mensagem enviada: Pacote adulterado\n[INFO] [1793729277.370923336] [pqc_demo_9bea5cfc349b.computador_a]: Hash caotico da mensagem: 763d9ebf3665dc59a70c245783ba547b1b0544ed44693ce1a16af2a8078f2cae\n[INFO] [1793729277.370932236] [pqc_demo_9bea5cfc349b.computador_a]: Mensagem cifrada (AES-256-GCM, hex): f803886464a7ba5b066d538d0c9352a4c7\n[WARN] [1793729277.370937036] [pqc_demo_9bea5cfc349b.computador_a]: Simulacao: tag de autenticacao adulterada.\n[INFO] [1793729277.371025636] [pqc_demo_9bea5cfc349b.computador_a]: Pacote publicado: 1170 bytes (KEM, nonce, hash, mensagem cifrada e tag).\n[INFO] [1793729277.371677136] [pqc_demo_9bea5cfc349b.computador_a]: Resposta do computador B: ERRO: Autenticacao AES-GCM falhou: pacote rejeitado\n[ros2run]: Process exited with failure 1\nResultado esperado: adulteracao rejeitada.\n\n=== Computador B: recebimento ===\n[INFO] [1793729270.588083008] [pqc_demo_9bea5cfc349b.computador_b]: Computador B pronto (Kyber768): chave publica publicada; chave privada local.\n[INFO] [1793729271.014857594] [pqc_demo_9bea5cfc349b.computador_b]: Pacote recebido: 1171 bytes. Desencapsulando segredo Kyber...\n[INFO] [1793729271.016410194] [pqc_demo_9bea5cfc349b.computador_b]: Mensagem descriptografada: Ola, computador B!\n[INFO] [1793729271.016435394] [pqc_demo_9bea5cfc349b.computador_b]: Hash caotico recebido: f8d937ee74a49c67d20218ded09b7d738432a498e633de6de3cc79fcf9ab102b\n[INFO] [1793729271.016443094] [pqc_demo_9bea5cfc349b.computador_b]: Hash caotico recalculado: f8d937ee74a49c67d20218ded09b7d738432a498e633de6de3cc79fcf9ab102b\n[INFO] [1793729271.016447094] [pqc_demo_9bea5cfc349b.computador_b]: AES-GCM autenticado; hashes iguais. Entrega concluida.\n[INFO] [1793729274.375358475] [pqc_demo_9bea5cfc349b.computador_b]: Pacote recebido: 1183 bytes. Desencapsulando segredo Kyber...\n[INFO] [1793729274.375726976] [pqc_demo_9bea5cfc349b.computador_b]: Mensagem descriptografada: Comunica\u00e7\u00e3o ROS2 com acentos\n[INFO] [1793729274.375740276] [pqc_demo_9bea5cfc349b.computador_b]: Hash caotico recebido: 9da05bee741987a9c0bfbee530aa39337c9d5291961a7560a87600b185026436\n[INFO] [1793729274.375747176] [pqc_demo_9bea5cfc349b.computador_b]: Hash caotico recalculado: 9da05bee741987a9c0bfbee530aa39337c9d5291961a7560a87600b185026436\n[INFO] [1793729274.375751276] [pqc_demo_9bea5cfc349b.computador_b]: AES-GCM autenticado; hashes iguais. Entrega concluida.\n[INFO] [1793729277.371137336] [pqc_demo_9bea5cfc349b.computador_b]: Pacote recebido: 1170 bytes. Desencapsulando segredo Kyber...\n[ERROR] [1793729277.371519536] [pqc_demo_9bea5cfc349b.computador_b]: Autenticacao AES-GCM falhou: pacote rejeitado\n[INFO] [1793729277.527355475] [rclcpp]: signal_handler(SIGINT/SIGTERM)\n\nPASS: dois processos ROS2, entrega, hashes e rejeicao de adulteracao\n"
+  },
+  "source_sha256": {
+    "ref/randombytes.c": "7fe034fc25b9bf0742296677fe3ffe940cf99e005201e636d44f3cb09225a19c",
+    "ref/polyvec.c": "bc5d7c07cce321ed81eeff65f44c7f2f95d89ba5fb71a257935a4c73bded6702",
+    "ref/cbd.h": "f9f950d4104dcd779d832dae4b691bfcbdccb4b096cf6ede09aba91933cbe505",
+    "ref/kem.h": "310a0568f3b5d930c858f7c4c7e93e73661479504f41ce2f1c071bd7e6e82533",
+    "ref/reduce.c": "5cdb0497f5eaaab41709a35719596435c661a21620e9b42e8cb9deb44bfc510a",
+    "ref/verify.c": "6eba50757da9e2c0ecf090d460595d93c8e534eec2a42e244ed5d4680d393eb0",
+    "ref/poly.c": "4679701512b13f3ff92514531e5abaafa6dcb7544ba6b4025f9dea9c19d14678",
+    "ref/hashing.c": "1416897c68de9a645ec48799f0e0e79b1ec8ae95aaab0c19617daec66559f054",
+    "ref/indcpa.h": "974da581f804f72520dd847e549ea56c0fabb5cc231d0ff0f31ebb6ce19db527",
+    "ref/kem.c": "f73a1329290bd7b722949c9a06a4a578c1962a4ae72d9c825f1fa47e8b7e1138",
+    "ref/indcpa.c": "3815116b71072c1c435e4a83ca34c8e1714fdcf8629bd147f481caeb19e8530c",
+    "ref/params.h": "97175f8cc035ea7f9e487b8145fe97ba490893bae96d9d46658b73c6f7d21601",
+    "ref/api.h": "9bd33eb671cd5085763558fcc85d523c2b4f944744dfc94df927325445741857",
+    "ref/poly.h": "13c8331eb1d136a1be1484e1a686aebf3a29d5584a2cec1d90083fa92f4cf78c",
+    "ref/ntt.c": "aeeee3cf363ce87b0617693cee82bed181f1bda5ad90cd355e97a5306bbf65d1",
+    "ref/randombytes.h": "039a3bd99d8cd4a513810b68cf9d2308a0a13dd52228c220774f26ebf838dc95",
+    "ref/hashing.h": "f3c21a9b8200b51945ef631e3ccd27c4093ad85127ef45e54dc8c10f5b3485f2",
+    "ref/verify.h": "3062613d59cc73b817e5bac89054bc7eb81f4a1faf11c5694559e6cac69c82d9",
+    "ref/polyvec.h": "dc45fbeb7a2d0effec3cdf79e2932a7bb243773a4f7a5f3516df1c1fcb557841",
+    "ref/symmetric.h": "56190b9adec944a60d534ed1a04ae5728b0a869fbd8e7e1eac42684e7bb22202",
+    "ref/reduce.h": "08a22180a90f37b790d2f7d6726b5749e57bf229da82165934812221c6898a58",
+    "ref/cbd.c": "95b6893fd3bf909e57c2522bef413dfdb5c9c677cc1b8c7a246001c64264a238",
+    "ref/ntt.h": "7f42ae358f781a2597c4e34ef9f59ccd11dcc1efce7f5f1edc96167da088070d",
+    "ref/nistkat/rng.c": "cb3c077ef360f1004336600e125a0b8db5d91b0dfd99034116d2fd1f4235cbf5",
+    "ref/nistkat/rng.h": "682c64e010a633e5f97355db17f9c744f8a161157677f6601ebdb9ff187b8f14",
+    "ref/nistkat/PQCgenKAT_kem.c": "edf345cdf4fe92fd6cd4dbd9fe4e35c3b153be1232b72b85bc993d66dbfa0da6",
+    "ref/test/test_kyber.c": "6e92c15cb9786538b900f4e76d5446397c4993fcbcf0b5a93a716db6c2323bc6",
+    "ref/test/speed_print.h": "abdeb99cadcc96e9dbcbf966f2fd1eda179c21364873fc05fb3bcc2d25aeddce",
+    "ref/test/cpucycles.c": "8a5d449ff6e8899932e33d7a65ade13464bda573b5ddec2d0361b29549c1f0b6",
+    "ref/test/test_rejection.c": "6fc578f60496ca5af868f717f47fe0016e5ab90e3e71df8da78fe7835cf4e6a5",
+    "ref/test/test_vectors.c": "eba0fbfebc4752b6f117e6cffd7307a81fb79f32f976acc7738911b7697a72e6",
+    "ref/test/test_speed.c": "8f08fc8f96f1b241d0c73a732e768b4031aeddafbc296dff7bb1be38e1d13599",
+    "ref/test/test_hashing.c": "e68a270f5bbb3892482f89d5f860c5efab075c119144cdd98299308adfd21cae",
+    "ref/test/cpucycles.h": "46a16306f212a02fd630e4345f882d8b86d44f2f31b080ec4907fbfbf2bda941",
+    "ref/test/speed_print.c": "533fc7bd12204078a5390cfb58c05d550b214850876609f8e98f7377b9d4f1b3",
+    "ref/test/test_protocol_extended.cpp": "c466d53e05a8d11c9d59e47ae2b138745fcad3f5ab4b7f10dc17eba2558c773e",
+    "hash_options/chaotic_hash.h": "e1fa5f36cf035da02d6f9c18e9cdf263cbb6142fd6ddf735b8d0e7c1d00c2276",
+    "hash_options/chaotic_hash.c": "8383c6030a6bfd8a353f908b3aaf358e206b8bfb0ceb188e026badad64053a32",
+    "ros2/pqc_kyber/src/receiver.cpp": "be8ac8f0c104c7b0e5fcde7778137ebb006c26411c0b5a7d4310ccc44509a757",
+    "ros2/pqc_kyber/src/kem_check.cpp": "6c391ab05941a2865a4f0baff8e422a3c21b058cce08c546a9515cb1f421b959",
+    "ros2/pqc_kyber/src/demo_crypto.hpp": "c297268ab8e9d6c9f7fc9fe54875e3e21aa29022019452df6fa1124b906e4ed9",
+    "ros2/pqc_kyber/src/sender.cpp": "8b055d5b51c4ee69c14644c49a46c4c15b9690abb9d37b2e6b930df20f0ba4ad",
+    "ros2/pqc_kyber/test/demo_crypto_test.cpp": "e68110812ebcd833bd1886d563bfcba7ad13e332c0f1ac0ea70483f1b5e99d15"
+  },
+  "cleanup": {
+    "removed_file_count": 379,
+    "removed_logical_bytes": 44957125,
+    "removed_groups": [
+      "ros2/build",
+      "ros2/install",
+      "ros2/log",
+      "C build products (make clean)",
+      "Python caches",
+      "redundant previous audit logs and individual reports"
+    ],
+    "preserved": [
+      "C/C++ sources and headers",
+      "tests and benchmarks",
+      "consolidated historical results",
+      "documentation",
+      "workshop and demo presentations"
+    ]
+  }
+}

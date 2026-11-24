@@ -1,0 +1,1038 @@
+{
+  "date": "2026-11-17",
+  "upstream": {
+    "repository": "https://github.com/marcospgr/pqc-kyber",
+    "commit": "fe63e12a04f6f70b4e01e9b52ae15b32b151ceda",
+    "source": "hash_options/chaotic_hash_32.c",
+    "source_sha256": "4aa06dbc9f4ff3391da8c9f2f7b62d9aac50b94d26de4e7c8e83f26cf7dbdee3",
+    "original_makefile_still_selects": "hash_options/chaotic_hash.c (Q24)"
+  },
+  "integration": {
+    "active_source": "hash_options/chaotic_hash.c",
+    "precision": 32,
+    "mixer_shifts": [
+      13,
+      17,
+      5
+    ],
+    "extraction_shift": 8,
+    "framing": "CHF1 preserved (not byte-compatible with raw upstream inputs)",
+    "wire_version": 3,
+    "legacy_versions_rejected": [
+      1,
+      2
+    ],
+    "comparison_Q24": "unchanged, no mixer"
+  },
+  "existing": [
+    {
+      "test": "test_hashing",
+      "exit_code": 0,
+      "output": "CHF1 lengths, trailing bytes, empty input and domains: OK\nChaotic hashing regression tests: OK\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_rejection512",
+      "exit_code": 0,
+      "output": "Kyber512: 0 of 6144 single-bit mutations failed rejection\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_rejection768",
+      "exit_code": 0,
+      "output": "Kyber768: 0 of 8704 single-bit mutations failed rejection\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_rejection1024",
+      "exit_code": 0,
+      "output": "Kyber1024: 0 of 12544 single-bit mutations failed rejection\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_kyber512",
+      "exit_code": 0,
+      "output": "CRYPTO_SECRETKEYBYTES:  1632\nCRYPTO_PUBLICKEYBYTES:  800\nCRYPTO_CIPHERTEXTBYTES: 768\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_kyber768",
+      "exit_code": 0,
+      "output": "CRYPTO_SECRETKEYBYTES:  2400\nCRYPTO_PUBLICKEYBYTES:  1184\nCRYPTO_CIPHERTEXTBYTES: 1088\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_kyber1024",
+      "exit_code": 0,
+      "output": "CRYPTO_SECRETKEYBYTES:  3168\nCRYPTO_PUBLICKEYBYTES:  1568\nCRYPTO_CIPHERTEXTBYTES: 1568\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_vectors512",
+      "exit_code": 0,
+      "output": "db5aa5526148195d31c33cfa05b40c692587d0f32af6b5e66395e529506656f1402ac80c248c1ff95d1c03c251429868dbcbbff828a6176f72bf122891a54e79e48fab20377f158f307d20d99e65ce35b4d5b5e7b90be20845fe914f8e63691cd097b63f422f08e6eed137bf7472ed69f8562af096e6b6d3\nShared Secret B: 8f693374b5278bdf9a2b70033ff4e8af5050b101dbf6225acd9f50deac2d30f5\nShared Secret A: 8f693374b5278bdf9a2b70033ff4e8af5050b101dbf6225acd9f50deac2d30f5\nPseudorandom shared Secret A: 211d190590c04e6d4ba204fd33a8f236d82cbf953fcace381b6bca058b6e056e\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_vectors768",
+      "exit_code": 0,
+      "output": "1391d48b7947db206163df556c35bf42e8683d72539897a6c0c949abfd896a4976012f6994de4fed98126f31e36c8d9570d9187d3bd41f8819141c473b99a595f1dbc828815c46d708468daec757b9adcf03e11601008fbca4e37879b61094df539760a0b69272506a1a4ed1906ebd9f54bfac9de0cd372c\nShared Secret B: de68f3063632ade61033ba89a573df95db3eb02533170f48941d5ce6275549b2\nShared Secret A: de68f3063632ade61033ba89a573df95db3eb02533170f48941d5ce6275549b2\nPseudorandom shared Secret A: cc1b290dd7b156b5f84547feeb870596155389c8b8a5b3ceaffb23fcfede4c17\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_vectors1024",
+      "exit_code": 0,
+      "output": "b1d3cb85b16c26b36fd0830afe4a9bb5b96ac1fc1e4efda0d2d755c6c6d357279aefa859d78ed4a99bf088d64531a5efb05c31c826f7dedbe564491b89b104e32d432b72c110119dd492998fa0290057cf645934f6693ade4604c1762489253bc3a2c9642550f38009a933fd1389f0ab4bdcf81a35f545a9\nShared Secret B: 6fb5fb10ebb8b9f26aabc9ac1a04eb13abdd732994ec78e540a052c22037a1d6\nShared Secret A: 6fb5fb10ebb8b9f26aabc9ac1a04eb13abdd732994ec78e540a052c22037a1d6\nPseudorandom shared Secret A: dd02e84aa9747adc9d06e577e181d994c223ad977a8a5fc454b3edc145e7a507\n",
+      "stderr": ""
+    }
+  ],
+  "hash": {
+    "date": "2026-11-17",
+    "precision": 32,
+    "framing": "CHF1",
+    "results": [
+      {
+        "hash_bits": 256,
+        "zero_append_cases": 64,
+        "zero_append_collisions": [],
+        "sentinel_append_cases": 8,
+        "sentinel_append_collisions": [],
+        "single_bit_cases": 3584,
+        "single_bit_collisions": [],
+        "mean_changed_bits": 127.89983258928571,
+        "mean_changed_fraction": 0.4996087210518973,
+        "examples": [
+          {
+            "original_hex": "41",
+            "changed_hex": "4100",
+            "same": false,
+            "digest": "cb09b43648858d9b1311c5f2265b3545988830c93d37b237d28c865d26fc0638"
+          },
+          {
+            "original_hex": "41424344",
+            "changed_hex": "4142434401",
+            "same": false,
+            "digest": "6110b2f6ea1079c1630041e8ac5c353a06d32b09a8e48d355e35f69945046ba9"
+          },
+          {
+            "original_hex": "6162636465",
+            "changed_hex": "616263646500",
+            "same": false,
+            "digest": "498bd7c650e7fe073ca5f9b9162cae73cc86517e2793e854ef1e042c4d41f8aa"
+          }
+        ]
+      },
+      {
+        "hash_bits": 512,
+        "zero_append_cases": 64,
+        "zero_append_collisions": [],
+        "sentinel_append_cases": 8,
+        "sentinel_append_collisions": [],
+        "single_bit_cases": 3584,
+        "single_bit_collisions": [],
+        "mean_changed_bits": 256.06222098214283,
+        "mean_changed_fraction": 0.5001215253557477,
+        "examples": [
+          {
+            "original_hex": "41",
+            "changed_hex": "4100",
+            "same": false,
+            "digest": "f035e282ecb425ff001aee5e60f4ea22f9d301c52de5f056368fce0ac69f9b84c935afb0fa116abb04790e2f5c0b516429cda2e387db16d935ff3e66b72b4797"
+          },
+          {
+            "original_hex": "41424344",
+            "changed_hex": "4142434401",
+            "same": false,
+            "digest": "bb40aae6fdf00d5f918b51e8e431a4aba8e2c6a33baf29b9219f2c56561aeb7b6722307ebcef0d88058a65c725a76b69763a5db2d9698e4408a9d0f30b226d20"
+          },
+          {
+            "original_hex": "6162636465",
+            "changed_hex": "616263646500",
+            "same": false,
+            "digest": "391fa69dcd084b2c9fd94da49b0ddc03b1b35bb003658452bb6c33d255c71048052a81fb367bcc07d3b9aab9cd78b8e902d9f9080d92e5fe22ac0c26157f9f6a"
+          }
+        ]
+      }
+    ],
+    "library_sha256": "fc22206cd40142191552a31655c497678911b09d5e204c7f15371824ea3611f8"
+  },
+  "upstream_comparison": {
+    "absorption_checks": 924,
+    "extraction_checks": 2772,
+    "failures": 0,
+    "raw_upstream_padding_observations": [
+      {
+        "hash_bits": 256,
+        "inputs_hex": [
+          "41",
+          "4100"
+        ],
+        "same_hash": true
+      },
+      {
+        "hash_bits": 512,
+        "inputs_hex": [
+          "41",
+          "4100"
+        ],
+        "same_hash": true
+      }
+    ],
+    "upstream_source_sha256": "4aa06dbc9f4ff3391da8c9f2f7b62d9aac50b94d26de4e7c8e83f26cf7dbdee3",
+    "integrated_library_sha256": "fc22206cd40142191552a31655c497678911b09d5e204c7f15371824ea3611f8"
+  },
+  "sampling": [
+    {
+      "variant": 512,
+      "precision": 32,
+      "sessions": 50000,
+      "seed": "audit-20261103-v1-512",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 0,
+        "bit_nonreject": 0,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "bit_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "bit_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "byte_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "byte_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "twobit_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "twobit_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "random_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "random_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 41737,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 8263,
+          "nonreject": 0
+        }
+      },
+      "first_failures": [],
+      "library_sha256": "99ddcc5509502615d1c743ae720f5d708b56358b2b893b3265687e347a677474"
+    },
+    {
+      "variant": 768,
+      "precision": 32,
+      "sessions": 50000,
+      "seed": "audit-20261103-v1-768",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 0,
+        "bit_nonreject": 0,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "bit_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "bit_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "byte_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "byte_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "twobit_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "twobit_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "random_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "random_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 44180,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 5820,
+          "nonreject": 0
+        }
+      },
+      "first_failures": [],
+      "library_sha256": "fc22206cd40142191552a31655c497678911b09d5e204c7f15371824ea3611f8"
+    },
+    {
+      "variant": 1024,
+      "precision": 32,
+      "sessions": 50000,
+      "seed": "audit-20261103-v1-1024",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 0,
+        "bit_nonreject": 0,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "bit_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "bit_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "byte_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "byte_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "twobit_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "twobit_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "random_same": [
+          0.0,
+          7.682327414500052e-05
+        ],
+        "random_nonreject": [
+          0.0,
+          7.682327414500052e-05
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 44834,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 5166,
+          "nonreject": 0
+        }
+      },
+      "first_failures": [],
+      "library_sha256": "267d3554232463200d4cf6d3a55db0d4c5483867f588f88e7fc81d11d0034a22"
+    }
+  ],
+  "protocol": [
+    {
+      "variant": "Kyber512",
+      "checks": {
+        "fresh_encryption_packet_uniqueness": {
+          "cases": 256,
+          "failures": 0
+        },
+        "fresh_encryption_roundtrip": {
+          "cases": 256,
+          "failures": 0
+        },
+        "reject_appended_bytes": {
+          "cases": 128,
+          "failures": 0
+        },
+        "reject_every_truncation": {
+          "cases": 864,
+          "failures": 0
+        },
+        "reject_legacy_frame_version": {
+          "cases": 2,
+          "failures": 0
+        },
+        "reject_one_bit_hash": {
+          "cases": 256,
+          "failures": 0
+        },
+        "reject_one_bit_header": {
+          "cases": 40,
+          "failures": 0
+        },
+        "reject_one_bit_kem": {
+          "cases": 6144,
+          "failures": 0
+        },
+        "reject_one_bit_nonce": {
+          "cases": 96,
+          "failures": 0
+        },
+        "reject_one_bit_payload": {
+          "cases": 248,
+          "failures": 0
+        },
+        "reject_one_bit_tag": {
+          "cases": 128,
+          "failures": 0
+        },
+        "reject_oversize_frame": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_oversize_plaintext": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_private_key_size": {
+          "cases": 3,
+          "failures": 0
+        },
+        "reject_public_key_size": {
+          "cases": 3,
+          "failures": 0
+        },
+        "reject_random_frames": {
+          "cases": 1000,
+          "failures": 0
+        },
+        "reject_unrelated_private_key": {
+          "cases": 64,
+          "failures": 0
+        },
+        "roundtrip_binary_and_boundaries": {
+          "cases": 110,
+          "failures": 0
+        }
+      },
+      "protocol_observations": {
+        "public_key_only_sender_accepted": 10,
+        "replay_accepted_by_open": 10
+      }
+    },
+    {
+      "variant": "Kyber768",
+      "checks": {
+        "fresh_encryption_packet_uniqueness": {
+          "cases": 256,
+          "failures": 0
+        },
+        "fresh_encryption_roundtrip": {
+          "cases": 256,
+          "failures": 0
+        },
+        "reject_appended_bytes": {
+          "cases": 128,
+          "failures": 0
+        },
+        "reject_every_truncation": {
+          "cases": 1184,
+          "failures": 0
+        },
+        "reject_legacy_frame_version": {
+          "cases": 2,
+          "failures": 0
+        },
+        "reject_one_bit_hash": {
+          "cases": 256,
+          "failures": 0
+        },
+        "reject_one_bit_header": {
+          "cases": 40,
+          "failures": 0
+        },
+        "reject_one_bit_kem": {
+          "cases": 8704,
+          "failures": 0
+        },
+        "reject_one_bit_nonce": {
+          "cases": 96,
+          "failures": 0
+        },
+        "reject_one_bit_payload": {
+          "cases": 248,
+          "failures": 0
+        },
+        "reject_one_bit_tag": {
+          "cases": 128,
+          "failures": 0
+        },
+        "reject_oversize_frame": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_oversize_plaintext": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_private_key_size": {
+          "cases": 3,
+          "failures": 0
+        },
+        "reject_public_key_size": {
+          "cases": 3,
+          "failures": 0
+        },
+        "reject_random_frames": {
+          "cases": 1000,
+          "failures": 0
+        },
+        "reject_unrelated_private_key": {
+          "cases": 64,
+          "failures": 0
+        },
+        "roundtrip_binary_and_boundaries": {
+          "cases": 110,
+          "failures": 0
+        }
+      },
+      "protocol_observations": {
+        "public_key_only_sender_accepted": 10,
+        "replay_accepted_by_open": 10
+      }
+    },
+    {
+      "variant": "Kyber1024",
+      "checks": {
+        "fresh_encryption_packet_uniqueness": {
+          "cases": 256,
+          "failures": 0
+        },
+        "fresh_encryption_roundtrip": {
+          "cases": 256,
+          "failures": 0
+        },
+        "reject_appended_bytes": {
+          "cases": 128,
+          "failures": 0
+        },
+        "reject_every_truncation": {
+          "cases": 1664,
+          "failures": 0
+        },
+        "reject_legacy_frame_version": {
+          "cases": 2,
+          "failures": 0
+        },
+        "reject_one_bit_hash": {
+          "cases": 256,
+          "failures": 0
+        },
+        "reject_one_bit_header": {
+          "cases": 40,
+          "failures": 0
+        },
+        "reject_one_bit_kem": {
+          "cases": 12544,
+          "failures": 0
+        },
+        "reject_one_bit_nonce": {
+          "cases": 96,
+          "failures": 0
+        },
+        "reject_one_bit_payload": {
+          "cases": 248,
+          "failures": 0
+        },
+        "reject_one_bit_tag": {
+          "cases": 128,
+          "failures": 0
+        },
+        "reject_oversize_frame": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_oversize_plaintext": {
+          "cases": 1,
+          "failures": 0
+        },
+        "reject_private_key_size": {
+          "cases": 3,
+          "failures": 0
+        },
+        "reject_public_key_size": {
+          "cases": 3,
+          "failures": 0
+        },
+        "reject_random_frames": {
+          "cases": 1000,
+          "failures": 0
+        },
+        "reject_unrelated_private_key": {
+          "cases": 64,
+          "failures": 0
+        },
+        "roundtrip_binary_and_boundaries": {
+          "cases": 110,
+          "failures": 0
+        }
+      },
+      "protocol_observations": {
+        "public_key_only_sender_accepted": 10,
+        "replay_accepted_by_open": 10
+      }
+    }
+  ],
+  "interoperability": [
+    {
+      "fixtures": 6,
+      "checks": 24,
+      "failures": 0,
+      "message_lengths": [
+        0,
+        1,
+        15,
+        16,
+        17,
+        65536
+      ],
+      "implementation": "Python cryptography AESGCM API vs C++ OpenSSL EVP demo frame"
+    },
+    {
+      "fixtures": 6,
+      "checks": 24,
+      "failures": 0,
+      "message_lengths": [
+        0,
+        1,
+        15,
+        16,
+        17,
+        65536
+      ],
+      "implementation": "Python cryptography AESGCM API vs C++ OpenSSL EVP demo frame"
+    },
+    {
+      "fixtures": 6,
+      "checks": 24,
+      "failures": 0,
+      "message_lengths": [
+        0,
+        1,
+        15,
+        16,
+        17,
+        65536
+      ],
+      "implementation": "Python cryptography AESGCM API vs C++ OpenSSL EVP demo frame"
+    }
+  ],
+  "sanitizers": {
+    "instruments": [
+      "address",
+      "undefined",
+      "float-cast-overflow"
+    ],
+    "leak_detection": false,
+    "variants": {
+      "512": {
+        "results": {
+          "variant": "Kyber512",
+          "checks": {
+            "fresh_encryption_packet_uniqueness": {
+              "cases": 256,
+              "failures": 0
+            },
+            "fresh_encryption_roundtrip": {
+              "cases": 256,
+              "failures": 0
+            },
+            "reject_appended_bytes": {
+              "cases": 128,
+              "failures": 0
+            },
+            "reject_every_truncation": {
+              "cases": 864,
+              "failures": 0
+            },
+            "reject_legacy_frame_version": {
+              "cases": 2,
+              "failures": 0
+            },
+            "reject_one_bit_hash": {
+              "cases": 256,
+              "failures": 0
+            },
+            "reject_one_bit_header": {
+              "cases": 40,
+              "failures": 0
+            },
+            "reject_one_bit_kem": {
+              "cases": 6144,
+              "failures": 0
+            },
+            "reject_one_bit_nonce": {
+              "cases": 96,
+              "failures": 0
+            },
+            "reject_one_bit_payload": {
+              "cases": 248,
+              "failures": 0
+            },
+            "reject_one_bit_tag": {
+              "cases": 128,
+              "failures": 0
+            },
+            "reject_oversize_frame": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_oversize_plaintext": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_private_key_size": {
+              "cases": 3,
+              "failures": 0
+            },
+            "reject_public_key_size": {
+              "cases": 3,
+              "failures": 0
+            },
+            "reject_random_frames": {
+              "cases": 1000,
+              "failures": 0
+            },
+            "reject_unrelated_private_key": {
+              "cases": 64,
+              "failures": 0
+            },
+            "roundtrip_binary_and_boundaries": {
+              "cases": 110,
+              "failures": 0
+            }
+          },
+          "protocol_observations": {
+            "public_key_only_sender_accepted": 10,
+            "replay_accepted_by_open": 10
+          }
+        },
+        "stderr": ""
+      },
+      "768": {
+        "results": {
+          "variant": "Kyber768",
+          "checks": {
+            "fresh_encryption_packet_uniqueness": {
+              "cases": 256,
+              "failures": 0
+            },
+            "fresh_encryption_roundtrip": {
+              "cases": 256,
+              "failures": 0
+            },
+            "reject_appended_bytes": {
+              "cases": 128,
+              "failures": 0
+            },
+            "reject_every_truncation": {
+              "cases": 1184,
+              "failures": 0
+            },
+            "reject_legacy_frame_version": {
+              "cases": 2,
+              "failures": 0
+            },
+            "reject_one_bit_hash": {
+              "cases": 256,
+              "failures": 0
+            },
+            "reject_one_bit_header": {
+              "cases": 40,
+              "failures": 0
+            },
+            "reject_one_bit_kem": {
+              "cases": 8704,
+              "failures": 0
+            },
+            "reject_one_bit_nonce": {
+              "cases": 96,
+              "failures": 0
+            },
+            "reject_one_bit_payload": {
+              "cases": 248,
+              "failures": 0
+            },
+            "reject_one_bit_tag": {
+              "cases": 128,
+              "failures": 0
+            },
+            "reject_oversize_frame": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_oversize_plaintext": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_private_key_size": {
+              "cases": 3,
+              "failures": 0
+            },
+            "reject_public_key_size": {
+              "cases": 3,
+              "failures": 0
+            },
+            "reject_random_frames": {
+              "cases": 1000,
+              "failures": 0
+            },
+            "reject_unrelated_private_key": {
+              "cases": 64,
+              "failures": 0
+            },
+            "roundtrip_binary_and_boundaries": {
+              "cases": 110,
+              "failures": 0
+            }
+          },
+          "protocol_observations": {
+            "public_key_only_sender_accepted": 10,
+            "replay_accepted_by_open": 10
+          }
+        },
+        "stderr": ""
+      },
+      "1024": {
+        "results": {
+          "variant": "Kyber1024",
+          "checks": {
+            "fresh_encryption_packet_uniqueness": {
+              "cases": 256,
+              "failures": 0
+            },
+            "fresh_encryption_roundtrip": {
+              "cases": 256,
+              "failures": 0
+            },
+            "reject_appended_bytes": {
+              "cases": 128,
+              "failures": 0
+            },
+            "reject_every_truncation": {
+              "cases": 1664,
+              "failures": 0
+            },
+            "reject_legacy_frame_version": {
+              "cases": 2,
+              "failures": 0
+            },
+            "reject_one_bit_hash": {
+              "cases": 256,
+              "failures": 0
+            },
+            "reject_one_bit_header": {
+              "cases": 40,
+              "failures": 0
+            },
+            "reject_one_bit_kem": {
+              "cases": 12544,
+              "failures": 0
+            },
+            "reject_one_bit_nonce": {
+              "cases": 96,
+              "failures": 0
+            },
+            "reject_one_bit_payload": {
+              "cases": 248,
+              "failures": 0
+            },
+            "reject_one_bit_tag": {
+              "cases": 128,
+              "failures": 0
+            },
+            "reject_oversize_frame": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_oversize_plaintext": {
+              "cases": 1,
+              "failures": 0
+            },
+            "reject_private_key_size": {
+              "cases": 3,
+              "failures": 0
+            },
+            "reject_public_key_size": {
+              "cases": 3,
+              "failures": 0
+            },
+            "reject_random_frames": {
+              "cases": 1000,
+              "failures": 0
+            },
+            "reject_unrelated_private_key": {
+              "cases": 64,
+              "failures": 0
+            },
+            "roundtrip_binary_and_boundaries": {
+              "cases": 110,
+              "failures": 0
+            }
+          },
+          "protocol_observations": {
+            "public_key_only_sender_accepted": 10,
+            "replay_accepted_by_open": 10
+          }
+        },
+        "stderr": ""
+      }
+    }
+  },
+  "reference_comparisons": {
+    "Q24": 136,
+    "Q32": 136
+  },
+  "cpp_header_checks": {
+    "headers": 17,
+    "variants": [
+      2,
+      3,
+      4
+    ],
+    "fractional_bits": [
+      24,
+      32
+    ]
+  },
+  "nistkat": [
+    {
+      "variant": 512,
+      "exit_code": 0,
+      "response_records": 100
+    },
+    {
+      "variant": 768,
+      "exit_code": 0,
+      "response_records": 100
+    },
+    {
+      "variant": 1024,
+      "exit_code": 0,
+      "response_records": 100
+    }
+  ],
+  "ctest_log": "Internal ctest changing into directory: /tmp/kyber-update-20261117/ros-build\nTest project /tmp/kyber-update-20261117/ros-build\n    Start 1: demo_encryption_authentication\n1/5 Test #1: demo_encryption_authentication ....   Passed    0.02 sec\n    Start 2: demo_protocol_extended\n2/5 Test #2: demo_protocol_extended ............   Passed    5.94 sec\n    Start 3: cpp_kem_chaotic_check\n3/5 Test #3: cpp_kem_chaotic_check .............   Passed    0.00 sec\n    Start 4: chaotic_hash_regression\n4/5 Test #4: chaotic_hash_regression ...........   Passed    0.01 sec\n    Start 5: ciphertext_rejection_regression\n5/5 Test #5: ciphertext_rejection_regression ...   Passed    4.53 sec\n\n100% tests passed, 0 tests failed out of 5\n\nTotal Test time (real) =  10.50 sec\n",
+  "compiler": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "python": "3.12.3",
+  "ros_demo": {
+    "normal_deliveries": 2,
+    "tampered_tag_rejections": 1,
+    "log": "\n=== Computador A: envio normal ===\n[INFO] [1794917287.716479618] [pqc_demo_8a500ba7fbed.computador_a]: Computador A: aguardando chave publica do computador B...\n[INFO] [1794917287.918311633] [pqc_demo_8a500ba7fbed.computador_a]: Mensagem enviada: Ola, computador B!\n[INFO] [1794917287.918377293] [pqc_demo_8a500ba7fbed.computador_a]: Hash caotico da mensagem: 8fc5d30a8fe43f7b795bdd9bc7b041510a0d51c6d402bff853e90e119e79c9d2\n[INFO] [1794917287.918385874] [pqc_demo_8a500ba7fbed.computador_a]: Mensagem cifrada (AES-256-GCM, hex): 0238f14488f1e338eb3625709e765b5e3ed0\n[INFO] [1794917287.918474485] [pqc_demo_8a500ba7fbed.computador_a]: Pacote publicado: 1171 bytes (KEM, nonce, hash, mensagem cifrada e tag).\n[INFO] [1794917287.920560822] [pqc_demo_8a500ba7fbed.computador_a]: Resposta do computador B: OK: mensagem recuperada; AES-GCM autenticado; hashes iguais\n\n=== Computador A: envio normal ===\n[INFO] [1794917288.262456103] [pqc_demo_8a500ba7fbed.computador_a]: Computador A: aguardando chave publica do computador B...\n[INFO] [1794917291.264344970] [pqc_demo_8a500ba7fbed.computador_a]: Mensagem enviada: Comunica\u00e7\u00e3o ROS2 com acentos\n[INFO] [1794917291.264431851] [pqc_demo_8a500ba7fbed.computador_a]: Hash caotico da mensagem: fa7b1943cac91ca8b0b35ed8b0dd669f720a09f2aa9258f60b28adbe2ab4a2cd\n[INFO] [1794917291.264448667] [pqc_demo_8a500ba7fbed.computador_a]: Mensagem cifrada (AES-256-GCM, hex): 320d385af3df57f0f97de4ca7ddd21418e33b0de4350d701937c5a19884e\n[INFO] [1794917291.264540953] [pqc_demo_8a500ba7fbed.computador_a]: Pacote publicado: 1183 bytes (KEM, nonce, hash, mensagem cifrada e tag).\n[INFO] [1794917291.265284246] [pqc_demo_8a500ba7fbed.computador_a]: Resposta do computador B: OK: mensagem recuperada; AES-GCM autenticado; hashes iguais\n\n=== Computador A: envio adulterado ===\n[INFO] [1794917291.601181784] [pqc_demo_8a500ba7fbed.computador_a]: Computador A: aguardando chave publica do computador B...\n[INFO] [1794917294.403396581] [pqc_demo_8a500ba7fbed.computador_a]: Mensagem enviada: Pacote adulterado\n[INFO] [1794917294.403479978] [pqc_demo_8a500ba7fbed.computador_a]: Hash caotico da mensagem: 8367619b4d862c1eb2836ef8b090b82bd0cb597b90affd0df198231d1881c1e0\n[INFO] [1794917294.403488899] [pqc_demo_8a500ba7fbed.computador_a]: Mensagem cifrada (AES-256-GCM, hex): 6410ffdcd4944c2b89b20acf4b81698a2c\n[WARN] [1794917294.403493911] [pqc_demo_8a500ba7fbed.computador_a]: Simulacao: tag de autenticacao adulterada.\n[INFO] [1794917294.403592042] [pqc_demo_8a500ba7fbed.computador_a]: Pacote publicado: 1170 bytes (KEM, nonce, hash, mensagem cifrada e tag).\n[INFO] [1794917294.404364367] [pqc_demo_8a500ba7fbed.computador_a]: Resposta do computador B: ERRO: Autenticacao AES-GCM falhou: pacote rejeitado\n[ros2run]: Process exited with failure 1\nResultado esperado: adulteracao rejeitada.\n\n=== Computador B: recebimento ===\n[INFO] [1794917287.465104766] [pqc_demo_8a500ba7fbed.computador_b]: Computador B pronto (Kyber768): chave publica publicada; chave privada local.\n[INFO] [1794917287.918599817] [pqc_demo_8a500ba7fbed.computador_b]: Pacote recebido: 1171 bytes. Desencapsulando segredo Kyber...\n[INFO] [1794917287.920307963] [pqc_demo_8a500ba7fbed.computador_b]: Mensagem descriptografada: Ola, computador B!\n[INFO] [1794917287.920352368] [pqc_demo_8a500ba7fbed.computador_b]: Hash caotico recebido: 8fc5d30a8fe43f7b795bdd9bc7b041510a0d51c6d402bff853e90e119e79c9d2\n[INFO] [1794917287.920360351] [pqc_demo_8a500ba7fbed.computador_b]: Hash caotico recalculado: 8fc5d30a8fe43f7b795bdd9bc7b041510a0d51c6d402bff853e90e119e79c9d2\n[INFO] [1794917287.920364343] [pqc_demo_8a500ba7fbed.computador_b]: AES-GCM autenticado; hashes iguais. Entrega concluida.\n[INFO] [1794917291.264647652] [pqc_demo_8a500ba7fbed.computador_b]: Pacote recebido: 1183 bytes. Desencapsulando segredo Kyber...\n[INFO] [1794917291.265120693] [pqc_demo_8a500ba7fbed.computador_b]: Mensagem descriptografada: Comunica\u00e7\u00e3o ROS2 com acentos\n[INFO] [1794917291.265133205] [pqc_demo_8a500ba7fbed.computador_b]: Hash caotico recebido: fa7b1943cac91ca8b0b35ed8b0dd669f720a09f2aa9258f60b28adbe2ab4a2cd\n[INFO] [1794917291.265140312] [pqc_demo_8a500ba7fbed.computador_b]: Hash caotico recalculado: fa7b1943cac91ca8b0b35ed8b0dd669f720a09f2aa9258f60b28adbe2ab4a2cd\n[INFO] [1794917291.265144215] [pqc_demo_8a500ba7fbed.computador_b]: AES-GCM autenticado; hashes iguais. Entrega concluida.\n[INFO] [1794917294.403717238] [pqc_demo_8a500ba7fbed.computador_b]: Pacote recebido: 1170 bytes. Desencapsulando segredo Kyber...\n[ERROR] [1794917294.404205091] [pqc_demo_8a500ba7fbed.computador_b]: Autenticacao AES-GCM falhou: pacote rejeitado\n[INFO] [1794917294.577898356] [rclcpp]: signal_handler(SIGINT/SIGTERM)\n\nPASS: dois processos ROS2, entrega, hashes e rejeicao de adulteracao\n"
+  },
+  "source_sha256": {
+    "ref/randombytes.c": "7fe034fc25b9bf0742296677fe3ffe940cf99e005201e636d44f3cb09225a19c",
+    "ref/polyvec.c": "bc5d7c07cce321ed81eeff65f44c7f2f95d89ba5fb71a257935a4c73bded6702",
+    "ref/cbd.h": "f9f950d4104dcd779d832dae4b691bfcbdccb4b096cf6ede09aba91933cbe505",
+    "ref/kem.h": "310a0568f3b5d930c858f7c4c7e93e73661479504f41ce2f1c071bd7e6e82533",
+    "ref/reduce.c": "5cdb0497f5eaaab41709a35719596435c661a21620e9b42e8cb9deb44bfc510a",
+    "ref/verify.c": "6eba50757da9e2c0ecf090d460595d93c8e534eec2a42e244ed5d4680d393eb0",
+    "ref/poly.c": "4679701512b13f3ff92514531e5abaafa6dcb7544ba6b4025f9dea9c19d14678",
+    "ref/hashing.c": "1416897c68de9a645ec48799f0e0e79b1ec8ae95aaab0c19617daec66559f054",
+    "ref/indcpa.h": "974da581f804f72520dd847e549ea56c0fabb5cc231d0ff0f31ebb6ce19db527",
+    "ref/kem.c": "f73a1329290bd7b722949c9a06a4a578c1962a4ae72d9c825f1fa47e8b7e1138",
+    "ref/indcpa.c": "3815116b71072c1c435e4a83ca34c8e1714fdcf8629bd147f481caeb19e8530c",
+    "ref/params.h": "97175f8cc035ea7f9e487b8145fe97ba490893bae96d9d46658b73c6f7d21601",
+    "ref/api.h": "9bd33eb671cd5085763558fcc85d523c2b4f944744dfc94df927325445741857",
+    "ref/poly.h": "13c8331eb1d136a1be1484e1a686aebf3a29d5584a2cec1d90083fa92f4cf78c",
+    "ref/ntt.c": "aeeee3cf363ce87b0617693cee82bed181f1bda5ad90cd355e97a5306bbf65d1",
+    "ref/randombytes.h": "039a3bd99d8cd4a513810b68cf9d2308a0a13dd52228c220774f26ebf838dc95",
+    "ref/hashing.h": "f3c21a9b8200b51945ef631e3ccd27c4093ad85127ef45e54dc8c10f5b3485f2",
+    "ref/verify.h": "3062613d59cc73b817e5bac89054bc7eb81f4a1faf11c5694559e6cac69c82d9",
+    "ref/polyvec.h": "dc45fbeb7a2d0effec3cdf79e2932a7bb243773a4f7a5f3516df1c1fcb557841",
+    "ref/symmetric.h": "56190b9adec944a60d534ed1a04ae5728b0a869fbd8e7e1eac42684e7bb22202",
+    "ref/reduce.h": "08a22180a90f37b790d2f7d6726b5749e57bf229da82165934812221c6898a58",
+    "ref/cbd.c": "95b6893fd3bf909e57c2522bef413dfdb5c9c677cc1b8c7a246001c64264a238",
+    "ref/ntt.h": "7f42ae358f781a2597c4e34ef9f59ccd11dcc1efce7f5f1edc96167da088070d",
+    "ref/nistkat/rng.c": "cb3c077ef360f1004336600e125a0b8db5d91b0dfd99034116d2fd1f4235cbf5",
+    "ref/nistkat/rng.h": "682c64e010a633e5f97355db17f9c744f8a161157677f6601ebdb9ff187b8f14",
+    "ref/nistkat/PQCgenKAT_kem.c": "edf345cdf4fe92fd6cd4dbd9fe4e35c3b153be1232b72b85bc993d66dbfa0da6",
+    "ref/test/audit_hash.py": "e1665c3b0c4a220b70e8be294bef696d7291206c8717bf80db7bddbad0d88de4",
+    "ref/test/test_kyber.c": "6e92c15cb9786538b900f4e76d5446397c4993fcbcf0b5a93a716db6c2323bc6",
+    "ref/test/speed_print.h": "abdeb99cadcc96e9dbcbf966f2fd1eda179c21364873fc05fb3bcc2d25aeddce",
+    "ref/test/cpucycles.c": "8a5d449ff6e8899932e33d7a65ade13464bda573b5ddec2d0361b29549c1f0b6",
+    "ref/test/test_rejection.c": "6fc578f60496ca5af868f717f47fe0016e5ab90e3e71df8da78fe7835cf4e6a5",
+    "ref/test/estimate_errors.py": "94d1325a516023022c588ed750b6acc98e33639c49e294401960ebde90397ccd",
+    "ref/test/test_vectors.c": "eba0fbfebc4752b6f117e6cffd7307a81fb79f32f976acc7738911b7697a72e6",
+    "ref/test/sample_campaign.py": "01f1b5fef646e127bbb1ce6d929d0025ed2de94d588c91fe48cc2b13b95213ab",
+    "ref/test/run_checks.py": "327623530aa90e5b873144ca00f57ded7328e74a8eb0ebdb2fec87b0752fd2dc",
+    "ref/test/test_speed.c": "8f08fc8f96f1b241d0c73a732e768b4031aeddafbc296dff7bb1be38e1d13599",
+    "ref/test/test_hashing.c": "14b2646f521d5df8f4a0a4956e1fb1965cf3b181ae05f9e5dd83f6008e7ec46a",
+    "ref/test/compare_upstream_hash.py": "29b5f8c5683966d7a1c26d43897dd3203822d0fd0406e20003e4391281976993",
+    "ref/test/cpucycles.h": "46a16306f212a02fd630e4345f882d8b86d44f2f31b080ec4907fbfbf2bda941",
+    "ref/test/check_aes_interop.py": "8882b111ce862c3712a6e679f904d38cdecc5111d6416ac3191ad3468671f567",
+    "ref/test/speed_print.c": "533fc7bd12204078a5390cfb58c05d550b214850876609f8e98f7377b9d4f1b3",
+    "ref/test/reference_hash.py": "1c25b6635fc9ec2cf1c44d97c0894751556e489cacb45864737182dbc70272be",
+    "ref/test/test_protocol_extended.cpp": "d3cac722b5a203847a8237a99c2c63d1248b2c72971955c61d238aa93819e293",
+    "hash_options/chaotic_hash.h": "788c3054c3442ba52c520c1607c7fe4ec7292bde97d7b4ed995dea5fde753836",
+    "hash_options/chaotic_hash.c": "d055d599833ea029970399b6a8e524c56d3d1f263530513a8edda275e361b1a5",
+    "ros2/pqc_kyber/src/receiver.cpp": "be8ac8f0c104c7b0e5fcde7778137ebb006c26411c0b5a7d4310ccc44509a757",
+    "ros2/pqc_kyber/src/kem_check.cpp": "6c391ab05941a2865a4f0baff8e422a3c21b058cce08c546a9515cb1f421b959",
+    "ros2/pqc_kyber/src/demo_crypto.hpp": "cb083262d4df51d82bd1500013998dec077866bfa5abc2c90f9339310c909019",
+    "ros2/pqc_kyber/src/sender.cpp": "8b055d5b51c4ee69c14644c49a46c4c15b9690abb9d37b2e6b930df20f0ba4ad",
+    "ros2/pqc_kyber/test/run_demo.py": "cd632251bb0796a91cc4efe894ca538afe77d4a0fe1b82606bcd962a0b0adc18",
+    "ros2/pqc_kyber/test/demo_crypto_test.cpp": "e68110812ebcd833bd1886d563bfcba7ad13e332c0f1ac0ea70483f1b5e99d15"
+  }
+}

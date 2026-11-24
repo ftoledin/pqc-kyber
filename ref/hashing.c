@@ -16,14 +16,14 @@ void _sha3_256(uint8_t h[32], const uint8_t *in, size_t inlen)
 {
     ChaoticHashCtx_t state;
     ChaoticHashInit(&state, 256);
-    ChaoticHashing(&state, h, in, inlen);
+    ChaoticHashingDomain(&state, h, in, inlen, CHAOTIC_DOMAIN_HASH256);
 }
 
 void _sha3_512(uint8_t h[64], const uint8_t *in, size_t inlen)
 {
     ChaoticHashCtx_t state;
     ChaoticHashInit(&state, 512);
-    ChaoticHashing(&state, h, in, inlen);
+    ChaoticHashingDomain(&state, h, in, inlen, CHAOTIC_DOMAIN_HASH512);
 }
 
 /* The core extracts 32 bits per iteration. Buffer the unused bytes in this
@@ -73,7 +73,7 @@ void kyber_shake128_absorb(hash_state *state, const uint8_t seed[KYBER_SYMBYTES]
     in[KYBER_SYMBYTES] = x;
     in[KYBER_SYMBYTES + 1] = y;
     hash_state_init(state, 128);
-    ChaoticHashing(&state->ctx, NULL, in, sizeof in);
+    ChaoticHashingDomain(&state->ctx, NULL, in, sizeof in, CHAOTIC_DOMAIN_XOF128);
 }
 
 void kyber_shake256_prf(uint8_t *out, size_t outlen,
@@ -85,7 +85,7 @@ void kyber_shake256_prf(uint8_t *out, size_t outlen,
     memcpy(in, key, KYBER_SYMBYTES);
     in[KYBER_SYMBYTES] = nonce;
     state.h_size = (int)(outlen * 8);
-    ChaoticHashing(&state, out, in, sizeof in);
+    ChaoticHashingDomain(&state, out, in, sizeof in, CHAOTIC_DOMAIN_PRF256);
 }
 
 void kyber_shake256_rkprf(uint8_t out[KYBER_SSBYTES],
@@ -94,8 +94,8 @@ void kyber_shake256_rkprf(uint8_t out[KYBER_SSBYTES],
 {
     ChaoticHashCtx_t state;
     ChaoticHashInit(&state, 256);
-    ChaoticHashing(&state, NULL, key, KYBER_SYMBYTES);
-    ChaoticHashing(&state, NULL, input, KYBER_CIPHERTEXTBYTES);
+    ChaoticHashingDomain(&state, NULL, key, KYBER_SYMBYTES, CHAOTIC_DOMAIN_REJECT_KEY);
+    ChaoticHashingDomain(&state, NULL, input, KYBER_CIPHERTEXTBYTES, CHAOTIC_DOMAIN_REJECT_CT);
     state.h_size = KYBER_SSBYTES * 8;
     ChaoticHashing(&state, out, NULL, 0);
 }

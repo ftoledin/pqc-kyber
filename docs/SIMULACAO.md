@@ -1,8 +1,8 @@
-# Simulação ROS2
+# Simulação ROS2 original — DDS
 
-[README](../README.md) · [Criptografia](CRIPTOGRAFIA.md)
+Esta branch preserva a demonstração `sender`/`receiver`, utilizando o núcleo criptográfico atual. A simulação Zenoh fica exclusivamente na [branch zenoh-demo](https://github.com/ftoledin/pqc-kyber/tree/zenoh-demo).
 
-Dois terminais na mesma distribuição WSL2 representam A (`sender`) e B (`receiver`). Kyber estabelece um segredo; AES-256-GCM cifra a mensagem. B autentica, descriptografa e compara o hash caótico recebido com o recalculado. Hash não é descriptografado.
+Dois terminais representam A e B. A cifra uma mensagem; B autentica, recupera o texto e compara os hashes. A resposta é um status textual. Esta demonstração não implementa os tópicos bidirecionais e a ação da versão Zenoh.
 
 ## Ambiente e instalação
 
@@ -31,6 +31,8 @@ Para locale UTF-8, atualizações e instalações personalizadas, consulte a [in
 
 ## Compilação
 
+A versão atual usa Q32.32 com xorshift, CHF1 e pacote versão 3. Recompile A e B e gere novas chaves após atualizar; pacotes antigos são rejeitados. Preserve `build/` e `install/` entre execuções para aproveitar a compilação incremental.
+
 ```bash
 cd ~/ProjetoIC/pqc-kyber-marcos/pqc-kyber/ros2
 source /opt/ros/jazzy/setup.bash
@@ -51,6 +53,7 @@ Execute em **ambos os terminais**:
 cd ~/ProjetoIC/pqc-kyber-marcos/pqc-kyber/ros2
 source /opt/ros/jazzy/setup.bash
 source install/setup.bash
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 export ROS_DOMAIN_ID=42
 unset ROS_LOCALHOST_ONLY
 export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
@@ -65,8 +68,10 @@ ros2 run pqc_kyber receiver
 No terminal **A**, envie a mensagem:
 
 ```bash
-ros2 run pqc_kyber sender --ros-args -p 'message:=Olá, computador B!'
+ros2 run pqc_kyber sender --ros-args -p 'message:="Olá, drone! Altitude: 10 metros"'
 ```
+
+Use aspas duplas **dentro** das aspas simples: as simples protegem o argumento no Bash, e as duplas fazem o YAML do ROS2 interpretar o valor como texto, inclusive quando contém `: ` ou apenas números.
 
 A mostra texto, hash, cifra e resposta. B mostra texto recuperado, hash recebido e recalculado, concluindo com `AES-GCM autenticado; hashes iguais`. A termina após a resposta; repita o comando para enviar outra mensagem. B permanece ativo até Ctrl+C. O limite é 64 KiB.
 
@@ -77,7 +82,7 @@ A mostra texto, hash, cifra e resposta. B mostra texto recuperado, hash recebido
 Após cifrar, A executa `packet.data.back() ^= 1`: inverte um bit do último byte da **tag GCM**. B rejeita a autenticação sem exibir a mensagem recuperada. Isso não altera o núcleo caótico nem reproduz as 65 falhas do KEM.
 
 ```bash
-ros2 run pqc_kyber sender --ros-args -p 'message:=Teste adulterado' -p tamper:=true
+ros2 run pqc_kyber sender --ros-args -p 'message:="Teste adulterado"' -p tamper:=true
 echo "Codigo de saida: $?"
 ```
 
@@ -94,7 +99,7 @@ Resultado esperado: `Autenticacao AES-GCM falhou: pacote rejeitado`, resposta `E
 Domínio diferente somente para esta execução:
 
 ```bash
-ROS_DOMAIN_ID=43 ros2 run pqc_kyber sender --ros-args -p 'message:=Teste de dominio'
+ROS_DOMAIN_ID=43 ros2 run pqc_kyber sender --ros-args -p 'message:="Teste de dominio"'
 ```
 
 Pacote incompleto, no terminal A preparado anteriormente:

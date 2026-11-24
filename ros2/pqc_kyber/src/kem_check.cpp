@@ -30,7 +30,8 @@ int main()
   ChaoticHashCtx_t state{};
   _sha3_256(hash_from_wrapper.data(), input.data(), input.size());
   ChaoticHashInit(&state, 256);
-  ChaoticHashing(&state, hash_direct.data(), input.data(), input.size());
+  ChaoticHashingDomain(&state, hash_direct.data(), input.data(), input.size(),
+                     CHAOTIC_DOMAIN_HASH256);
   if (hash_from_wrapper != hash_direct) {
     std::cerr << "Falha: o adaptador nao corresponde ao hashing caotico.\n";
     return 1;
