@@ -182,7 +182,7 @@ Primeiro, comparar o adaptador com a implementação realmente utilizada no estu
 | Vetores de hash, continuidade XOF e ASan/UBSan no adaptador | Passou |
 | `test_kyber*` e `test_vectors*` nas três variantes | Passaram na revisão final; testes aleatórios de rejeição também falharam em execução anterior |
 | Compilação ROS2, `cpp_kem_chaotic_check`, `chaotic_hash_regression`, `demo_encryption_authentication` | Passaram em Jazzy/Kyber768 |
-| `run_demo.py` | Duas entregas, incluindo acentos, e tag adulterada rejeitada |
+| `run_demo.py` (preservado na branch `ros2-demo`) | Duas entregas, incluindo acentos, e tag adulterada rejeitada |
 | `test_rejection*` / `ciphertext_rejection_regression` | Falharam conforme as contagens acima |
 
 Referência original: commit `7506be86983094141ea2712caa0cca0265d64e10`. SHA-256 do núcleo usado na estimativa: `dad7ad4c58f52df6eb8f2304b888a17ffe791828ca4b4b57738b12449a45c841`.

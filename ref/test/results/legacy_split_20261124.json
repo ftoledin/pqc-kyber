@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-24",
+  "legacy_branch": "ros2-demo",
+  "legacy_commit": "b68db3ab4b464abc23b6e7c184948f2473b983e1",
+  "zenoh_branch": "zenoh-demo",
+  "removed_legacy_files": [
+    "ros2/pqc_kyber/src/sender.cpp",
+    "ros2/pqc_kyber/src/receiver.cpp",
+    "ros2/pqc_kyber/test/run_demo.py",
+    "ros2/simular.sh"
+  ],
+  "preserved_shared_crypto_header": "ros2/pqc_kyber/src/demo_crypto.hpp",
+  "crypto_sources_unchanged": true,
+  "legacy_validation": {
+    "normal_deliveries": 2,
+    "tampered_tag_rejected": true,
+    "core_ctest_passed": 5
+  },
+  "zenoh_validation": {
+    "command": true,
+    "telemetry": true,
+    "action_success": true,
+    "feedback": true,
+    "cancellation": true,
+    "tamper_rejected": true,
+    "replay_rejected": true,
+    "no_plaintext_literal_in_probe": true,
+    "no_bypass_without_central_router": true,
+    "rmw": "rmw_zenoh_cpp",
+    "local_domains": [
+      61,
+      62
+    ],
+    "log_directory": "/tmp/pqc-zenoh-split-integration"
+  },
+  "zenoh_core_ctest_log": "Internal ctest changing into directory: /tmp/pqc-zenoh-split-build/build/pqc_kyber\nTest project /tmp/pqc-zenoh-split-build/build/pqc_kyber\n    Start 1: demo_encryption_authentication\n1/5 Test #1: demo_encryption_authentication ....   Passed    0.01 sec\n    Start 2: demo_protocol_extended\n2/5 Test #2: demo_protocol_extended ............   Passed    2.03 sec\n    Start 3: cpp_kem_chaotic_check\n3/5 Test #3: cpp_kem_chaotic_check .............   Passed    0.00 sec\n    Start 4: chaotic_hash_regression\n4/5 Test #4: chaotic_hash_regression ...........   Passed    0.01 sec\n    Start 5: ciphertext_rejection_regression\n5/5 Test #5: ciphertext_rejection_regression ...   Passed    1.59 sec\n\n100% tests passed, 0 tests failed out of 5\n\nTotal Test time (real) =   3.64 sec\n",
+  "workspace_incremental_build_log": "Starting >>> pqc_kyber\nFinished <<< pqc_kyber [1.08s]\nStarting >>> pqc_zenoh_demo\nFinished <<< pqc_zenoh_demo [0.22s]\n\nSummary: 2 packages finished [1.51s]\n"
+}

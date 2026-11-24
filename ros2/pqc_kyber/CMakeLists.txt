@@ -5,8 +5,6 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 
 find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(std_msgs REQUIRED)
 find_package(OpenSSL REQUIRED)
 
 set(KYBER_K "3" CACHE STRING "Kyber parameter: 2 (512), 3 (768), 4 (1024)")
@@ -48,13 +46,6 @@ add_executable(kem_check src/kem_check.cpp)
 target_compile_features(kem_check PRIVATE cxx_std_17)
 target_link_libraries(kem_check PRIVATE kyber_chaotic)
 
-foreach(node sender receiver)
-  add_executable(${node} src/${node}.cpp)
-  target_compile_features(${node} PRIVATE cxx_std_17)
-  target_link_libraries(${node} PRIVATE kyber_chaotic OpenSSL::Crypto)
-  ament_target_dependencies(${node} PUBLIC rclcpp std_msgs)
-endforeach()
-
 if(BUILD_TESTING)
   enable_testing()
   add_executable(demo_crypto_test test/demo_crypto_test.cpp)
@@ -79,7 +70,7 @@ endif()
 install(TARGETS kyber_chaotic EXPORT kyber_chaotic_targets
   ARCHIVE DESTINATION lib
 )
-install(TARGETS kem_check sender receiver DESTINATION lib/${PROJECT_NAME})
+install(TARGETS kem_check DESTINATION lib/${PROJECT_NAME})
 # Preserve the relative include from ref/hashing.h to hash_options/chaotic_hash.h.
 install(DIRECTORY ${KYBER_ROOT}/ref/ DESTINATION include/pqc_kyber/ref
   FILES_MATCHING PATTERN "*.h" PATTERN "test" EXCLUDE PATTERN "nistkat" EXCLUDE
