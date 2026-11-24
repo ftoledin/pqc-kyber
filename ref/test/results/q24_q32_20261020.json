@@ -1,0 +1,608 @@
+{
+  "date": "2026-10-20",
+  "description": "Paired test inputs for Q24 and Q32, 10000 sessions per variant and precision",
+  "sampling": [
+    {
+      "variant": 1024,
+      "precision": 24,
+      "sessions": 10000,
+      "seed": "kyber-q24-q32-20261020",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 40,
+        "bit_nonreject": 40,
+        "byte_same": 4,
+        "byte_nonreject": 4
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00038399837067659573
+        ],
+        "bit_same": [
+          0.002939013737731544,
+          0.005441912645979639
+        ],
+        "bit_nonreject": [
+          0.002939013737731544,
+          0.005441912645979639
+        ],
+        "byte_same": [
+          0.00015556283662307484,
+          0.0010281283353569795
+        ],
+        "byte_nonreject": [
+          0.00015556283662307484,
+          0.0010281283353569795
+        ]
+      },
+      "first_failures": [
+        {
+          "trial": 146,
+          "kind": "bit",
+          "offset": 1511,
+          "xor": 1,
+          "same_secret": true
+        },
+        {
+          "trial": 166,
+          "kind": "bit",
+          "offset": 1492,
+          "xor": 128,
+          "same_secret": true
+        },
+        {
+          "trial": 188,
+          "kind": "bit",
+          "offset": 1552,
+          "xor": 4,
+          "same_secret": true
+        },
+        {
+          "trial": 373,
+          "kind": "bit",
+          "offset": 1490,
+          "xor": 8,
+          "same_secret": true
+        },
+        {
+          "trial": 391,
+          "kind": "bit",
+          "offset": 1488,
+          "xor": 16,
+          "same_secret": true
+        },
+        {
+          "trial": 523,
+          "kind": "bit",
+          "offset": 1471,
+          "xor": 32,
+          "same_secret": true
+        },
+        {
+          "trial": 1115,
+          "kind": "bit",
+          "offset": 1531,
+          "xor": 1,
+          "same_secret": true
+        },
+        {
+          "trial": 1138,
+          "kind": "byte",
+          "offset": 1552,
+          "xor": 132,
+          "same_secret": true
+        },
+        {
+          "trial": 1542,
+          "kind": "bit",
+          "offset": 1492,
+          "xor": 4,
+          "same_secret": true
+        },
+        {
+          "trial": 1575,
+          "kind": "bit",
+          "offset": 1492,
+          "xor": 128,
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "e079cac6905b0bc4cbb122653149fda53e116570732a0b93b52e1a2ae6f9b35c"
+    },
+    {
+      "variant": 1024,
+      "precision": 32,
+      "sessions": 10000,
+      "seed": "kyber-q24-q32-20261020",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 0,
+        "bit_nonreject": 0,
+        "byte_same": 0,
+        "byte_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00038399837067659573
+        ],
+        "bit_same": [
+          0.0,
+          0.00038399837067659573
+        ],
+        "bit_nonreject": [
+          0.0,
+          0.00038399837067659573
+        ],
+        "byte_same": [
+          0.0,
+          0.00038399837067659573
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00038399837067659573
+        ]
+      },
+      "first_failures": [],
+      "library_sha256": "16ea1e22f90f7658c57af731ce4acb9afbf6271e4afa86d699b58a3e489a857f"
+    },
+    {
+      "variant": 512,
+      "precision": 24,
+      "sessions": 10000,
+      "seed": "kyber-q24-q32-20261020",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 118,
+        "bit_nonreject": 118,
+        "byte_same": 7,
+        "byte_nonreject": 7
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00038399837067659573
+        ],
+        "bit_same": [
+          0.009863119376493548,
+          0.014111816632635079
+        ],
+        "bit_nonreject": [
+          0.009863119376493548,
+          0.014111816632635079
+        ],
+        "byte_same": [
+          0.0003391263316879597,
+          0.0014443344412696886
+        ],
+        "byte_nonreject": [
+          0.0003391263316879597,
+          0.0014443344412696886
+        ]
+      },
+      "first_failures": [
+        {
+          "trial": 45,
+          "kind": "bit",
+          "offset": 752,
+          "xor": 128,
+          "same_secret": true
+        },
+        {
+          "trial": 201,
+          "kind": "bit",
+          "offset": 736,
+          "xor": 128,
+          "same_secret": true
+        },
+        {
+          "trial": 267,
+          "kind": "bit",
+          "offset": 674,
+          "xor": 128,
+          "same_secret": true
+        },
+        {
+          "trial": 364,
+          "kind": "bit",
+          "offset": 753,
+          "xor": 128,
+          "same_secret": true
+        },
+        {
+          "trial": 386,
+          "kind": "bit",
+          "offset": 720,
+          "xor": 8,
+          "same_secret": true
+        },
+        {
+          "trial": 416,
+          "kind": "bit",
+          "offset": 689,
+          "xor": 128,
+          "same_secret": true
+        },
+        {
+          "trial": 561,
+          "kind": "bit",
+          "offset": 674,
+          "xor": 8,
+          "same_secret": true
+        },
+        {
+          "trial": 616,
+          "kind": "bit",
+          "offset": 688,
+          "xor": 8,
+          "same_secret": true
+        },
+        {
+          "trial": 695,
+          "kind": "bit",
+          "offset": 707,
+          "xor": 8,
+          "same_secret": true
+        },
+        {
+          "trial": 727,
+          "kind": "bit",
+          "offset": 722,
+          "xor": 128,
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "a58cbbab4ce37bc7642a81e3a176ec3229328eb601879a881e513a9a793900ac"
+    },
+    {
+      "variant": 512,
+      "precision": 32,
+      "sessions": 10000,
+      "seed": "kyber-q24-q32-20261020",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 1,
+        "bit_nonreject": 1,
+        "byte_same": 0,
+        "byte_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00038399837067659573
+        ],
+        "bit_same": [
+          1.765267360112231e-05,
+          0.0005662688974013381
+        ],
+        "bit_nonreject": [
+          1.765267360112231e-05,
+          0.0005662688974013381
+        ],
+        "byte_same": [
+          0.0,
+          0.00038399837067659573
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00038399837067659573
+        ]
+      },
+      "first_failures": [
+        {
+          "trial": 2900,
+          "kind": "bit",
+          "offset": 640,
+          "xor": 8,
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "0d8995651d775171c9c0c290e5446111328e991fa8909b2333a1891ef9ee12b0"
+    },
+    {
+      "variant": 768,
+      "precision": 24,
+      "sessions": 10000,
+      "seed": "kyber-q24-q32-20261020",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 70,
+        "bit_nonreject": 70,
+        "byte_same": 1,
+        "byte_nonreject": 1
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00038399837067659573
+        ],
+        "bit_same": [
+          0.005544619309554507,
+          0.008834003083932618
+        ],
+        "bit_nonreject": [
+          0.005544619309554507,
+          0.008834003083932618
+        ],
+        "byte_same": [
+          1.765267360112231e-05,
+          0.0005662688974013381
+        ],
+        "byte_nonreject": [
+          1.765267360112231e-05,
+          0.0005662688974013381
+        ]
+      },
+      "first_failures": [
+        {
+          "trial": 41,
+          "kind": "bit",
+          "offset": 1026,
+          "xor": 8,
+          "same_secret": true
+        },
+        {
+          "trial": 56,
+          "kind": "bit",
+          "offset": 1043,
+          "xor": 8,
+          "same_secret": true
+        },
+        {
+          "trial": 561,
+          "kind": "bit",
+          "offset": 1058,
+          "xor": 8,
+          "same_secret": true
+        },
+        {
+          "trial": 803,
+          "kind": "bit",
+          "offset": 977,
+          "xor": 8,
+          "same_secret": true
+        },
+        {
+          "trial": 872,
+          "kind": "bit",
+          "offset": 976,
+          "xor": 128,
+          "same_secret": true
+        },
+        {
+          "trial": 1005,
+          "kind": "bit",
+          "offset": 995,
+          "xor": 8,
+          "same_secret": true
+        },
+        {
+          "trial": 1046,
+          "kind": "bit",
+          "offset": 1075,
+          "xor": 128,
+          "same_secret": true
+        },
+        {
+          "trial": 1149,
+          "kind": "bit",
+          "offset": 995,
+          "xor": 8,
+          "same_secret": true
+        },
+        {
+          "trial": 1186,
+          "kind": "bit",
+          "offset": 1025,
+          "xor": 128,
+          "same_secret": true
+        },
+        {
+          "trial": 1352,
+          "kind": "bit",
+          "offset": 1041,
+          "xor": 128,
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "f8801265b7c176111e8c380c97659b2ca62ad028524dbcb8faedb276505322f7"
+    },
+    {
+      "variant": 768,
+      "precision": 32,
+      "sessions": 10000,
+      "seed": "kyber-q24-q32-20261020",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 0,
+        "bit_nonreject": 0,
+        "byte_same": 0,
+        "byte_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00038399837067659573
+        ],
+        "bit_same": [
+          0.0,
+          0.00038399837067659573
+        ],
+        "bit_nonreject": [
+          0.0,
+          0.00038399837067659573
+        ],
+        "byte_same": [
+          0.0,
+          0.00038399837067659573
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00038399837067659573
+        ]
+      },
+      "first_failures": [],
+      "library_sha256": "48b555746bbdd8c0dfab1435055010b27afc2cd797d1291eaaee74e225a07975"
+    }
+  ],
+  "deterministic_rejection": {
+    "512": {
+      "mutations": 6144,
+      "q24_failures": 65,
+      "q32_failures": 1
+    },
+    "768": {
+      "mutations": 8704,
+      "q24_failures": 65,
+      "q32_failures": 1
+    },
+    "1024": {
+      "mutations": 12544,
+      "q24_failures": 65,
+      "q32_failures": 1
+    }
+  },
+  "remaining_q32_kyber768_trace": {
+    "message_xor_bits": [
+      64
+    ],
+    "states_original": [
+      [
+        1309174789,
+        1031329010
+      ],
+      [
+        50996013,
+        1424961204
+      ],
+      [
+        1993567333,
+        3912746955
+      ],
+      [
+        206280300,
+        3789566467
+      ],
+      [
+        2410188485,
+        1298624962
+      ],
+      [
+        3132344157,
+        3494504407
+      ],
+      [
+        1271039067,
+        584273065
+      ],
+      [
+        3581004670,
+        4043108008
+      ]
+    ],
+    "states_altered": [
+      [
+        1309174789,
+        1031329010
+      ],
+      [
+        50996014,
+        1424961204
+      ],
+      [
+        1993567333,
+        3912746955
+      ],
+      [
+        206280300,
+        3789566467
+      ],
+      [
+        2410188485,
+        1298624962
+      ],
+      [
+        3132344157,
+        3494504407
+      ],
+      [
+        1271039067,
+        584273065
+      ],
+      [
+        3581004670,
+        4043108008
+      ]
+    ]
+  },
+  "core_sha256": "416eb049b8ec10eb243a7b2036b79fd5ada67792d7a625528e8330573feb9826",
+  "q32_checks": [
+    {
+      "test": "test_hashing",
+      "exit_code": 1,
+      "output": "ERROR Q32 low input bit produced an unchanged hash: byte 16 bit 0\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_rejection512",
+      "exit_code": 1,
+      "output": "ERROR invalid ciphertext: byte 672 bit 3\nKyber512: 1 of 6144 single-bit mutations failed rejection\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_rejection768",
+      "exit_code": 1,
+      "output": "ERROR invalid ciphertext: byte 992 bit 3\nKyber768: 1 of 8704 single-bit mutations failed rejection\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_rejection1024",
+      "exit_code": 1,
+      "output": "ERROR invalid ciphertext: byte 1448 bit 4\nKyber1024: 1 of 12544 single-bit mutations failed rejection\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_kyber512",
+      "exit_code": 0,
+      "output": "CRYPTO_SECRETKEYBYTES:  1632\nCRYPTO_PUBLICKEYBYTES:  800\nCRYPTO_CIPHERTEXTBYTES: 768\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_kyber768",
+      "exit_code": 0,
+      "output": "CRYPTO_SECRETKEYBYTES:  2400\nCRYPTO_PUBLICKEYBYTES:  1184\nCRYPTO_CIPHERTEXTBYTES: 1088\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_kyber1024",
+      "exit_code": 0,
+      "output": "CRYPTO_SECRETKEYBYTES:  3168\nCRYPTO_PUBLICKEYBYTES:  1568\nCRYPTO_CIPHERTEXTBYTES: 1568\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_vectors512",
+      "exit_code": 0,
+      "output": "4966585ba58e77ff951f0251832679221c69ef45572a2da4d331ada232f39072e63d7c149c6e8d1162611b6997333422f683061dfad3c7f970e93789e27c29cf44d6a80e1a4e5dd9926e1179634b20e5714a901ac2e8d04a0076375a59bfafad299cdaa83b9ac1fe2c1a026c4a2c4229909ecb6a2652e990\nShared Secret B: 9a95bf94def4e409905f5334d816a65e6b103528f448606b2ff57d9cbdf77f5a\nShared Secret A: 9a95bf94def4e409905f5334d816a65e6b103528f448606b2ff57d9cbdf77f5a\nPseudorandom shared Secret A: 725bd0ec4817534e8e416cda84d42c3bbdebfd0ba6bb41e4c0b71b1e6e6ed071\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_vectors768",
+      "exit_code": 0,
+      "output": "83f27b379d376312483a03cb9c37d6eb2602c35dfa65841ef39fe4743a77779061164a792795fb518a5b4f0844b487c82d1dd3e5935cc7631bc79c3a7d42835ac6f0441e2a4dccf8503da5926d9262b4ce09bda9b64cb6bd4d7b62ce156089ddf8cbbf912917b429781e7dfae79575d4fcfbc14de7107275\nShared Secret B: fb01be80520fa2704d089333e534e0add41c062a02e11e5cd574029906b094f2\nShared Secret A: fb01be80520fa2704d089333e534e0add41c062a02e11e5cd574029906b094f2\nPseudorandom shared Secret A: 32cc2f74992e19a03d3c2c1b11d7126b035e20914a8964de508134724b6e2ac4\n",
+      "stderr": ""
+    },
+    {
+      "test": "test_vectors1024",
+      "exit_code": 0,
+      "output": "e3251261d743b555ed352495d1dfa8a11b78441fdee07110996de340460d8666df2de35caa088d9a4d8bf5a262e4c98c94166f30fe2525cfba5d767d79216b02ad5e5126b6b62f8e6bc36b9f81dbb0f9278fb704287fee76638d0f9845f97835fe5441e34dabc64b338492e867319ef8f7c51a12bd2f40e1\nShared Secret B: fd0125879063c2a98a6a65e5fd4d453d1eb6d4ed84f4d0aeb0a02dd62e3b0db3\nShared Secret A: fd0125879063c2a98a6a65e5fd4d453d1eb6d4ed84f4d0aeb0a02dd62e3b0db3\nPseudorandom shared Secret A: b41c72fe28bd1999a9a73ab4683716f24911bee5e69a7315d8ef9ce88e62bb0c\n",
+      "stderr": ""
+    }
+  ]
+}

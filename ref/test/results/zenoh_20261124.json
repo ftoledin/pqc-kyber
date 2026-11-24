@@ -1,0 +1,161 @@
+{
+  "date": "2026-11-24",
+  "architecture": "C++ ROS2 local A -> crypto gateway A -> Zenoh router -> crypto gateway B -> ROS2 local B",
+  "rmw": "rmw_zenoh_cpp",
+  "dds_used_in_new_demo": false,
+  "dependencies": {
+    "rmw_zenoh_cpp": "0.2.13-1noble.20261104.171211",
+    "zenoh_cpp_vendor": "0.2.13-1noble.20261104.080457",
+    "installation_for_validation": "APT packages extracted into /tmp, no system package changes"
+  },
+  "core_crypto_modified": false,
+  "integration": {
+    "command": true,
+    "telemetry": true,
+    "action_success": true,
+    "feedback": true,
+    "cancellation": true,
+    "tamper_rejected": true,
+    "replay_rejected": true,
+    "no_plaintext_literal_in_probe": true,
+    "no_bypass_without_central_router": true,
+    "rmw": "rmw_zenoh_cpp",
+    "local_domains": [
+      61,
+      62
+    ],
+    "log_directory": "/tmp/pqc-zenoh-_llis58l"
+  },
+  "manual_two_terminal_launch": {
+    "a_b_separate_launchers": true,
+    "success": true,
+    "cancel": true,
+    "commands": 2,
+    "logs": "/tmp/pqc-zenoh-manual-_aytma57"
+  },
+  "ctest": {
+    "existing_package": "Start testing: Nov 24 12:31 -03\n----------------------------------------------------------\n1/5 Testing: demo_encryption_authentication\n1/5 Test: demo_encryption_authentication\nCommand: \"/tmp/kyber-zenoh-build/build/pqc_kyber/demo_crypto_test\"\nDirectory: /tmp/kyber-zenoh-build/build/pqc_kyber\n\"demo_encryption_authentication\" start time: Nov 24 12:31 -03\nOutput:\n----------------------------------------------------------\nPASS: mensagens, hash, adulteracoes, limites e chave incorreta\n<end of output>\nTest time =   0.02 sec\n----------------------------------------------------------\nTest Passed.\n\"demo_encryption_authentication\" end time: Nov 24 12:31 -03\n\"demo_encryption_authentication\" time elapsed: 00:00:00\n----------------------------------------------------------\n\n2/5 Testing: demo_protocol_extended\n2/5 Test: demo_protocol_extended\nCommand: \"/tmp/kyber-zenoh-build/build/pqc_kyber/protocol_extended\"\nDirectory: /tmp/kyber-zenoh-build/build/pqc_kyber\n\"demo_protocol_extended\" start time: Nov 24 12:31 -03\nOutput:\n----------------------------------------------------------\n{\"variant\":\"Kyber768\",\"checks\":{\"fresh_encryption_packet_uniqueness\":{\"cases\":256,\"failures\":0},\"fresh_encryption_roundtrip\":{\"cases\":256,\"failures\":0},\"reject_appended_bytes\":{\"cases\":128,\"failures\":0},\"reject_every_truncation\":{\"cases\":1184,\"failures\":0},\"reject_legacy_frame_version\":{\"cases\":2,\"failures\":0},\"reject_one_bit_hash\":{\"cases\":256,\"failures\":0},\"reject_one_bit_header\":{\"cases\":40,\"failures\":0},\"reject_one_bit_kem\":{\"cases\":8704,\"failures\":0},\"reject_one_bit_nonce\":{\"cases\":96,\"failures\":0},\"reject_one_bit_payload\":{\"cases\":248,\"failures\":0},\"reject_one_bit_tag\":{\"cases\":128,\"failures\":0},\"reject_oversize_frame\":{\"cases\":1,\"failures\":0},\"reject_oversize_plaintext\":{\"cases\":1,\"failures\":0},\"reject_private_key_size\":{\"cases\":3,\"failures\":0},\"reject_public_key_size\":{\"cases\":3,\"failures\":0},\"reject_random_frames\":{\"cases\":1000,\"failures\":0},\"reject_unrelated_private_key\":{\"cases\":64,\"failures\":0},\"roundtrip_binary_and_boundaries\":{\"cases\":110,\"failures\":0}},\"protocol_observations\":{\"public_key_only_sender_accepted\":10,\"replay_accepted_by_open\":10}}\n<end of output>\nTest time =   4.73 sec\n----------------------------------------------------------\nTest Passed.\n\"demo_protocol_extended\" end time: Nov 24 12:31 -03\n\"demo_protocol_extended\" time elapsed: 00:00:04\n----------------------------------------------------------\n\n3/5 Testing: cpp_kem_chaotic_check\n3/5 Test: cpp_kem_chaotic_check\nCommand: \"/tmp/kyber-zenoh-build/build/pqc_kyber/kem_check\"\nDirectory: /tmp/kyber-zenoh-build/build/pqc_kyber\n\"cpp_kem_chaotic_check\" start time: Nov 24 12:31 -03\nOutput:\n----------------------------------------------------------\nKyber768: C++ ligado ao codigo C com hashing caotico.\nSegredo compartilhado recuperado; ciphertext alterado rejeitado.\n<end of output>\nTest time =   0.00 sec\n----------------------------------------------------------\nTest Passed.\n\"cpp_kem_chaotic_check\" end time: Nov 24 12:31 -03\n\"cpp_kem_chaotic_check\" time elapsed: 00:00:00\n----------------------------------------------------------\n\n4/5 Testing: chaotic_hash_regression\n4/5 Test: chaotic_hash_regression\nCommand: \"/tmp/kyber-zenoh-build/build/pqc_kyber/hash_regression\"\nDirectory: /tmp/kyber-zenoh-build/build/pqc_kyber\n\"chaotic_hash_regression\" start time: Nov 24 12:31 -03\nOutput:\n----------------------------------------------------------\nCHF1 lengths, trailing bytes, empty input and domains: OK\nChaotic hashing regression tests: OK\n<end of output>\nTest time =   0.01 sec\n----------------------------------------------------------\nTest Passed.\n\"chaotic_hash_regression\" end time: Nov 24 12:31 -03\n\"chaotic_hash_regression\" time elapsed: 00:00:00\n----------------------------------------------------------\n\n5/5 Testing: ciphertext_rejection_regression\n5/5 Test: ciphertext_rejection_regression\nCommand: \"/tmp/kyber-zenoh-build/build/pqc_kyber/rejection_regression\"\nDirectory: /tmp/kyber-zenoh-build/build/pqc_kyber\n\"ciphertext_rejection_regression\" start time: Nov 24 12:31 -03\nOutput:\n----------------------------------------------------------\nKyber768: 0 of 8704 single-bit mutations failed rejection\n<end of output>\nTest time =   3.88 sec\n----------------------------------------------------------\nTest Passed.\n\"ciphertext_rejection_regression\" end time: Nov 24 12:31 -03\n\"ciphertext_rejection_regression\" time elapsed: 00:00:03\n----------------------------------------------------------\n\nEnd testing: Nov 24 12:31 -03\n",
+    "zenoh_package": "Start testing: Nov 24 12:33 -03\n----------------------------------------------------------\n1/1 Testing: zenoh_gateway_integration\n1/1 Test: zenoh_gateway_integration\nCommand: \"/usr/bin/python3\" \"/home/ftoledin/ProjetoIC/pqc-kyber-marcos/pqc-kyber/ros2/pqc_zenoh_demo/scripts/demo.py\" \"test\"\nDirectory: /tmp/kyber-zenoh-build/build/pqc_zenoh_demo\n\"zenoh_gateway_integration\" start time: Nov 24 12:33 -03\nOutput:\n----------------------------------------------------------\nLogs: /tmp/pqc-zenoh-_llis58l\nPASS: {\"command\": true, \"telemetry\": true, \"action_success\": true, \"feedback\": true, \"cancellation\": true, \"tamper_rejected\": true, \"replay_rejected\": true, \"no_plaintext_literal_in_probe\": true, \"no_bypass_without_central_router\": true, \"rmw\": \"rmw_zenoh_cpp\", \"local_domains\": [61, 62], \"log_directory\": \"/tmp/pqc-zenoh-_llis58l\"}\n<end of output>\nTest time =   7.67 sec\n----------------------------------------------------------\nTest Passed.\n\"zenoh_gateway_integration\" end time: Nov 24 12:33 -03\n\"zenoh_gateway_integration\" time elapsed: 00:00:07\n----------------------------------------------------------\n\nEnd testing: Nov 24 12:33 -03\n"
+  },
+  "configuration": {
+    "router_central.json5": {
+      "mode": "router",
+      "listen": {
+        "endpoints": [
+          "tcp/127.0.0.1:53531"
+        ]
+      },
+      "connect": {
+        "endpoints": []
+      },
+      "scouting": {
+        "multicast": {
+          "enabled": false
+        },
+        "gossip": {
+          "enabled": false
+        }
+      }
+    },
+    "session_a.json5": {
+      "mode": "client",
+      "connect": {
+        "endpoints": [
+          "tcp/127.0.0.1:36121"
+        ]
+      },
+      "scouting": {
+        "multicast": {
+          "enabled": false
+        },
+        "gossip": {
+          "enabled": false
+        }
+      }
+    },
+    "router_a.json5": {
+      "mode": "router",
+      "listen": {
+        "endpoints": [
+          "tcp/127.0.0.1:36121"
+        ]
+      },
+      "connect": {
+        "endpoints": []
+      },
+      "scouting": {
+        "multicast": {
+          "enabled": false
+        },
+        "gossip": {
+          "enabled": false
+        }
+      }
+    },
+    "router_b.json5": {
+      "mode": "router",
+      "listen": {
+        "endpoints": [
+          "tcp/127.0.0.1:34101"
+        ]
+      },
+      "connect": {
+        "endpoints": []
+      },
+      "scouting": {
+        "multicast": {
+          "enabled": false
+        },
+        "gossip": {
+          "enabled": false
+        }
+      }
+    },
+    "session_b.json5": {
+      "mode": "client",
+      "connect": {
+        "endpoints": [
+          "tcp/127.0.0.1:34101"
+        ]
+      },
+      "scouting": {
+        "multicast": {
+          "enabled": false
+        },
+        "gossip": {
+          "enabled": false
+        }
+      }
+    }
+  },
+  "logs": {
+    "router_b.log": "Started Zenoh router with id 2edfe924a58cfbb511598e63cd039bf2\n",
+    "robot.log": "[INFO] [1795534433.106923019] [robot_simulator]: ROBOT READY\n[INFO] [1795534434.420488927] [robot_simulator]: COMMAND RECEIVED: Subir para 10 metros (simulado)\n[INFO] [1795534434.420677244] [robot_simulator]: ROBOT GOAL order=8\n[INFO] [1795534435.507283536] [robot_simulator]: ROBOT SUCCEEDED\n[INFO] [1795534435.820464331] [robot_simulator]: COMMAND RECEIVED: Subir para 10 metros (simulado)\n[INFO] [1795534435.820586949] [robot_simulator]: ROBOT GOAL order=12\n[INFO] [1795534436.507234412] [robot_simulator]: ROBOT CANCELED\n[INFO] [1795534439.704836762] [rclcpp]: signal_handler(SIGINT/SIGTERM)\n",
+    "negative_route.log": "publisher: beginning loop\npublishing #1: std_msgs.msg.String(data='NAO_DEVE_ATRAVESSAR_SEM_ROUTER')\n\n",
+    "router_a.log": "Started Zenoh router with id 8356a79bb9e2d7919affb780576be059\n",
+    "operator_cancel.log": "[INFO] [1795534435.811511268] [operator_simulator]: COMMAND SENT: Subir para 10 metros (simulado)\n[INFO] [1795534435.919632196] [operator_simulator]: ACTION FEEDBACK length=3\n[INFO] [1795534436.119301590] [operator_simulator]: TELEMETRY RECEIVED: 87.5\n[INFO] [1795534436.119348325] [operator_simulator]: ACTION FEEDBACK length=4\n[INFO] [1795534436.318654226] [operator_simulator]: ACTION FEEDBACK length=5\n[INFO] [1795534436.318774796] [operator_simulator]: ACTION CANCEL REQUESTED\n[INFO] [1795534436.523849201] [operator_simulator]: ACTION RESULT CANCELED length=5\n",
+    "gateway_b.log": "[INFO] [1795534433.110020991] [crypto_gateway]: GATEWAY role=b; transporte central Zenoh cliente; sem DDS\n[INFO] [1795534434.106046295] [crypto_gateway]: LINK READY role=b (chave fixada nesta execucao; sem identidade certificada)\n[INFO] [1795534434.107834202] [crypto_gateway]: ZENOH TX cifrado: tipo=2 id=0 seq=1\n[INFO] [1795534434.411173229] [crypto_gateway]: ZENOH RX autenticado: tipo=1 id=0 seq=1; hashes iguais\n[INFO] [1795534434.411650882] [crypto_gateway]: ZENOH RX autenticado: tipo=3 id=1 seq=2; hashes iguais\n[INFO] [1795534434.421291731] [crypto_gateway]: ZENOH TX cifrado: tipo=4 id=1 seq=2\n[INFO] [1795534434.507855779] [crypto_gateway]: ZENOH TX cifrado: tipo=5 id=1 seq=3\n[INFO] [1795534434.707820924] [crypto_gateway]: ZENOH TX cifrado: tipo=5 id=1 seq=4\n[WARN] [1795534434.891820984] [crypto_gateway]: PACOTE REJEITADO: Autenticacao AES-GCM falhou: pacote rejeitado\n[INFO] [1795534434.907864703] [crypto_gateway]: ZENOH TX cifrado: tipo=5 id=1 seq=5\n[INFO] [1795534435.107745513] [crypto_gateway]: ZENOH TX cifrado: tipo=2 id=0 seq=6\n[INFO] [1795534435.108202739] [crypto_gateway]: ZENOH TX cifrado: tipo=5 id=1 seq=7\n[WARN] [1795534435.192080230] [crypto_gateway]: PACOTE REJEITADO: REPLAY rejeitado\n[INFO] [1795534435.307892548] [crypto_gateway]: ZENOH TX cifrado: tipo=5 id=1 seq=8\n[INFO] [1795534435.507956761] [crypto_gateway]: ZENOH TX cifrado: tipo=5 id=1 seq=9\n[INFO] [1795534435.508454469] [crypto_gateway]: ZENOH TX cifrado: tipo=6 id=1 seq=10\n[INFO] [1795534435.813044676] [crypto_gateway]: ZENOH RX autenticado: tipo=1 id=0 seq=3; hashes iguais\n[INFO] [1795534435.813559496] [crypto_gateway]: ZENOH RX autenticado: tipo=3 id=2 seq=4; hashes iguais\n[INFO] [1795534435.821241693] [crypto_gateway]: ZENOH TX cifrado: tipo=4 id=2 seq=11\n[INFO] [1795534435.907922969] [crypto_gateway]: ZENOH TX cifrado: tipo=5 id=2 seq=12\n[INFO] [1795534436.107793054] [crypto_gateway]: ZENOH TX cifrado: tipo=2 id=0 seq=13\n[INFO] [1795534436.108271799] [crypto_gateway]: ZENOH TX cifrado: tipo=5 id=2 seq=14\n[INFO] [1795534436.308030426] [crypto_gateway]: ZENOH TX cifrado: tipo=5 id=2 seq=15\n[INFO] [1795534436.320155753] [crypto_gateway]: ZENOH RX autenticado: tipo=7 id=2 seq=5; hashes iguais\n[INFO] [1795534436.331159820] [crypto_gateway]: ZENOH TX cifrado: tipo=8 id=2 seq=16\n[INFO] [1795534436.507985519] [crypto_gateway]: ZENOH TX cifrado: tipo=6 id=2 seq=17\n[INFO] [1795534437.107833990] [crypto_gateway]: ZENOH TX cifrado: tipo=2 id=0 seq=18\n[INFO] [1795534438.107898381] [crypto_gateway]: ZENOH TX cifrado: tipo=2 id=0 seq=19\n[INFO] [1795534439.107891111] [crypto_gateway]: ZENOH TX cifrado: tipo=2 id=0 seq=20\n[INFO] [1795534439.701637756] [rclcpp]: signal_handler(SIGINT/SIGTERM)\n",
+    "operator_success.log": "[INFO] [1795534434.409681876] [operator_simulator]: COMMAND SENT: Subir para 10 metros (simulado)\n[INFO] [1795534434.517587624] [operator_simulator]: ACTION FEEDBACK length=3\n[INFO] [1795534434.717066064] [operator_simulator]: ACTION FEEDBACK length=4\n[INFO] [1795534434.916677932] [operator_simulator]: ACTION FEEDBACK length=5\n[INFO] [1795534435.120992940] [operator_simulator]: TELEMETRY RECEIVED: 87.5\n[INFO] [1795534435.121058943] [operator_simulator]: ACTION FEEDBACK length=6\n[INFO] [1795534435.320577536] [operator_simulator]: ACTION FEEDBACK length=7\n[INFO] [1795534435.520093978] [operator_simulator]: ACTION FEEDBACK length=8\n[INFO] [1795534435.530414123] [operator_simulator]: ACTION RESULT SUCCEEDED length=8\n",
+    "probe.log": "WIRE pqc/prototype/49655bfab291/a/pk bytes=1200\nWIRE pqc/prototype/49655bfab291/b/data bytes=1195\nWIRE pqc/prototype/49655bfab291/b/pk bytes=1200\nWIRE pqc/prototype/49655bfab291/a/data bytes=0\nWIRE pqc/prototype/49655bfab291/a/data bytes=1195\nWIRE pqc/prototype/49655bfab291/b/data bytes=1188\nWIRE pqc/prototype/49655bfab291/b/data bytes=1207\nWIRE pqc/prototype/49655bfab291/a/pk bytes=1200\nWIRE pqc/prototype/49655bfab291/b/pk bytes=1200\nWIRE pqc/prototype/49655bfab291/b/data bytes=1211\nWIRE pqc/prototype/49655bfab291/a/data bytes=1227\nWIRE pqc/prototype/49655bfab291/b/data bytes=1215\nWIRE pqc/prototype/49655bfab291/a/pk bytes=1200\nWIRE pqc/prototype/49655bfab291/b/data bytes=1195\nWIRE pqc/prototype/49655bfab291/b/data bytes=1219\nWIRE pqc/prototype/49655bfab291/b/pk bytes=1200\nWIRE pqc/prototype/49655bfab291/a/data bytes=1227\nWIRE pqc/prototype/49655bfab291/b/data bytes=1223\nWIRE pqc/prototype/49655bfab291/b/data bytes=1227\nWIRE pqc/prototype/49655bfab291/b/data bytes=1228\nWIRE pqc/prototype/49655bfab291/a/pk bytes=1200\nWIRE pqc/prototype/49655bfab291/b/pk bytes=1200\nPROBE DONE plaintext_literal=0\n",
+    "router_central.log": "Started Zenoh router with id 5f3b12387cdbc69be0208732ed42989e\n",
+    "gateway_a.log": "[INFO] [1795534433.605562924] [crypto_gateway]: GATEWAY role=a; transporte central Zenoh cliente; sem DDS\n[INFO] [1795534433.610517742] [crypto_gateway]: LINK READY role=a (chave fixada nesta execucao; sem identidade certificada)\n[INFO] [1795534434.108492295] [crypto_gateway]: ZENOH RX autenticado: tipo=2 id=0 seq=1; hashes iguais\n[INFO] [1795534434.410489254] [crypto_gateway]: ZENOH TX cifrado: tipo=1 id=0 seq=1\n[INFO] [1795534434.410984036] [crypto_gateway]: ZENOH TX cifrado: tipo=3 id=1 seq=2\n[INFO] [1795534434.421969867] [crypto_gateway]: ZENOH RX autenticado: tipo=4 id=1 seq=2; hashes iguais\n[INFO] [1795534434.422151176] [crypto_gateway]: ACTION goal aceito pelo robo: id=1\n[INFO] [1795534434.508532260] [crypto_gateway]: ZENOH RX autenticado: tipo=5 id=1 seq=3; hashes iguais\n[INFO] [1795534434.708496334] [crypto_gateway]: ZENOH RX autenticado: tipo=5 id=1 seq=4; hashes iguais\n[INFO] [1795534434.908553933] [crypto_gateway]: ZENOH RX autenticado: tipo=5 id=1 seq=5; hashes iguais\n[INFO] [1795534435.108393022] [crypto_gateway]: ZENOH RX autenticado: tipo=2 id=0 seq=6; hashes iguais\n[INFO] [1795534435.108859146] [crypto_gateway]: ZENOH RX autenticado: tipo=5 id=1 seq=7; hashes iguais\n[INFO] [1795534435.308638033] [crypto_gateway]: ZENOH RX autenticado: tipo=5 id=1 seq=8; hashes iguais\n[INFO] [1795534435.508648956] [crypto_gateway]: ZENOH RX autenticado: tipo=5 id=1 seq=9; hashes iguais\n[INFO] [1795534435.509134049] [crypto_gateway]: ZENOH RX autenticado: tipo=6 id=1 seq=10; hashes iguais\n[INFO] [1795534435.515792378] [crypto_gateway]: ACTION resultado: id=1 status=4\n[INFO] [1795534435.812345637] [crypto_gateway]: ZENOH TX cifrado: tipo=1 id=0 seq=3\n[INFO] [1795534435.812818215] [crypto_gateway]: ZENOH TX cifrado: tipo=3 id=2 seq=4\n[INFO] [1795534435.821946110] [crypto_gateway]: ZENOH RX autenticado: tipo=4 id=2 seq=11; hashes iguais\n[INFO] [1795534435.822070586] [crypto_gateway]: ACTION goal aceito pelo robo: id=2\n[INFO] [1795534435.908600790] [crypto_gateway]: ZENOH RX autenticado: tipo=5 id=2 seq=12; hashes iguais\n[INFO] [1795534436.108434489] [crypto_gateway]: ZENOH RX autenticado: tipo=2 id=0 seq=13; hashes iguais\n[INFO] [1795534436.108911369] [crypto_gateway]: ZENOH RX autenticado: tipo=5 id=2 seq=14; hashes iguais\n[INFO] [1795534436.308720954] [crypto_gateway]: ZENOH RX autenticado: tipo=5 id=2 seq=15; hashes iguais\n[INFO] [1795534436.319500670] [crypto_gateway]: ZENOH TX cifrado: tipo=7 id=2 seq=5\n[INFO] [1795534436.331797132] [crypto_gateway]: ZENOH RX autenticado: tipo=8 id=2 seq=16; hashes iguais\n[INFO] [1795534436.335602252] [crypto_gateway]: ACTION cancelamento encaminhado: id=2 aceito=1\n[INFO] [1795534436.508684196] [crypto_gateway]: ZENOH RX autenticado: tipo=6 id=2 seq=17; hashes iguais\n[INFO] [1795534436.515785646] [crypto_gateway]: ACTION resultado: id=2 status=5\n[INFO] [1795534437.494536451] [crypto_gateway]: ZENOH TX cifrado: tipo=1 id=0 seq=6\n[INFO] [1795534439.697313012] [rclcpp]: signal_handler(SIGINT/SIGTERM)\n"
+  },
+  "limitations": [
+    "local simulation only",
+    "first-use public keys are not authenticated identities",
+    "experimental chaotic hash security limits unchanged",
+    "single active goal, finite Fibonacci calculation",
+    "no session reconnection or TTL for delayed commands",
+    "public hash in legacy crypto envelope; observer test only checks literal command text"
+  ],
+  "source_sha256": {
+    "ros2/pqc_zenoh_demo/CMakeLists.txt": "8b1e0dd1bf1ca6bfa279f3a9de5a0832c56c15affa02a45d381699d7d1f62d97",
+    "ros2/pqc_zenoh_demo/package.xml": "a48f61b08e8fda68a1ada61f0c1293595d0975a822c4a37b73170f5e05caf03d",
+    "ros2/pqc_zenoh_demo/src/gateway.cpp": "86e2042e1a10ad11690168d4d9dfb6f7a255086797532a19b7dd1688a5065845",
+    "ros2/pqc_zenoh_demo/src/probe.cpp": "640be0f3dd28381511e716815d558d3f437a934d32bef4f2236df72e57d1ad25",
+    "ros2/pqc_zenoh_demo/src/controller.cpp": "8394ea1d31b2ce7f0bdeaf62e563a4a40938ed8647d33a6f714262d3cb9d45cd",
+    "ros2/pqc_zenoh_demo/src/common.hpp": "79aef847c30b87747f00ee6b73764053378fee7dd1d5c17bb5d739c102dbc5b5",
+    "ros2/pqc_zenoh_demo/src/robot.cpp": "85562d10cbf66d029a0915fb22cc086228ba723c9b1b937c48e43992a066a726",
+    "ros2/pqc_zenoh_demo/scripts/demo.py": "007f0cad7451bc78d2f2e8f1bb20492606436492613914698a2fb0096bc12fc9"
+  }
+}

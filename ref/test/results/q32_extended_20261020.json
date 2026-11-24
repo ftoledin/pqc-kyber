@@ -1,0 +1,1794 @@
+{
+  "date": "2026-10-20",
+  "precision": 32,
+  "seeds": 5,
+  "sessions_per_seed": 20000,
+  "core_sha256": "416eb049b8ec10eb243a7b2036b79fd5ada67792d7a625528e8330573feb9826",
+  "model": "Uniform independent test coins; bit, byte XOR 1..255, two distinct bits, full random ciphertext",
+  "aggregate": [
+    {
+      "variant": 512,
+      "sessions": 100000,
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 24,
+        "bit_nonreject": 24,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "bit_regions": {
+        "u": {
+          "trials": 83324,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 16676,
+          "nonreject": 24
+        }
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "bit_same": [
+          0.00016129191248332846,
+          0.0003571027618056714
+        ],
+        "bit_nonreject": [
+          0.00016129191248332846,
+          0.0003571027618056714
+        ],
+        "byte_same": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "byte_nonreject": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "twobit_same": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "twobit_nonreject": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "random_same": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "random_nonreject": [
+          0.0,
+          3.841311258303963e-05
+        ]
+      }
+    },
+    {
+      "variant": 768,
+      "sessions": 100000,
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 12,
+        "bit_nonreject": 12,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 1,
+        "twobit_nonreject": 1,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "bit_regions": {
+        "u": {
+          "trials": 88159,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 11841,
+          "nonreject": 12
+        }
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "bit_same": [
+          6.86488807399473e-05,
+          0.00020975501269607244
+        ],
+        "bit_nonreject": [
+          6.86488807399473e-05,
+          0.00020975501269607244
+        ],
+        "byte_same": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "byte_nonreject": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "twobit_same": [
+          1.7652477303783126e-06,
+          5.664709659040966e-05
+        ],
+        "twobit_nonreject": [
+          1.7652477303783126e-06,
+          5.664709659040966e-05
+        ],
+        "random_same": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "random_nonreject": [
+          0.0,
+          3.841311258303963e-05
+        ]
+      }
+    },
+    {
+      "variant": 1024,
+      "sessions": 100000,
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 12,
+        "bit_nonreject": 12,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "bit_regions": {
+        "u": {
+          "trials": 89893,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 10107,
+          "nonreject": 12
+        }
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "bit_same": [
+          6.86488807399473e-05,
+          0.00020975501269607244
+        ],
+        "bit_nonreject": [
+          6.86488807399473e-05,
+          0.00020975501269607244
+        ],
+        "byte_same": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "byte_nonreject": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "twobit_same": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "twobit_nonreject": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "random_same": [
+          0.0,
+          3.841311258303963e-05
+        ],
+        "random_nonreject": [
+          0.0,
+          3.841311258303963e-05
+        ]
+      }
+    }
+  ],
+  "batches": [
+    {
+      "variant": 512,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-1",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 5,
+        "bit_nonreject": 5,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          0.00010678963454394949,
+          0.0005851504035326238
+        ],
+        "bit_nonreject": [
+          0.00010678963454394949,
+          0.0005851504035326238
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 16623,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 3377,
+          "nonreject": 5
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 4834,
+          "kind": "bit",
+          "edits": [
+            [
+              720,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 7374,
+          "kind": "bit",
+          "edits": [
+            [
+              736,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 13282,
+          "kind": "bit",
+          "edits": [
+            [
+              688,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 13306,
+          "kind": "bit",
+          "edits": [
+            [
+              656,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 15029,
+          "kind": "bit",
+          "edits": [
+            [
+              720,
+              128
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "0d8995651d775171c9c0c290e5446111328e991fa8909b2333a1891ef9ee12b0"
+    },
+    {
+      "variant": 512,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-2",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 6,
+        "bit_nonreject": 6,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          0.0001374997137187844,
+          0.0006544211207521783
+        ],
+        "bit_nonreject": [
+          0.0001374997137187844,
+          0.0006544211207521783
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 16584,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 3416,
+          "nonreject": 6
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 361,
+          "kind": "bit",
+          "edits": [
+            [
+              688,
+              128
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 2854,
+          "kind": "bit",
+          "edits": [
+            [
+              704,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 8862,
+          "kind": "bit",
+          "edits": [
+            [
+              689,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 12438,
+          "kind": "bit",
+          "edits": [
+            [
+              672,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 13527,
+          "kind": "bit",
+          "edits": [
+            [
+              752,
+              128
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 16573,
+          "kind": "bit",
+          "edits": [
+            [
+              674,
+              8
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "0d8995651d775171c9c0c290e5446111328e991fa8909b2333a1891ef9ee12b0"
+    },
+    {
+      "variant": 512,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-3",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 6,
+        "bit_nonreject": 6,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          0.0001374997137187844,
+          0.0006544211207521783
+        ],
+        "bit_nonreject": [
+          0.0001374997137187844,
+          0.0006544211207521783
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 16668,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 3332,
+          "nonreject": 6
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 3416,
+          "kind": "bit",
+          "edits": [
+            [
+              720,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 6819,
+          "kind": "bit",
+          "edits": [
+            [
+              672,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 7261,
+          "kind": "bit",
+          "edits": [
+            [
+              688,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 8224,
+          "kind": "bit",
+          "edits": [
+            [
+              672,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 17837,
+          "kind": "bit",
+          "edits": [
+            [
+              720,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 19422,
+          "kind": "bit",
+          "edits": [
+            [
+              672,
+              128
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "0d8995651d775171c9c0c290e5446111328e991fa8909b2333a1891ef9ee12b0"
+    },
+    {
+      "variant": 512,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-4",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 3,
+        "bit_nonreject": 3,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          5.101481799495055e-05,
+          0.0004409636272928435
+        ],
+        "bit_nonreject": [
+          5.101481799495055e-05,
+          0.0004409636272928435
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 16668,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 3332,
+          "nonreject": 3
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 12044,
+          "kind": "bit",
+          "edits": [
+            [
+              688,
+              128
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 14812,
+          "kind": "bit",
+          "edits": [
+            [
+              704,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 18267,
+          "kind": "bit",
+          "edits": [
+            [
+              704,
+              8
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "0d8995651d775171c9c0c290e5446111328e991fa8909b2333a1891ef9ee12b0"
+    },
+    {
+      "variant": 512,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-5",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 4,
+        "bit_nonreject": 4,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          7.777875605022842e-05,
+          0.0005141804856319553
+        ],
+        "bit_nonreject": [
+          7.777875605022842e-05,
+          0.0005141804856319553
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 16781,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 3219,
+          "nonreject": 4
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 95,
+          "kind": "bit",
+          "edits": [
+            [
+              656,
+              128
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 7964,
+          "kind": "bit",
+          "edits": [
+            [
+              752,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 11341,
+          "kind": "bit",
+          "edits": [
+            [
+              704,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 15812,
+          "kind": "bit",
+          "edits": [
+            [
+              720,
+              8
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "0d8995651d775171c9c0c290e5446111328e991fa8909b2333a1891ef9ee12b0"
+    },
+    {
+      "variant": 768,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-1",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 3,
+        "bit_nonreject": 3,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 1,
+        "twobit_nonreject": 1,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          5.101481799495055e-05,
+          0.0004409636272928435
+        ],
+        "bit_nonreject": [
+          5.101481799495055e-05,
+          0.0004409636272928435
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          8.826282272974824e-06,
+          0.0002831905702260402
+        ],
+        "twobit_nonreject": [
+          8.826282272974824e-06,
+          0.0002831905702260402
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 17639,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 2361,
+          "nonreject": 3
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 4573,
+          "kind": "twobit",
+          "edits": [
+            [
+              1040,
+              8
+            ],
+            [
+              1024,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 7374,
+          "kind": "bit",
+          "edits": [
+            [
+              1056,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 10103,
+          "kind": "bit",
+          "edits": [
+            [
+              992,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 18549,
+          "kind": "bit",
+          "edits": [
+            [
+              1024,
+              128
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "48b555746bbdd8c0dfab1435055010b27afc2cd797d1291eaaee74e225a07975"
+    },
+    {
+      "variant": 768,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-2",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 4,
+        "bit_nonreject": 4,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          7.777875605022842e-05,
+          0.0005141804856319553
+        ],
+        "bit_nonreject": [
+          7.777875605022842e-05,
+          0.0005141804856319553
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 17617,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 2383,
+          "nonreject": 4
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 103,
+          "kind": "bit",
+          "edits": [
+            [
+              992,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 8862,
+          "kind": "bit",
+          "edits": [
+            [
+              1009,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 14576,
+          "kind": "bit",
+          "edits": [
+            [
+              1024,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 16357,
+          "kind": "bit",
+          "edits": [
+            [
+              1024,
+              8
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "48b555746bbdd8c0dfab1435055010b27afc2cd797d1291eaaee74e225a07975"
+    },
+    {
+      "variant": 768,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-3",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 2,
+        "bit_nonreject": 2,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          2.7424035272726838e-05,
+          0.0003645736136206778
+        ],
+        "bit_nonreject": [
+          2.7424035272726838e-05,
+          0.0003645736136206778
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 17643,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 2357,
+          "nonreject": 2
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 5195,
+          "kind": "bit",
+          "edits": [
+            [
+              1040,
+              8
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 8224,
+          "kind": "bit",
+          "edits": [
+            [
+              992,
+              8
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "48b555746bbdd8c0dfab1435055010b27afc2cd797d1291eaaee74e225a07975"
+    },
+    {
+      "variant": 768,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-4",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 2,
+        "bit_nonreject": 2,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          2.7424035272726838e-05,
+          0.0003645736136206778
+        ],
+        "bit_nonreject": [
+          2.7424035272726838e-05,
+          0.0003645736136206778
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 17591,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 2409,
+          "nonreject": 2
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 13800,
+          "kind": "bit",
+          "edits": [
+            [
+              1024,
+              128
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 18489,
+          "kind": "bit",
+          "edits": [
+            [
+              976,
+              8
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "48b555746bbdd8c0dfab1435055010b27afc2cd797d1291eaaee74e225a07975"
+    },
+    {
+      "variant": 768,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-5",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 1,
+        "bit_nonreject": 1,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          8.826282272974824e-06,
+          0.0002831905702260402
+        ],
+        "bit_nonreject": [
+          8.826282272974824e-06,
+          0.0002831905702260402
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 17669,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 2331,
+          "nonreject": 1
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 2241,
+          "kind": "bit",
+          "edits": [
+            [
+              1008,
+              8
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "48b555746bbdd8c0dfab1435055010b27afc2cd797d1291eaaee74e225a07975"
+    },
+    {
+      "variant": 1024,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-1",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 3,
+        "bit_nonreject": 3,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          5.101481799495055e-05,
+          0.0004409636272928435
+        ],
+        "bit_nonreject": [
+          5.101481799495055e-05,
+          0.0004409636272928435
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 17993,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 2007,
+          "nonreject": 3
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 11720,
+          "kind": "bit",
+          "edits": [
+            [
+              1408,
+              16
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 14145,
+          "kind": "bit",
+          "edits": [
+            [
+              1448,
+              16
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 16766,
+          "kind": "bit",
+          "edits": [
+            [
+              1508,
+              16
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "16ea1e22f90f7658c57af731ce4acb9afbf6271e4afa86d699b58a3e489a857f"
+    },
+    {
+      "variant": 1024,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-2",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 1,
+        "bit_nonreject": 1,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          8.826282272974824e-06,
+          0.0002831905702260402
+        ],
+        "bit_nonreject": [
+          8.826282272974824e-06,
+          0.0002831905702260402
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 17976,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 2024,
+          "nonreject": 1
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 10551,
+          "kind": "bit",
+          "edits": [
+            [
+              1468,
+              16
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "16ea1e22f90f7658c57af731ce4acb9afbf6271e4afa86d699b58a3e489a857f"
+    },
+    {
+      "variant": 1024,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-3",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 3,
+        "bit_nonreject": 3,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          5.101481799495055e-05,
+          0.0004409636272928435
+        ],
+        "bit_nonreject": [
+          5.101481799495055e-05,
+          0.0004409636272928435
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 17989,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 2011,
+          "nonreject": 3
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 1216,
+          "kind": "bit",
+          "edits": [
+            [
+              1529,
+              2
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 4618,
+          "kind": "bit",
+          "edits": [
+            [
+              1508,
+              16
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 5482,
+          "kind": "bit",
+          "edits": [
+            [
+              1429,
+              64
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "16ea1e22f90f7658c57af731ce4acb9afbf6271e4afa86d699b58a3e489a857f"
+    },
+    {
+      "variant": 1024,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-4",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 1,
+        "bit_nonreject": 1,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          8.826282272974824e-06,
+          0.0002831905702260402
+        ],
+        "bit_nonreject": [
+          8.826282272974824e-06,
+          0.0002831905702260402
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 17950,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 2050,
+          "nonreject": 1
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 1696,
+          "kind": "bit",
+          "edits": [
+            [
+              1488,
+              16
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "16ea1e22f90f7658c57af731ce4acb9afbf6271e4afa86d699b58a3e489a857f"
+    },
+    {
+      "variant": 1024,
+      "precision": 32,
+      "sessions": 20000,
+      "seed": "q32-extended-v1-seed-5",
+      "coins_generator": "SHAKE256 from Python hashlib; deterministic test inputs",
+      "counts": {
+        "valid_fail": 0,
+        "bit_same": 4,
+        "bit_nonreject": 4,
+        "byte_same": 0,
+        "byte_nonreject": 0,
+        "twobit_same": 0,
+        "twobit_nonreject": 0,
+        "random_same": 0,
+        "random_nonreject": 0
+      },
+      "wilson95": {
+        "valid_fail": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "bit_same": [
+          7.777875605022842e-05,
+          0.0005141804856319553
+        ],
+        "bit_nonreject": [
+          7.777875605022842e-05,
+          0.0005141804856319553
+        ],
+        "byte_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "byte_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "twobit_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_same": [
+          0.0,
+          0.00019203605610462553
+        ],
+        "random_nonreject": [
+          0.0,
+          0.00019203605610462553
+        ]
+      },
+      "extended": true,
+      "bit_regions": {
+        "u": {
+          "trials": 17985,
+          "nonreject": 0
+        },
+        "v": {
+          "trials": 2015,
+          "nonreject": 4
+        }
+      },
+      "first_failures": [
+        {
+          "trial": 2153,
+          "kind": "bit",
+          "edits": [
+            [
+              1428,
+              16
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 7220,
+          "kind": "bit",
+          "edits": [
+            [
+              1528,
+              16
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 8817,
+          "kind": "bit",
+          "edits": [
+            [
+              1488,
+              16
+            ]
+          ],
+          "same_secret": true
+        },
+        {
+          "trial": 10626,
+          "kind": "bit",
+          "edits": [
+            [
+              1529,
+              2
+            ]
+          ],
+          "same_secret": true
+        }
+      ],
+      "library_sha256": "16ea1e22f90f7658c57af731ce4acb9afbf6271e4afa86d699b58a3e489a857f"
+    }
+  ]
+}

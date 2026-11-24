@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-24",
+  "changes": [
+    "Default single-configuration builds to Release unless an explicit build type was chosen",
+    "Read only newly appended log data in the manual launcher",
+    "Document incremental compilation and retaining build/install"
+  ],
+  "build_logs": {
+    "build-release.log": "Starting >>> pqc_kyber\nFinished <<< pqc_kyber [14.8s]\nStarting >>> pqc_zenoh_demo\nFinished <<< pqc_zenoh_demo [22.7s]\n\nSummary: 2 packages finished [37.6s]\n",
+    "build-incremental.log": "Starting >>> pqc_kyber\nFinished <<< pqc_kyber [0.86s]\nStarting >>> pqc_zenoh_demo\nFinished <<< pqc_zenoh_demo [0.94s]\n\nSummary: 2 packages finished [1.92s]\n"
+  },
+  "log_reader_check": {
+    "utf8_and_incremental_output": "PASS",
+    "synthetic_log_mib": 10,
+    "idle_polls": 100,
+    "full_reread_cpu_seconds": 1.1405,
+    "incremental_cpu_seconds": 0.0034
+  },
+  "integration": {
+    "command": true,
+    "telemetry": true,
+    "action_success": true,
+    "feedback": true,
+    "cancellation": true,
+    "tamper_rejected": true,
+    "replay_rejected": true,
+    "no_plaintext_literal_in_probe": true,
+    "no_bypass_without_central_router": true,
+    "rmw": "rmw_zenoh_cpp",
+    "local_domains": [
+      61,
+      62
+    ],
+    "log_directory": "/tmp/pqc-zenoh-performance/release"
+  },
+  "core_ctest_log": "Internal ctest changing into directory: /home/ftoledin/ProjetoIC/pqc-kyber-marcos/pqc-kyber/ros2/build/pqc_kyber\nTest project /home/ftoledin/ProjetoIC/pqc-kyber-marcos/pqc-kyber/ros2/build/pqc_kyber\n    Start 1: demo_encryption_authentication\n1/5 Test #1: demo_encryption_authentication ....   Passed    0.01 sec\n    Start 2: demo_protocol_extended\n2/5 Test #2: demo_protocol_extended ............   Passed    1.65 sec\n    Start 3: cpp_kem_chaotic_check\n3/5 Test #3: cpp_kem_chaotic_check .............   Passed    0.00 sec\n    Start 4: chaotic_hash_regression\n4/5 Test #4: chaotic_hash_regression ...........   Passed    0.00 sec\n    Start 5: ciphertext_rejection_regression\n5/5 Test #5: ciphertext_rejection_regression ...   Passed    1.28 sec\n\n100% tests passed, 0 tests failed out of 5\n\nTotal Test time (real) =   2.95 sec\n",
+  "source_sha256": {
+    "ros2/pqc_kyber/CMakeLists.txt": "1348249c1ddc20d36a46047bfa1fef56cb71a00f632ced316e653046897eddd8",
+    "ros2/pqc_zenoh_demo/CMakeLists.txt": "135a1a03db6b3efd3f74467dcae257f6d9c9f9496f06f2b200c51245082b3f50",
+    "ros2/pqc_zenoh_demo/scripts/demo.py": "47da05ab0a78cf315912ee4f4825be97ad59b5cc36966c32c46fc5c538f2cd98"
+  },
+  "limits": [
+    "Build timings depend on the machine and cache; the first build still needs full compilation",
+    "Release improves execution optimization and does not promise faster initial compilation",
+    "No change to crypto algorithms, local-router isolation, message frequency, or count of demo processes",
+    "Synthetic log benchmark measures only log reading, not overall demo throughput"
+  ]
+}

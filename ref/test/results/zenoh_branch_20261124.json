@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-24",
+  "branch": "zenoh-demo",
+  "built_from_clean_checkout": true,
+  "build_command": "CMAKE_BUILD_PARALLEL_LEVEL=2 colcon build --packages-up-to pqc_zenoh_demo --executor sequential",
+  "integration": {
+    "command": true,
+    "telemetry": true,
+    "action_success": true,
+    "feedback": true,
+    "cancellation": true,
+    "tamper_rejected": true,
+    "replay_rejected": true,
+    "no_plaintext_literal_in_probe": true,
+    "no_bypass_without_central_router": true,
+    "rmw": "rmw_zenoh_cpp",
+    "local_domains": [
+      61,
+      62
+    ],
+    "log_directory": "/tmp/pqc-fork-zenoh-integration"
+  },
+  "core_ctest_log": "Internal ctest changing into directory: /tmp/pqc-fork-zenoh-build/build/pqc_kyber\nTest project /tmp/pqc-fork-zenoh-build/build/pqc_kyber\n    Start 1: demo_encryption_authentication\n1/5 Test #1: demo_encryption_authentication ....   Passed    0.16 sec\n    Start 2: demo_protocol_extended\n2/5 Test #2: demo_protocol_extended ............   Passed    2.09 sec\n    Start 3: cpp_kem_chaotic_check\n3/5 Test #3: cpp_kem_chaotic_check .............   Passed    0.00 sec\n    Start 4: chaotic_hash_regression\n4/5 Test #4: chaotic_hash_regression ...........   Passed    0.01 sec\n    Start 5: ciphertext_rejection_regression\n5/5 Test #5: ciphertext_rejection_regression ...   Passed    1.49 sec\n\n100% tests passed, 0 tests failed out of 5\n\nTotal Test time (real) =   3.80 sec\n",
+  "crypto_identical_to_crypto_only": true,
+  "excluded": [
+    "build/install/log",
+    "Python caches",
+    "compiled binaries",
+    "local presentation files"
+  ]
+}

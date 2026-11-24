@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>pqc_kyber</name>
+  <version>0.1.0</version>
+  <description>Base C/C++ para integrar Kyber com hashing caotico ao ROS2.</description>
+  <maintainer email="maintainer@example.com">PQC Kyber project</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>openssl</depend>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
