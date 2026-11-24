@@ -1,22 +1,38 @@
-# PQC Kyber com hashing caótico
+# PQC-Kyber — criptografia e testes
 
-Implementação em C com cabeçalhos compatíveis com C++ via `extern "C"` condicionado a `__cplusplus`. O núcleo `hash_options/chaotic_hash.c` permanece original.
+Esta branch contém o núcleo Kyber em C, hashing caótico e testes independentes do ROS2. Os cabeçalhos permitem ligação com aplicações C++ por `extern "C"`.
 
-## Compilar e testar
+| Branch | Conteúdo |
+| --- | --- |
+| [`crypto-only`](https://github.com/ftoledin/pqc-kyber/tree/crypto-only) | Biblioteca criptográfica, cabeçalhos C/C++ e testes |
+| [`zenoh-demo`](https://github.com/ftoledin/pqc-kyber/tree/zenoh-demo) | Mesmo núcleo, mais simulação ROS2/Zenoh e documentação |
 
-Requer compilador C, make e Python 3. Para os alvos NIST KAT, também são necessários os cabeçalhos OpenSSL.
+## Compilar e executar os testes
+
+No Ubuntu, instale `build-essential` e `python3`. Na raiz do repositório:
 
 ```bash
-make -C ref test
-make -C ref check
+make -C ref -j2 check
 ```
 
-`test_hashing` verifica vetores originais e a continuidade de extrações XOF fracionadas. Os bytes residuais ficam no adaptador, fora do núcleo matemático.
+O comando compila e executa dez testes: hashing, rejeição de alterações, acordo do segredo e vetores internos nas variantes Kyber512, Kyber768 e Kyber1024. Retorna falha se algum teste reprovar. `make -C ref test` apenas compila os executáveis; não executa a bateria.
 
-`test_rejection` gera um ciphertext com sementes fixas, inverte um bit por caso e exige o segredo de rejeição correto. `run_checks.py` executa todos os dez testes e retorna falha se qualquer um reprovar.
+Para gerar as três bibliotecas compartilhadas:
 
-## Falhas conhecidas
+```bash
+make -C ref -j2 shared
+```
 
-As regressões de rejeição permanecem reprovadas: 65/6.144 alterações em Kyber512, 65/8.704 em Kyber768 e 65/12.544 em Kyber1024, para as sementes fixas do teste. Foram identificadas perdas de informação na normalização Q24 e nos truncamentos do mapa caótico. Nenhum caso foi excluído ou convertido em sucesso esperado.
+Elas são criadas em `ref/lib/`. Os arquivos de `ref/test/` incluem referência Python independente e ferramentas de auditoria e amostragem. Para compilar também os benchmarks e o gerador KAT interno, instale `libssl-dev` e execute `make -C ref -j2 all`.
 
-Passar nos testes de encapsulação legítima não elimina essas falhas nem comprova a segurança da substituição das primitivas por hashing caótico. Esta atualização não inclui ROS2 e não altera a precisão numérica do núcleo.
+## Organização
+
+- `ref/`: implementação Kyber, adaptadores, Makefile e testes.
+- `hash_options/`: núcleo do hashing caótico.
+- `ref/test/results/crypto_only_20261124.json`: validação desta separação de branches.
+
+O núcleo atual utiliza ponto fixo Q32.32, xorshift 13/17/5 e codificação CHF1 para diferenciar comprimento e finalidade. É o mesmo núcleo utilizado na branch Zenoh. A separação não altera algoritmos, parâmetros ou resultados criptográficos.
+
+Esta é uma construção experimental com hash caótico, não uma implementação certificada de ML-KEM. Testes aprovados demonstram funcionamento nos casos exercitados; não comprovam segurança contra ataques nem conformidade com vetores oficiais. Os nomes históricos SHA3 dos wrappers não significam que o SHA-3 padrão esteja sendo usado.
+
+Os artefatos gerados não são versionados. Preserve-os para aproveitar compilações incrementais; `make -C ref clean` os remove quando necessário.

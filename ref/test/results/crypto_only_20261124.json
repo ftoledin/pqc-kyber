@@ -1,0 +1,95 @@
+{
+  "date": "2026-11-24",
+  "branch": "crypto-only",
+  "command": "make -C ref -j2 check",
+  "test_count": 10,
+  "failures": 0,
+  "tests": [
+    {
+      "name": "test_hashing",
+      "exit_code": 0
+    },
+    {
+      "name": "test_rejection512",
+      "exit_code": 0
+    },
+    {
+      "name": "test_rejection768",
+      "exit_code": 0
+    },
+    {
+      "name": "test_rejection1024",
+      "exit_code": 0
+    },
+    {
+      "name": "test_kyber512",
+      "exit_code": 0
+    },
+    {
+      "name": "test_kyber768",
+      "exit_code": 0
+    },
+    {
+      "name": "test_kyber1024",
+      "exit_code": 0
+    },
+    {
+      "name": "test_vectors512",
+      "exit_code": 0
+    },
+    {
+      "name": "test_vectors768",
+      "exit_code": 0
+    },
+    {
+      "name": "test_vectors1024",
+      "exit_code": 0
+    }
+  ],
+  "source_sha256": {
+    "ref/randombytes.c": "7fe034fc25b9bf0742296677fe3ffe940cf99e005201e636d44f3cb09225a19c",
+    "ref/polyvec.c": "bc5d7c07cce321ed81eeff65f44c7f2f95d89ba5fb71a257935a4c73bded6702",
+    "ref/cbd.h": "f9f950d4104dcd779d832dae4b691bfcbdccb4b096cf6ede09aba91933cbe505",
+    "ref/kem.h": "310a0568f3b5d930c858f7c4c7e93e73661479504f41ce2f1c071bd7e6e82533",
+    "ref/reduce.c": "5cdb0497f5eaaab41709a35719596435c661a21620e9b42e8cb9deb44bfc510a",
+    "ref/verify.c": "6eba50757da9e2c0ecf090d460595d93c8e534eec2a42e244ed5d4680d393eb0",
+    "ref/poly.c": "4679701512b13f3ff92514531e5abaafa6dcb7544ba6b4025f9dea9c19d14678",
+    "ref/hashing.c": "1416897c68de9a645ec48799f0e0e79b1ec8ae95aaab0c19617daec66559f054",
+    "ref/indcpa.h": "974da581f804f72520dd847e549ea56c0fabb5cc231d0ff0f31ebb6ce19db527",
+    "ref/kem.c": "f73a1329290bd7b722949c9a06a4a578c1962a4ae72d9c825f1fa47e8b7e1138",
+    "ref/indcpa.c": "3815116b71072c1c435e4a83ca34c8e1714fdcf8629bd147f481caeb19e8530c",
+    "ref/params.h": "97175f8cc035ea7f9e487b8145fe97ba490893bae96d9d46658b73c6f7d21601",
+    "ref/api.h": "9bd33eb671cd5085763558fcc85d523c2b4f944744dfc94df927325445741857",
+    "ref/poly.h": "13c8331eb1d136a1be1484e1a686aebf3a29d5584a2cec1d90083fa92f4cf78c",
+    "ref/ntt.c": "aeeee3cf363ce87b0617693cee82bed181f1bda5ad90cd355e97a5306bbf65d1",
+    "ref/randombytes.h": "039a3bd99d8cd4a513810b68cf9d2308a0a13dd52228c220774f26ebf838dc95",
+    "ref/hashing.h": "f3c21a9b8200b51945ef631e3ccd27c4093ad85127ef45e54dc8c10f5b3485f2",
+    "ref/verify.h": "3062613d59cc73b817e5bac89054bc7eb81f4a1faf11c5694559e6cac69c82d9",
+    "ref/polyvec.h": "dc45fbeb7a2d0effec3cdf79e2932a7bb243773a4f7a5f3516df1c1fcb557841",
+    "ref/symmetric.h": "56190b9adec944a60d534ed1a04ae5728b0a869fbd8e7e1eac42684e7bb22202",
+    "ref/reduce.h": "08a22180a90f37b790d2f7d6726b5749e57bf229da82165934812221c6898a58",
+    "ref/cbd.c": "95b6893fd3bf909e57c2522bef413dfdb5c9c677cc1b8c7a246001c64264a238",
+    "ref/ntt.h": "7f42ae358f781a2597c4e34ef9f59ccd11dcc1efce7f5f1edc96167da088070d",
+    "ref/nistkat/rng.c": "cb3c077ef360f1004336600e125a0b8db5d91b0dfd99034116d2fd1f4235cbf5",
+    "ref/nistkat/rng.h": "682c64e010a633e5f97355db17f9c744f8a161157677f6601ebdb9ff187b8f14",
+    "ref/nistkat/PQCgenKAT_kem.c": "edf345cdf4fe92fd6cd4dbd9fe4e35c3b153be1232b72b85bc993d66dbfa0da6",
+    "ref/test/audit_hash.py": "e1665c3b0c4a220b70e8be294bef696d7291206c8717bf80db7bddbad0d88de4",
+    "ref/test/test_kyber.c": "6e92c15cb9786538b900f4e76d5446397c4993fcbcf0b5a93a716db6c2323bc6",
+    "ref/test/speed_print.h": "abdeb99cadcc96e9dbcbf966f2fd1eda179c21364873fc05fb3bcc2d25aeddce",
+    "ref/test/cpucycles.c": "8a5d449ff6e8899932e33d7a65ade13464bda573b5ddec2d0361b29549c1f0b6",
+    "ref/test/test_rejection.c": "6fc578f60496ca5af868f717f47fe0016e5ab90e3e71df8da78fe7835cf4e6a5",
+    "ref/test/estimate_errors.py": "94d1325a516023022c588ed750b6acc98e33639c49e294401960ebde90397ccd",
+    "ref/test/test_vectors.c": "eba0fbfebc4752b6f117e6cffd7307a81fb79f32f976acc7738911b7697a72e6",
+    "ref/test/sample_campaign.py": "01f1b5fef646e127bbb1ce6d929d0025ed2de94d588c91fe48cc2b13b95213ab",
+    "ref/test/run_checks.py": "327623530aa90e5b873144ca00f57ded7328e74a8eb0ebdb2fec87b0752fd2dc",
+    "ref/test/test_speed.c": "8f08fc8f96f1b241d0c73a732e768b4031aeddafbc296dff7bb1be38e1d13599",
+    "ref/test/test_hashing.c": "14b2646f521d5df8f4a0a4956e1fb1965cf3b181ae05f9e5dd83f6008e7ec46a",
+    "ref/test/compare_upstream_hash.py": "29b5f8c5683966d7a1c26d43897dd3203822d0fd0406e20003e4391281976993",
+    "ref/test/cpucycles.h": "46a16306f212a02fd630e4345f882d8b86d44f2f31b080ec4907fbfbf2bda941",
+    "ref/test/speed_print.c": "533fc7bd12204078a5390cfb58c05d550b214850876609f8e98f7377b9d4f1b3",
+    "ref/test/reference_hash.py": "1c25b6635fc9ec2cf1c44d97c0894751556e489cacb45864737182dbc70272be",
+    "hash_options/chaotic_hash.h": "788c3054c3442ba52c520c1607c7fe4ec7292bde97d7b4ed995dea5fde753836",
+    "hash_options/chaotic_hash.c": "d055d599833ea029970399b6a8e524c56d3d1f263530513a8edda275e361b1a5"
+  },
+  "scope": "Standalone C crypto and hashing; no ROS2 dependency. Passing functional tests is not a security certification."
+}
