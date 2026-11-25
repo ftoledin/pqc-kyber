@@ -1,0 +1,148 @@
+{
+  "date": "2026-11-25",
+  "update": "pos command, full received/calculated hashes in summary and case-insensitive CLI commands/IDs",
+  "fleet_validation": {
+    "two_initial_drones": true,
+    "target_isolation": true,
+    "positions_recovered": true,
+    "concurrent_goto": true,
+    "invalid_coordinates_rejected": true,
+    "unknown_id_rejected": true,
+    "cancellation": true,
+    "dynamic_addition": true,
+    "simulated_hold_on_link_loss": true,
+    "offline_command_rejected": true,
+    "core_crypto_modified": false,
+    "units": "metres",
+    "instant_goto": true,
+    "instant_long_goto_seconds": 0.1,
+    "crypto_trace_pairs": 22,
+    "crypto_hashes_match": true,
+    "ciphertext_matches_at_receiver": true,
+    "plaintext_recovered": true,
+    "remote_position_request_reply": true,
+    "cached_status_is_explicit": true,
+    "position_query_during_goto": true,
+    "position_timeout_without_cached_fallback": true,
+    "pos_command": true,
+    "commands_and_drone_ids_case_insensitive": true,
+    "received_and_calculated_hash_visible": true,
+    "console_timezone": "America/Sao_Paulo",
+    "console_lines_per_goto": {
+      "central": 6,
+      "drone": 5
+    },
+    "console_example": {
+      "central": [
+        "[11:16:42] A → B | Comando: goto (2.00,0.00,1.00)",
+        "[11:16:42] A → B | ENVIO CIFRADO | 1231 bytes | hash=cfbf7512... | cifra=bc1307d1e1ca241273ce3b82f4264dd8...",
+        "[11:16:42] B → A | RECEBIMENTO CIFRADO | 1231 bytes | hash=5c4931cb... | cifra=768e96b8f9626b7b00cd3073744c5b6d...",
+        "[11:16:42] B → A | Hash recebido: 5c4931cba918ad1f631649fb4b28c5dca46a835cee543d9c204002b766b66ef9",
+        "[11:16:42] B → A | Hash calculado: 5c4931cba918ad1f631649fb4b28c5dca46a835cee543d9c204002b766b66ef9 | IGUAIS",
+        "[11:16:42] B → A | Posição recuperada: (2.00,0.00,1.00) | AES-GCM OK; hashes iguais | concluído"
+      ],
+      "drone_B": [
+        "[11:16:42] A → B | RECEBIMENTO CIFRADO | 1231 bytes | hash=cfbf7512... | cifra=bc1307d1e1ca241273ce3b82f4264dd8...",
+        "[11:16:42] A → B | Hash recebido: cfbf7512fd2ede156fbb5a6292725ab5286b8da028b9e1e44042edb874ca61a8",
+        "[11:16:42] A → B | Hash calculado: cfbf7512fd2ede156fbb5a6292725ab5286b8da028b9e1e44042edb874ca61a8 | IGUAIS",
+        "[11:16:42] A → B | Comando recuperado: goto (2.00,0.00,1.00) | AES-GCM OK; hashes iguais",
+        "[11:16:42] B → A | ENVIO CIFRADO | 1231 bytes | hash=5c4931cb... | cifra=768e96b8f9626b7b00cd3073744c5b6d..."
+      ]
+    },
+    "frame": "map",
+    "local_only": true,
+    "logs": "/tmp/pqc-pos-hash-20261125/integration"
+  },
+  "installed_manual_validation": {
+    "pos_command": true,
+    "mixed_case_commands": true,
+    "lowercase_drone_launch": true,
+    "full_received_and_calculated_hashes_match": true,
+    "central_lines_per_exchange": 6,
+    "drone_lines_per_exchange": 5,
+    "central_example": [
+      "[11:18:26] A → B | Consulta: pos | pedido 2",
+      "[11:18:26] A → B | ENVIO CIFRADO | 1187 bytes | hash=e29cca82... | cifra=84f7817ca398a32c2a87fe5d72344567...",
+      "[11:18:26] B → A | RECEBIMENTO CIFRADO | 1231 bytes | hash=142a421e... | cifra=4c38abdb8380ed54d20cf6868bc997a8...",
+      "[11:18:26] B → A | Hash recebido: 142a421e1c67d0a2bb4700f97d5e2048bc7ce6062da64d7a753be186093cf88d",
+      "[11:18:26] B → A | Hash calculado: 142a421e1c67d0a2bb4700f97d5e2048bc7ce6062da64d7a753be186093cf88d | IGUAIS",
+      "[11:18:26] B → A | Posição consultada: (10.00,20.00,5.00) | AES-GCM OK; hashes iguais"
+    ],
+    "drone_example": [
+      "[11:18:26] A → B | RECEBIMENTO CIFRADO | 1187 bytes | hash=e29cca82... | cifra=84f7817ca398a32c2a87fe5d72344567...",
+      "[11:18:26] A → B | Hash recebido: e29cca82213b712af038965535c5d6acf74fda417fbf4d32c6730175098722bd",
+      "[11:18:26] A → B | Hash calculado: e29cca82213b712af038965535c5d6acf74fda417fbf4d32c6730175098722bd | IGUAIS",
+      "[11:18:26] A → B | Pedido recuperado: pos | AES-GCM OK; hashes iguais",
+      "[11:18:26] B → A | ENVIO CIFRADO | 1231 bytes | hash=142a421e... | cifra=4c38abdb8380ed54d20cf6868bc997a8..."
+    ]
+  },
+  "ab_regression": {
+    "command": true,
+    "telemetry": true,
+    "action_success": true,
+    "feedback": true,
+    "cancellation": true,
+    "tamper_rejected": true,
+    "replay_rejected": true,
+    "no_plaintext_literal_in_probe": true,
+    "no_bypass_without_central_router": true,
+    "rmw": "rmw_zenoh_cpp",
+    "local_domains": [
+      61,
+      62
+    ],
+    "log_directory": "/tmp/pqc-pos-hash-20261125/ab"
+  },
+  "core_ctest_log": "Internal ctest changing into directory: /home/ftoledin/ProjetoIC/pqc-kyber-marcos/pqc-kyber/ros2/build/pqc_kyber\nTest project /home/ftoledin/ProjetoIC/pqc-kyber-marcos/pqc-kyber/ros2/build/pqc_kyber\n    Start 1: demo_encryption_authentication\n1/5 Test #1: demo_encryption_authentication ....   Passed    0.01 sec\n    Start 2: demo_protocol_extended\n2/5 Test #2: demo_protocol_extended ............   Passed    1.60 sec\n    Start 3: cpp_kem_chaotic_check\n3/5 Test #3: cpp_kem_chaotic_check .............   Passed    0.00 sec\n    Start 4: chaotic_hash_regression\n4/5 Test #4: chaotic_hash_regression ...........   Passed    0.00 sec\n    Start 5: ciphertext_rejection_regression\n5/5 Test #5: ciphertext_rejection_regression ...   Passed    1.26 sec\n\n100% tests passed, 0 tests failed out of 5\n\nTotal Test time (real) =   2.88 sec\n",
+  "crypto_sources_unchanged": [
+    "ref/randombytes.c",
+    "ref/polyvec.c",
+    "ref/cbd.h",
+    "ref/kem.h",
+    "ref/reduce.c",
+    "ref/verify.c",
+    "ref/poly.c",
+    "ref/hashing.c",
+    "ref/indcpa.h",
+    "ref/kem.c",
+    "ref/indcpa.c",
+    "ref/params.h",
+    "ref/api.h",
+    "ref/poly.h",
+    "ref/ntt.c",
+    "ref/randombytes.h",
+    "ref/hashing.h",
+    "ref/verify.h",
+    "ref/polyvec.h",
+    "ref/symmetric.h",
+    "ref/reduce.h",
+    "ref/cbd.c",
+    "ref/ntt.h",
+    "ref/nistkat/rng.c",
+    "ref/nistkat/rng.h",
+    "ref/nistkat/PQCgenKAT_kem.c",
+    "ref/test/test_kyber.c",
+    "ref/test/speed_print.h",
+    "ref/test/cpucycles.c",
+    "ref/test/test_rejection.c",
+    "ref/test/test_vectors.c",
+    "ref/test/test_speed.c",
+    "ref/test/test_hashing.c",
+    "ref/test/cpucycles.h",
+    "ref/test/speed_print.c",
+    "hash_options/chaotic_hash.h",
+    "hash_options/chaotic_hash.c",
+    "ros2/pqc_kyber/src/demo_crypto.hpp"
+  ],
+  "source_sha256": {
+    "ros2/pqc_zenoh_demo/src/fleet_node.cpp": "3157b8848a755daacd76ee53983c0947fc603b82b26733e61454eeae2d2ee0d9",
+    "ros2/pqc_zenoh_demo/scripts/fleet.py": "dc58c3fa695a67471240e6d77b930f6f0aa4be30d7db1f243ceae95252777a4a"
+  },
+  "notes": [
+    "Interactive commands are case-insensitive; drone IDs are canonical uppercase",
+    "CLI flag spelling stays case-sensitive",
+    "pos is the documented command; position remains a compatibility alias",
+    "Complete received/calculated 256-bit digest values are displayed for relevant received packets",
+    "demo.py and fleet.py launch the demonstration as well as automated tests"
+  ]
+}

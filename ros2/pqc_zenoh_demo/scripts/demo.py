@@ -68,10 +68,12 @@ class Demo:
     def log(self, name):
         return (self.directory / (name + '.log')).read_text(errors='replace')
 
-    def spawn(self, name, command, env):
+    def spawn(self, name, command, env, *, stdin=None):
+        if name in self.processes:
+            raise ValueError('Nome de processo repetido: ' + name)
         out = (self.directory / (name + '.log')).open('w')
         self.handles.append(out)
-        process = subprocess.Popen([str(x) for x in command], env=env, stdout=out,
+        process = subprocess.Popen([str(x) for x in command], env=env, stdin=stdin, stdout=out,
                                    stderr=subprocess.STDOUT, start_new_session=True)
         self.processes[name] = process
         return process

@@ -2,6 +2,8 @@
 
 [README](../README.md) · [Criptografia](CRIPTOGRAFIA.md)
 
+Para a **central A com vários drones e comandos goto**, siga [Central e frota simulada](FROTA.md). Este documento mantém o protótipo A–B com ação Fibonacci como referência e regressão da integração.
+
 ## Protótipo com Zenoh: tópicos e ação
 
 O pacote `pqc_zenoh_demo` implementa os gateways, tópicos bidirecionais e a ação de exemplo. `pqc_kyber` fornece somente a biblioteca criptográfica e seus testes. A demonstração anterior está preservada na [branch ros2-demo](https://github.com/ftoledin/pqc-kyber/tree/ros2-demo).
@@ -26,7 +28,7 @@ No Ubuntu 24.04 com ROS2 Jazzy e repositório APT já configurados:
 sudo apt update
 sudo apt install ros-jazzy-ros-base ros-jazzy-ament-cmake \
   ros-jazzy-rmw-zenoh-cpp ros-jazzy-zenoh-cpp-vendor \
-  ros-jazzy-rclcpp-action ros-jazzy-example-interfaces \
+  ros-jazzy-rclcpp-action ros-jazzy-example-interfaces ros-jazzy-geometry-msgs \
   build-essential cmake python3-colcon-common-extensions libssl-dev
 cd ~/ProjetoIC/pqc-kyber-marcos/pqc-kyber/ros2
 source /opt/ros/jazzy/setup.bash

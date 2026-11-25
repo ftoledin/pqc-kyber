@@ -1,0 +1,152 @@
+{
+  "date": "2026-11-25",
+  "update": "Encrypted remote position query, separate cache status, concise packet evidence and --full mode",
+  "fleet_validation": {
+    "two_initial_drones": true,
+    "target_isolation": true,
+    "positions_recovered": true,
+    "concurrent_goto": true,
+    "invalid_coordinates_rejected": true,
+    "unknown_id_rejected": true,
+    "cancellation": true,
+    "dynamic_addition": true,
+    "simulated_hold_on_link_loss": true,
+    "offline_command_rejected": true,
+    "core_crypto_modified": false,
+    "units": "metres",
+    "instant_goto": true,
+    "instant_long_goto_seconds": 0.1,
+    "crypto_trace_pairs": 22,
+    "crypto_hashes_match": true,
+    "ciphertext_matches_at_receiver": true,
+    "plaintext_recovered": true,
+    "remote_position_request_reply": true,
+    "cached_status_is_explicit": true,
+    "position_query_during_goto": true,
+    "position_timeout_without_cached_fallback": true,
+    "console_timezone": "America/Sao_Paulo",
+    "console_lines_per_goto": {
+      "central": 4,
+      "drone": 3
+    },
+    "console_example": {
+      "central": [
+        "[10:50:39] A → B | Comando: goto (2.00,0.00,1.00)",
+        "[10:50:39] A → B | ENVIO CIFRADO | 1231 bytes | hash=1b63afac... | cifra=faf97bedbbd29d987df26a3e9ee1aaba...",
+        "[10:50:39] B → A | RECEBIMENTO CIFRADO | 1231 bytes | hash=607fc96f... | cifra=1e9edf6b7eb21a0dd27731b5db6c69af...",
+        "[10:50:39] B → A | Posição recuperada: (2.00,0.00,1.00) | AES-GCM OK; hashes iguais | concluído"
+      ],
+      "drone_B": [
+        "[10:50:39] A → B | RECEBIMENTO CIFRADO | 1231 bytes | hash=1b63afac... | cifra=faf97bedbbd29d987df26a3e9ee1aaba...",
+        "[10:50:39] A → B | Comando recuperado: goto (2.00,0.00,1.00) | AES-GCM OK; hashes iguais",
+        "[10:50:39] B → A | ENVIO CIFRADO | 1231 bytes | hash=607fc96f... | cifra=1e9edf6b7eb21a0dd27731b5db6c69af..."
+      ]
+    },
+    "frame": "map",
+    "local_only": true,
+    "logs": "/tmp/pqc-position-20261125/integration"
+  },
+  "manual_query_before_after_goto": {
+    "two_remote_position_queries": true,
+    "independent_goto": true,
+    "central_lines_per_exchange": 4,
+    "drone_lines_per_exchange": 3,
+    "packet_size_and_hash_visible": true,
+    "initial_query_example": [
+      "[10:51:31] A → B | Consulta: position | pedido 1",
+      "[10:51:31] A → B | ENVIO CIFRADO | 1187 bytes | hash=e4170bad... | cifra=4d4202b0995e1f0e47bf7ead17bd3f4c...",
+      "[10:51:31] B → A | RECEBIMENTO CIFRADO | 1231 bytes | hash=4402919c... | cifra=9ae15898e8718f5a13eb9bb8512b5e26...",
+      "[10:51:31] B → A | Posição consultada: (0.00,0.00,0.00) | AES-GCM OK; hashes iguais"
+    ],
+    "query_after_goto_example": [
+      "[10:51:31] A → B | Consulta: position | pedido 2",
+      "[10:51:31] A → B | ENVIO CIFRADO | 1187 bytes | hash=543591b0... | cifra=fb7ae3d6968754656d7bbbde27330bff...",
+      "[10:51:31] B → A | RECEBIMENTO CIFRADO | 1231 bytes | hash=0b048080... | cifra=83dab2cf4280b3ae1d23d15c414d4d7a...",
+      "[10:51:31] B → A | Posição consultada: (10.00,20.00,5.00) | AES-GCM OK; hashes iguais"
+    ],
+    "drone_initial_query_example": [
+      "[10:51:31] A → B | RECEBIMENTO CIFRADO | 1187 bytes | hash=e4170bad... | cifra=4d4202b0995e1f0e47bf7ead17bd3f4c...",
+      "[10:51:31] A → B | Pedido recuperado: position | AES-GCM OK; hashes iguais",
+      "[10:51:31] B → A | ENVIO CIFRADO | 1231 bytes | hash=4402919c... | cifra=9ae15898e8718f5a13eb9bb8512b5e26..."
+    ]
+  },
+  "ab_regression": {
+    "command": true,
+    "telemetry": true,
+    "action_success": true,
+    "feedback": true,
+    "cancellation": true,
+    "tamper_rejected": true,
+    "replay_rejected": true,
+    "no_plaintext_literal_in_probe": true,
+    "no_bypass_without_central_router": true,
+    "rmw": "rmw_zenoh_cpp",
+    "local_domains": [
+      61,
+      62
+    ],
+    "log_directory": "/tmp/pqc-position-20261125/ab"
+  },
+  "core_ctest_log": "Internal ctest changing into directory: /home/ftoledin/ProjetoIC/pqc-kyber-marcos/pqc-kyber/ros2/build/pqc_kyber\nTest project /home/ftoledin/ProjetoIC/pqc-kyber-marcos/pqc-kyber/ros2/build/pqc_kyber\n    Start 1: demo_encryption_authentication\n1/5 Test #1: demo_encryption_authentication ....   Passed    0.01 sec\n    Start 2: demo_protocol_extended\n2/5 Test #2: demo_protocol_extended ............   Passed    1.61 sec\n    Start 3: cpp_kem_chaotic_check\n3/5 Test #3: cpp_kem_chaotic_check .............   Passed    0.00 sec\n    Start 4: chaotic_hash_regression\n4/5 Test #4: chaotic_hash_regression ...........   Passed    0.01 sec\n    Start 5: ciphertext_rejection_regression\n5/5 Test #5: ciphertext_rejection_regression ...   Passed    1.26 sec\n\n100% tests passed, 0 tests failed out of 5\n\nTotal Test time (real) =   2.90 sec\n",
+  "crypto_sources_unchanged": [
+    "ref/randombytes.c",
+    "ref/polyvec.c",
+    "ref/cbd.h",
+    "ref/kem.h",
+    "ref/reduce.c",
+    "ref/verify.c",
+    "ref/poly.c",
+    "ref/hashing.c",
+    "ref/indcpa.h",
+    "ref/kem.c",
+    "ref/indcpa.c",
+    "ref/params.h",
+    "ref/api.h",
+    "ref/poly.h",
+    "ref/ntt.c",
+    "ref/randombytes.h",
+    "ref/hashing.h",
+    "ref/verify.h",
+    "ref/polyvec.h",
+    "ref/symmetric.h",
+    "ref/reduce.h",
+    "ref/cbd.c",
+    "ref/ntt.h",
+    "ref/nistkat/rng.c",
+    "ref/nistkat/rng.h",
+    "ref/nistkat/PQCgenKAT_kem.c",
+    "ref/test/test_kyber.c",
+    "ref/test/speed_print.h",
+    "ref/test/cpucycles.c",
+    "ref/test/test_rejection.c",
+    "ref/test/test_vectors.c",
+    "ref/test/test_speed.c",
+    "ref/test/test_hashing.c",
+    "ref/test/cpucycles.h",
+    "ref/test/speed_print.c",
+    "hash_options/chaotic_hash.h",
+    "hash_options/chaotic_hash.c",
+    "ros2/pqc_kyber/src/demo_crypto.hpp"
+  ],
+  "source_sha256": {
+    "ros2/pqc_zenoh_demo/src/common.hpp": "835c048a43c230589060ad2540c5a24d8ba94425d903d89b97d206c4f8326922",
+    "ros2/pqc_zenoh_demo/src/fleet_node.cpp": "303ff5fcb4fa0980be12d8765ea8b0b6d0159fbeec342299fa9dae97995f8a08",
+    "ros2/pqc_zenoh_demo/scripts/fleet.py": "4277dead081037f5315794caf873c1f01e30bcb905ceb0dae2dd74e26032c8a4"
+  },
+  "protocol_extension": {
+    "9": "PositionRequest",
+    "10": "PositionReply",
+    "correlation": "separate per-drone pending position request ID",
+    "timeout_seconds": 3,
+    "cached_fallback": false
+  },
+  "presentation": {
+    "summary": "--show-crypto",
+    "complete": "--full",
+    "timezone": "America/Sao_Paulo",
+    "packet_bytes": "full encrypted frame length",
+    "hash_display_bytes": 4,
+    "cipher_display_bytes": 16,
+    "full_hash_and_tag_validated": true
+  }
+}

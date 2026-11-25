@@ -23,7 +23,8 @@ inline void require_zenoh() {
 using Action = example_interfaces::action::Fibonacci;
 using ServerGoal = rclcpp_action::ServerGoalHandle<Action>;
 using ClientGoal = rclcpp_action::ClientGoalHandle<Action>;
-enum Kind : uint8_t {Command=1, Telemetry, Goal, GoalAck, Feedback, Result, Cancel, CancelAck};
+enum Kind : uint8_t {Command=1, Telemetry, Goal, GoalAck, Feedback, Result, Cancel, CancelAck,
+                     PositionRequest, PositionReply};
 struct Event { uint8_t kind; uint64_t id; std::string body; };
 template<class T> std::string serialize(const T &message) {
   rclcpp::SerializedMessage serialized;
@@ -58,6 +59,8 @@ inline zenoh::Session session(const std::string &endpoint) {
 // Keys are pinned after first reception for this run. This is TOFU, not identity authentication.
 class Link {
   rclcpp::Logger logger_;
+  rclcpp::Logger proof_logger_;
+  bool show_crypto_;
   std::string role_,peer_,prefix_;
   demo::Bytes pk_,sk_,peer_pk_;
   std::string local_session_,peer_session_;
@@ -68,10 +71,12 @@ class Link {
   std::optional<zenoh::Subscriber<void>> subscriber_;
 public:
   Link(rclcpp::Logger logger,std::string role,const std::string &endpoint,std::string prefix,
-       std::function<void(Event)> callback)
-    :logger_(logger),role_(std::move(role)),peer_(role_=="a"?"b":"a"),prefix_(std::move(prefix)),
+       std::function<void(Event)> callback,bool show_crypto=false)
+    :logger_(logger),proof_logger_(logger.get_child("crypto")),show_crypto_(show_crypto),
+     role_(std::move(role)),peer_(role_=="a"?"b":"a"),prefix_(std::move(prefix)),
      pk_(CRYPTO_PUBLICKEYBYTES),sk_(CRYPTO_SECRETKEYBYTES),callback_(std::move(callback)),session_(session(endpoint)) {
     demo::require(crypto_kem_keypair(pk_.data(),sk_.data())==0,"keypair");
+    if(show_crypto_)proof_logger_.set_level(rclcpp::Logger::Level::Info);
     local_session_.resize(16);demo::require(RAND_bytes(reinterpret_cast<unsigned char *>(local_session_.data()),16)==1,"session random");
     subscriber_.emplace(session_.declare_subscriber(zenoh::KeyExpr(prefix_+"/"+peer_+"/**"),
       [this](const zenoh::Sample &sample){receive(sample);},zenoh::closures::none));
@@ -82,17 +87,39 @@ public:
     std::string bytes=local_session_+std::string(pk_.begin(),pk_.end());
     session_.put(zenoh::KeyExpr(prefix_+"/"+role_+"/pk"),zenoh::Bytes(bytes));
   }
-  void send(uint8_t kind,uint64_t id,const std::string &body) {
+  void send(uint8_t kind,uint64_t id,const std::string &body,bool tamper_tag=false) {
     std::lock_guard<std::mutex> lock(mutex_);
     demo::require(!peer_pk_.empty(),"Link sem chave do par");
     demo::require(tx_!=UINT64_MAX,"Contador esgotado");
     std::string plain;plain.push_back(1);plain.push_back(char(kind));put64(plain,++tx_);put64(plain,id);
     plain+=local_session_;plain+=body;
     auto frame=demo::seal(plain,peer_pk_);
+    // Demonstration fault injection only: corrupt one tag bit after encryption.
+    // The receiver always uses the normal authentication and rejection path.
+    if(tamper_tag) {
+      const auto before=frame.back();frame.back()^=0x01;
+      RCLCPP_WARN(logger_,"TAMPER TAG channel=%s/%s/data seq=%lu last_byte_before=%02x last_byte_after=%02x xor_mask=01",
+        prefix_.c_str(),role_.c_str(),tx_,unsigned(before),unsigned(frame.back()));
+    }
+    if(trace_event(kind,id)) {
+      const auto channel=prefix_+"/"+role_+"/data";
+      const demo::Bytes digest(frame.begin()+demo::prefix_size-32,frame.begin()+demo::prefix_size);
+      RCLCPP_INFO(proof_logger_,"CRYPTO TX channel=%s type=%u id=%lu seq=%lu packet_bytes=%zu kem_bytes=%d",channel.c_str(),kind,id,tx_,frame.size(),CRYPTO_CIPHERTEXTBYTES);
+      RCLCPP_INFO(proof_logger_,"CRYPTO HASH TX channel=%s seq=%lu value=%s",channel.c_str(),tx_,demo::hex(digest).c_str());
+      RCLCPP_INFO(proof_logger_,"CRYPTO CIPHER TX channel=%s seq=%lu AES-256-GCM=%s",channel.c_str(),tx_,preview(demo::ciphertext(frame)).c_str());
+      RCLCPP_INFO(proof_logger_,"CRYPTO PLAIN TX channel=%s seq=%lu envelope_CDR_hex=%s",channel.c_str(),tx_,preview(demo::Bytes(plain.begin(),plain.end())).c_str());
+    }
     session_.put(zenoh::KeyExpr(prefix_+"/"+role_+"/data"),zenoh::Bytes(std::move(frame)));
     RCLCPP_INFO(logger_,"ZENOH TX cifrado: tipo=%u id=%lu seq=%lu",kind,id,tx_);
   }
 private:
+  bool trace_event(uint8_t kind,uint64_t id) const {
+    return show_crypto_ && (kind==Goal || kind==Result || kind==PositionRequest || kind==PositionReply || (kind==Telemetry && id!=0));
+  }
+  static std::string preview(const demo::Bytes &bytes) {
+    const auto count=std::min<size_t>(96,bytes.size());
+    return demo::hex(demo::Bytes(bytes.begin(),bytes.begin()+count))+(count<bytes.size()?"...":"");
+  }
   void receive(const zenoh::Sample &sample) {
     try {
       const auto key=std::string(sample.get_keyexpr().as_string_view());
@@ -110,7 +137,7 @@ private:
       if(key!=prefix_+"/"+peer_+"/data")return;
       auto received=demo::open(bytes,sk_);const auto &p=received.message;
       demo::require(p.size()>=34 && uint8_t(p[0])==1,"Envelope invalido");
-      const auto kind=uint8_t(p[1]);demo::require(kind>=Command && kind<=CancelAck,"Tipo invalido");
+      const auto kind=uint8_t(p[1]);demo::require(kind>=Command && kind<=PositionReply,"Tipo invalido");
       const auto seq=get64(p,2),id=get64(p,10);
       {
         std::lock_guard<std::mutex> lock(mutex_);
@@ -118,6 +145,12 @@ private:
         demo::require(seq>rx_,"REPLAY rejeitado");rx_=seq;
       }
       RCLCPP_INFO(logger_,"ZENOH RX autenticado: tipo=%u id=%lu seq=%lu; hashes iguais",kind,id,seq);
+      if(trace_event(kind,id)) {
+        RCLCPP_INFO(proof_logger_,"CRYPTO RX channel=%s type=%u id=%lu seq=%lu packet_bytes=%zu AES-GCM=VALID",key.c_str(),kind,id,seq,bytes.size());
+        RCLCPP_INFO(proof_logger_,"CRYPTO HASH RX channel=%s seq=%lu received=%s calculated=%s equal=true",key.c_str(),seq,demo::hex(received.received_hash).c_str(),demo::hex(received.calculated_hash).c_str());
+        RCLCPP_INFO(proof_logger_,"CRYPTO CIPHER RX channel=%s seq=%lu AES-256-GCM=%s",key.c_str(),seq,preview(demo::ciphertext(bytes)).c_str());
+        RCLCPP_INFO(proof_logger_,"CRYPTO PLAIN RX channel=%s seq=%lu envelope_CDR_hex=%s",key.c_str(),seq,preview(demo::Bytes(p.begin(),p.end())).c_str());
+      }
       callback_(Event{kind,id,p.substr(34)});
     } catch(const std::exception &e) {RCLCPP_WARN(logger_,"PACOTE REJEITADO: %s",e.what());}
   }

@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-25",
+  "update": "Concise fleet display and Brasilia HH:MM:SS wall-clock timestamps",
+  "fleet_validation": {
+    "two_initial_drones": true,
+    "target_isolation": true,
+    "positions_recovered": true,
+    "concurrent_goto": true,
+    "invalid_coordinates_rejected": true,
+    "unknown_id_rejected": true,
+    "cancellation": true,
+    "dynamic_addition": true,
+    "simulated_hold_on_link_loss": true,
+    "offline_command_rejected": true,
+    "core_crypto_modified": false,
+    "units": "metres",
+    "instant_goto": true,
+    "instant_long_goto_seconds": 0.1,
+    "crypto_trace_pairs": 16,
+    "crypto_hashes_match": true,
+    "ciphertext_matches_at_receiver": true,
+    "plaintext_recovered": true,
+    "console_timezone": "America/Sao_Paulo",
+    "console_lines_per_goto": {
+      "central": 4,
+      "drone": 3
+    },
+    "console_example": {
+      "central": [
+        "[10:17:18] A → B | Comando: goto (2.00,0.00,1.00)",
+        "[10:17:18] A → B | ENVIO CIFRADO | 1a599777faa2c98fa6abee864371e9b4...",
+        "[10:17:18] B → A | RECEBIMENTO CIFRADO | b282ddcd7af85a8a3cfa84a0ccf2aaef...",
+        "[10:17:18] B → A | Posição recuperada: (2.00,0.00,1.00) | integridade OK | concluído"
+      ],
+      "drone_B": [
+        "[10:17:18] A → B | RECEBIMENTO CIFRADO | 1a599777faa2c98fa6abee864371e9b4...",
+        "[10:17:18] A → B | Comando recuperado: goto (2.00,0.00,1.00) | integridade OK",
+        "[10:17:18] B → A | ENVIO CIFRADO | b282ddcd7af85a8a3cfa84a0ccf2aaef..."
+      ]
+    },
+    "frame": "map",
+    "local_only": true,
+    "logs": "/tmp/pqc-console-20261125/integration"
+  },
+  "manual_launch": {
+    "central_without_drones_argument": true,
+    "central_lines_per_goto": 4,
+    "drone_lines_per_goto": 3,
+    "timezone": "America/Sao_Paulo",
+    "hhmmss": true,
+    "central_example": [
+      "[10:18:15] A → B | Comando: goto (10.00,20.00,5.00)",
+      "[10:18:15] A → B | ENVIO CIFRADO | 8cd71d6651fa47b1b1a579d3a48887b4...",
+      "[10:18:15] B → A | RECEBIMENTO CIFRADO | b3582d052057118abc7a3c1e5e31206e...",
+      "[10:18:15] B → A | Posição recuperada: (10.00,20.00,5.00) | integridade OK | concluído"
+    ],
+    "drone_example": [
+      "[10:18:15] A → B | RECEBIMENTO CIFRADO | 8cd71d6651fa47b1b1a579d3a48887b4...",
+      "[10:18:15] A → B | Comando recuperado: goto (10.00,20.00,5.00) | integridade OK",
+      "[10:18:15] B → A | ENVIO CIFRADO | b3582d052057118abc7a3c1e5e31206e..."
+    ]
+  },
+  "time_conversion_check": {
+    "utc": "2026-11-25T15:34:56+00:00",
+    "brasilia": "12:34:56",
+    "event_timestamp_used_instead_of_display_timestamp": true
+  },
+  "core_and_transport_cpp_unchanged": true,
+  "presentation_only": true,
+  "source_sha256": {
+    "ros2/pqc_zenoh_demo/scripts/fleet.py": "6cbe0f30acc0c75572d24472af93f93a86fb637f61d3ff7e6a3aa3d185052aee"
+  },
+  "notes": [
+    "--drones remains optional; default initial IDs are B and C",
+    "Terminal output is summarized; raw process files preserve the complete crypto trace",
+    "Cipher snippets display 16 real bytes; integrity verification covers the entire frame",
+    "Use --show-crypto --verbose for full technical output"
+  ]
+}
